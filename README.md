@@ -12,23 +12,20 @@ The Feature Project is a package of add-ons for server monitoring that can be re
 
 3. **Login:**
    The first screen you will see is the login page. Enter your username, password, and the Whatap URL to log in.
-
-   ![Login Page](path/to/your/image1.png)
+   ![image](https://github.com/user-attachments/assets/97f7120a-e705-423b-b155-6c0a34fc3fbd)
 
 4. **View Feature List:**
    After logging in, you will be presented with the feature management screen where you can see a list of available features.
-
-   ![Feature Management](path/to/your/image2.png)
+   ![image](https://github.com/user-attachments/assets/22ff00ab-1c92-44f4-821e-460afbce911c)
 
 5. **Upload a Feature:**
    Select the feature you wish to upload and press the 'Upload' button.
-
-   ![Upload Feature](path/to/your/image3.png)
+   ![image](https://github.com/user-attachments/assets/3df488a6-2352-4f93-9de1-9e21e7ff5911)
 
 6. **Upload Completion:**
    A confirmation message will appear once the feature is successfully uploaded.
 
-   ![Upload Successful](path/to/your/image4.png)
+   ![image](https://github.com/user-attachments/assets/c877a56c-ebef-44d9-b3f4-1f6f51e1d8bf)
 
 ## Example Workflow
 
