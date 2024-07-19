@@ -8,7 +8,7 @@ class LoginForm(npyscreen.ActionForm):
         self.name = "Login Page"
         username, whatap_url = whatap_helper.load()
         self.username = self.add(npyscreen.TitleText, name="Username:", value=username)
-        self.password = self.add(npyscreen.TitlePassword, name="Password:", value='Wh@1410X12')
+        self.password = self.add(npyscreen.TitlePassword, name="Password:")
         self.whatap_url = self.add(npyscreen.TitleText, name="Whatap URL:", value=whatap_url)
         self.log_output = self.add(npyscreen.BoxTitle, name="Log Output:", max_height=10, editable=False)
 
