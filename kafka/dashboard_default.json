@@ -1,0 +1,1243 @@
+{
+  "name": "KAFKA Default",
+  "widgets": [
+    {
+      "id": "55dO3tXPk",
+      "title": "Broker network throughput BytesOutPerSec",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 29,
+        "h": 3,
+        "x": 0,
+        "y": 7,
+        "i": "55dO3tXPk",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_kafka_server",
+      "option": {
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "chart": "SERIES",
+        "metrics": 2
+      },
+      "metrics": [
+        {
+          "name": "Jolokia_agent_url",
+          "mql": "INJECT timepast\nHEADER { \"Value$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_kafka_server\":6h, \"telegraf_kafka_server{m5}\":3d, \"telegraf_kafka_server{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['Value'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'Value', 'jolokia_agent_url' ]\nFILTER { key: \"Value\", exist: true }\nFILTER { key: \"type\", value: \"BrokerTopicMetrics\" }\nFILTER { key: \"name\", value: \"BytesOutPerSec\" }\nGROUP { timeunit:10s, pk:pcode, merge:[Value] }\nUPDATE { key:[Value], value:sum }\nCREATE { key:_id_, expr: \"pcode\" }\nGROUP { timeunit: 10s, merge: ['Value'], pk: _id_ }\nUPDATE { key: ['Value'], value: $OBJECT_MERGE_PLACE }",
+          "param": {
+            "$OBJECT_MERGE_PLACE": "sum"
+          }
+        },
+        {
+          "name": "Name",
+          "tags": [
+            {
+              "key": "name",
+              "title": "Name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "Value",
+              "title": "Value",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "mql": "INJECT timepast\nHEADER { \"OneMinuteRate$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_kafka_server\":6h, \"telegraf_kafka_server{m5}\":3d, \"telegraf_kafka_server{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['OneMinuteRate'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'OneMinuteRate', 'pname', 'type', 'name' ]\nFILTER { key: \"OneMinuteRate\", exist: true }\nFILTER { key: \"pname\", exist: true }\nFILTER { key: \"type\", value: \"BrokerTopicMetrics\" }\nFILTER { key: \"name\", value: \"BytesOutPerSec\" }\nCREATE { key:_id_, expr: \"pcode+'_'+pname\" }\nCREATE { key:_name_, expr: \"pname\" }\nGROUP { timeunit: 10s, merge: ['OneMinuteRate'], pk: _id_, last: _name_ }\nUPDATE { key: ['OneMinuteRate'], value: $OBJECT_MERGE_PLACE }",
+          "param": {
+            "$OBJECT_MERGE_PLACE": "sum"
+          }
+        },
+        {
+          "name": "Type",
+          "tags": [
+            {
+              "key": "type",
+              "title": "Type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "Value",
+              "title": "Value",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "id": "bJFF9B_8GO",
+      "title": "Broker network throughput BytesInPerSec",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 24,
+        "h": 3,
+        "x": 29,
+        "y": 7,
+        "i": "bJFF9B_8GO",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_kafka_server",
+      "option": {
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "chart": "SERIES",
+        "metrics": 2
+      },
+      "metrics": [
+        {
+          "name": "Jolokia_agent_url",
+          "mql": "INJECT timepast\nHEADER { \"Value$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_kafka_server\":6h, \"telegraf_kafka_server{m5}\":3d, \"telegraf_kafka_server{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['Value'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'Value', 'jolokia_agent_url' ]\nFILTER { key: \"Value\", exist: true }\nFILTER { key: \"type\", value: \"BrokerTopicMetrics\" }\nFILTER { key: \"name\", value: \"BytesInPerSec\" }\nGROUP { timeunit:10s, pk:pcode, merge:[Value] }\nUPDATE { key:[Value], value:sum }\nCREATE { key:_id_, expr: \"pcode\" }\nGROUP { timeunit: 10s, merge: ['Value'], pk: _id_ }\nUPDATE { key: ['Value'], value: $OBJECT_MERGE_PLACE }",
+          "param": {
+            "$OBJECT_MERGE_PLACE": "sum"
+          }
+        },
+        {
+          "name": "Name",
+          "tags": [
+            {
+              "key": "name",
+              "title": "Name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "Value",
+              "title": "Value",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "mql": "INJECT timepast\nHEADER { \"OneMinuteRate$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_kafka_server\":6h, \"telegraf_kafka_server{m5}\":3d, \"telegraf_kafka_server{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['OneMinuteRate'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'OneMinuteRate', 'pname', 'type', 'name' ]\nFILTER { key: \"OneMinuteRate\", exist: true }\nFILTER { key: \"pname\", exist: true }\nFILTER { key: \"type\", value: \"BrokerTopicMetrics\" }\nFILTER { key: \"name\", value: \"BytesInPerSec\" }\nCREATE { key:_id_, expr: \"pcode+'_'+pname\" }\nCREATE { key:_name_, expr: \"pname\" }\nGROUP { timeunit: 10s, merge: ['OneMinuteRate'], pk: _id_, last: _name_ }\nUPDATE { key: ['OneMinuteRate'], value: $OBJECT_MERGE_PLACE }",
+          "param": {
+            "$OBJECT_MERGE_PLACE": "sum"
+          }
+        },
+        {
+          "name": "Type",
+          "tags": [
+            {
+              "key": "type",
+              "title": "Type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "Value",
+              "title": "Value",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "icon": "note",
+      "supports": [],
+      "title": "리치 텍스트",
+      "dirname": "v1/99.etc",
+      "widgetType": "RICH_TEXT",
+      "requestApi": "NONE",
+      "_key_": "v1/99.etc/rich_text",
+      "id": "wpzJP-07xb",
+      "layout": {
+        "w": 53,
+        "h": 1,
+        "x": 0,
+        "y": 0,
+        "i": "wpzJP-07xb",
+        "moved": false,
+        "static": false
+      },
+      "option": {
+        "markdown": "# Kafka Overview"
+      }
+    },
+    {
+      "icon": "static-chart",
+      "supports": [
+        {
+          "productType": "SMS"
+        }
+      ],
+      "metrics": [
+        {
+          "mql": "TIME-RANGE {duration:60s, etime:$etime}\nCATEGORY telegraf_kafka_controller\nTAGLOAD {backward:true}\nSELECT [ 'pcode','oid', 'time', 'oid', 'Value', 'type', 'name' ]\nFILTER { key: \"Value\", exist: true }\nFILTER { key: \"type\", value: \"KafkaController\" }\nFILTER { key: \"name\", value: \"ActiveControllerCount\" }\nFIRST-ONLY {key:\"oid\"}\n\nGROUP {timeunit:60s, pk:pcode, merge:[Value] }\nUPDATE { key:[Value], value:sum }\n\n"
+        }
+      ],
+      "title": "Active Controller Count",
+      "dirname": "v1/02.sys",
+      "widgetType": "COUNT",
+      "requestApi": "LAST",
+      "option": {
+        "legend": {
+          "Value": {
+            "unit": "",
+            "label": ""
+          }
+        },
+        "chart": "STATISTIC",
+        "metrics": 0,
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        }
+      },
+      "_key_": "v1/02.sys/server_avg_cpu",
+      "id": "9I1qp3eux",
+      "layout": {
+        "w": 11,
+        "h": 3,
+        "x": 0,
+        "y": 1,
+        "i": "9I1qp3eux",
+        "minW": 4,
+        "minH": 1,
+        "moved": false,
+        "static": false
+      }
+    },
+    {
+      "icon": "agent",
+      "supports": [
+        {
+          "productType": "SMS"
+        }
+      ],
+      "metrics": [
+        {
+          "mql": "TIME-RANGE {recent: 60s, etime: $etime}\r\n\r\nCATEGORY telegraf_kafka_server\r\nTAGLOAD {backward:true}\r\nSELECT [ 'pcode', 'oid', 'time', 'oid', 'Value', 'type', 'name' ]\r\nFILTER { key: \"Value\", exist: true }\r\nFILTER { key: \"type\", value: \"ReplicaManager\" }\r\nFILTER { key: \"name\", value: \"LeaderCount\" }\r\nFIRST-ONLY { key: \"oid\"}\r\nGROUP { timeunit:60s, pk:pcode, merge:[Value] }\r\nUPDATE { key:[Value], value:count }\r\n\r\n"
+        }
+      ],
+      "title": "Brokers Online",
+      "dirname": "v1/02.sys",
+      "widgetType": "COUNT",
+      "requestApi": "LAST",
+      "option": {
+        "field": "Value",
+        "legend": {
+          "Value": {
+            "label": ""
+          }
+        },
+        "chart": "STATISTIC",
+        "metrics": 0,
+        "globalTime": true,
+        "stime": 1713277438228,
+        "etime": 1713277738228,
+        "timeAction": "LIVE_5MIN"
+      },
+      "_key_": "v1/02.sys/server_os_count",
+      "id": "urLkuW18-",
+      "layout": {
+        "w": 9,
+        "h": 3,
+        "x": 11,
+        "y": 1,
+        "i": "urLkuW18-",
+        "minW": 4,
+        "minH": 1,
+        "moved": false,
+        "static": false
+      }
+    },
+    {
+      "icon": "agent",
+      "supports": [
+        {
+          "productType": "SMS"
+        }
+      ],
+      "metrics": [
+        {
+          "mql": "TIME-RANGE {recent: 60s, etime: $etime}\r\n\r\nCATEGORY telegraf_kafka_server\r\nTAGLOAD {backward:true}\r\nSELECT [ 'pcode', 'oid', 'time', 'oid', 'Value', 'type', 'name' ]\r\nFILTER { key: \"Value\", exist: true }\r\nFILTER { key: \"type\", value: \"ReplicaManager\" }\r\nFILTER { key: \"name\", value: \"PartitionCount\" }\r\nFIRST-ONLY { key: \"oid\" }\r\nGROUP {  timeunit: 60s, pk:pcode, merge:[Value] }\r\nUPDATE { key:[Value], value:sum }\r\n"
+        }
+      ],
+      "title": "Online Partitions",
+      "dirname": "v1/02.sys",
+      "widgetType": "COUNT",
+      "requestApi": "LAST",
+      "option": {
+        "field": "Value",
+        "legend": {
+          "Value": {
+            "label": ""
+          }
+        },
+        "chart": "STATISTIC",
+        "metrics": 0,
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        }
+      },
+      "_key_": "v1/02.sys/server_os_count",
+      "id": "fnVMh6G7i",
+      "layout": {
+        "w": 9,
+        "h": 3,
+        "x": 20,
+        "y": 1,
+        "i": "fnVMh6G7i",
+        "minW": 4,
+        "minH": 1,
+        "moved": false,
+        "static": false
+      }
+    },
+    {
+      "icon": "agent",
+      "supports": [
+        {
+          "productType": "SMS"
+        }
+      ],
+      "metrics": [
+        {
+          "mql": "TIME-RANGE {recent: 60s, etime: $etime}\n\nCATEGORY telegraf_kafka_controller\nTAGLOAD {backward:true}\nSELECT [ 'pcode', 'time', 'oid', 'Value', 'type', 'name' ]\nFILTER { key: \"Value\", exist: true }\nFILTER { key: \"type\", value: \"KafkaController\" }\nFILTER { key: \"name\", value: \"PreferredReplicaImbalanceCount\" }\nFIRST-ONLY { key: \"oid\"}\nGROUP { timeunit:60s, pk:pcode, merge:[Value] }\nUPDATE { key:[Value], value:sum }\n"
+        }
+      ],
+      "title": "Preferred Replica Imbalance",
+      "dirname": "v1/02.sys",
+      "widgetType": "COUNT",
+      "requestApi": "LAST",
+      "option": {
+        "field": "Value",
+        "legend": {
+          "Value": {
+            "label": ""
+          }
+        },
+        "chart": "STATISTIC",
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "metrics": 0
+      },
+      "_key_": "v1/02.sys/server_os_count",
+      "id": "vi2hwarlJK",
+      "layout": {
+        "w": 12,
+        "h": 3,
+        "x": 29,
+        "y": 1,
+        "i": "vi2hwarlJK",
+        "minW": 4,
+        "minH": 1,
+        "moved": false,
+        "static": false
+      }
+    },
+    {
+      "icon": "agent",
+      "supports": [
+        {
+          "productType": "SMS"
+        }
+      ],
+      "metrics": [
+        {
+          "mql": "TIME-RANGE {recent: 60s, etime: $etime}\r\n\r\nCATEGORY telegraf_kafka_server\r\nTAGLOAD {backward:true}\r\nSELECT [ 'pcode', 'time', 'oid', 'Value', 'type', 'name' ]\r\nFILTER { key: \"Value\", exist: true }\r\nFILTER { key: \"type\", value: \"ReplicaManager\" }\r\nFILTER { key: \"name\", value: \"UnderReplicatedPartitions\" }\r\nFIRST-ONLY { key: \"oid\" }\r\nGROUP { timeunit:60s, pk:pcode, merge:[Value] }\r\nUPDATE { key:[Value], value:sum }\r\n"
+        }
+      ],
+      "title": "Under Replicated Partitions",
+      "dirname": "v1/02.sys",
+      "widgetType": "COUNT",
+      "requestApi": "LAST",
+      "option": {
+        "field": "Value",
+        "legend": {
+          "Value": {
+            "label": ""
+          }
+        },
+        "chart": "STATISTIC",
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "metrics": 0
+      },
+      "_key_": "v1/02.sys/server_os_count",
+      "id": "pb4kM45ON",
+      "layout": {
+        "w": 12,
+        "h": 3,
+        "x": 41,
+        "y": 1,
+        "i": "pb4kM45ON",
+        "minW": 4,
+        "minH": 1,
+        "moved": false,
+        "static": false
+      }
+    },
+    {
+      "icon": "agent",
+      "supports": [
+        {
+          "productType": "SMS"
+        }
+      ],
+      "metrics": [
+        {
+          "mql": "TIME-RANGE {recent: 60s, etime: $etime}\r\n\r\nCATEGORY telegraf_kafka_server\r\nTAGLOAD {backward:true}\r\nSELECT [ 'pcode', 'time', 'oid', 'Value', 'type', 'name' ]\r\nFILTER { key: \"Value\", exist: true }\r\nFILTER { key: \"type\", value: \"ReplicaManager\" }\r\nFILTER { key: \"name\", value: \"UnderMinIsrPartitionCount\" }\r\nFIRST-ONLY { key: \"oid\" }\r\nGROUP { timeunit:60s, pk:pcode, merge:[Value] }\r\nUPDATE { key:[Value], value:sum }"
+        }
+      ],
+      "title": "Under min ISR Partitions",
+      "dirname": "v1/02.sys",
+      "widgetType": "COUNT",
+      "requestApi": "LAST",
+      "option": {
+        "field": "Value",
+        "legend": {
+          "Value": {
+            "label": ""
+          }
+        },
+        "chart": "STATISTIC",
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "metrics": 0
+      },
+      "_key_": "v1/02.sys/server_os_count",
+      "id": "pkQ918k2L",
+      "layout": {
+        "w": 12,
+        "h": 3,
+        "x": 29,
+        "y": 4,
+        "i": "pkQ918k2L",
+        "moved": false,
+        "static": false
+      }
+    },
+    {
+      "icon": "agent",
+      "supports": [
+        {
+          "productType": "SMS"
+        }
+      ],
+      "metrics": [
+        {
+          "mql": "TIME-RANGE {recent: 60s, etime: $etime}\r\n\r\nCATEGORY telegraf_kafka_controller\r\nTAGLOAD {backward:true}\r\nSELECT [ 'pcode', 'time', 'oid', 'Value', 'type', 'name' ]\r\nFILTER { key: \"Value\", exist: true }\r\nFILTER { key: \"type\", value: \"KafkaController\" }\r\nFILTER { key: \"name\", value: \"OfflinePartitionsCount\" }\r\nFIRST-ONLY { key: \"oid\" }\r\nGROUP { timeunit:20s, pk:pcode, merge:[Value]}\r\nUPDATE { key:[Value], value:sum }"
+        }
+      ],
+      "title": "Offline Partitions Count",
+      "dirname": "v1/02.sys",
+      "widgetType": "COUNT",
+      "requestApi": "LAST",
+      "option": {
+        "field": "Value",
+        "legend": {
+          "Value": {
+            "label": ""
+          }
+        },
+        "chart": "STATISTIC",
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "metrics": 0
+      },
+      "_key_": "v1/02.sys/server_os_count",
+      "id": "MxT0gsbdV",
+      "layout": {
+        "w": 12,
+        "h": 3,
+        "x": 41,
+        "y": 4,
+        "i": "MxT0gsbdV",
+        "minW": 4,
+        "minH": 1,
+        "moved": false,
+        "static": false
+      }
+    },
+    {
+      "icon": "agent",
+      "supports": [
+        {
+          "productType": "SMS"
+        }
+      ],
+      "metrics": [
+        {
+          "mql": "TIME-RANGE {recent: 60s, etime: $etime}\r\n\r\nCATEGORY telegraf_kafka_controller\r\nTAGLOAD {backward:true}\r\nSELECT [ 'pcode', 'time', 'oid', 'OneMinuteRate', 'type', 'name' ]\r\nFILTER { key: \"OneMinuteRate\", exist: true }\r\nFILTER { key: \"type\", value: \"ControllerStats\" }\r\nFILTER { key: \"name\", value: \"UncleanLeaderElectionsPerSec\" }\r\nFIRST-ONLY { key: \"oid\" }\r\nGROUP { timeunit:60s, pk:pcode, merge:[OneMinuteRate] }\r\nUPDATE { key:[OneMinuteRate], value:sum }\r\n"
+        }
+      ],
+      "title": "Unclean Leader Election Rate",
+      "dirname": "v1/02.sys",
+      "widgetType": "COUNT",
+      "requestApi": "LAST",
+      "option": {
+        "field": "OneMinuteRate",
+        "legend": {
+          "OneMinuteRate": {
+            "label": ""
+          }
+        },
+        "chart": "STATISTIC",
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "metrics": 0
+      },
+      "_key_": "v1/02.sys/server_os_count",
+      "id": "5QPaeXXeJ",
+      "layout": {
+        "w": 9,
+        "h": 3,
+        "x": 20,
+        "y": 4,
+        "i": "5QPaeXXeJ",
+        "minW": 4,
+        "minH": 1,
+        "moved": false,
+        "static": false
+      }
+    },
+    {
+      "icon": "note",
+      "supports": [],
+      "title": "리치 텍스트",
+      "dirname": "v1/99.etc",
+      "widgetType": "RICH_TEXT",
+      "requestApi": "NONE",
+      "_key_": "v1/99.etc/rich_text",
+      "id": "HLmW_aQ7o",
+      "layout": {
+        "w": 53,
+        "h": 1,
+        "x": 0,
+        "y": 10,
+        "i": "HLmW_aQ7o",
+        "minW": 4,
+        "minH": 1,
+        "moved": false,
+        "static": false
+      },
+      "option": {
+        "markdown": "# Java Virtual Machine"
+      }
+    },
+    {
+      "id": "YwCojzFOCn",
+      "title": "Cpu",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 18,
+        "h": 3,
+        "x": 0,
+        "y": 11,
+        "i": "YwCojzFOCn",
+        "minW": 4,
+        "minH": 1,
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "server_base",
+      "option": {
+        "metrics": 2,
+        "chart": "SERIES"
+      },
+      "metrics": [
+        {
+          "name": "CpuCores",
+          "tags": [
+            {
+              "key": "cpu_cores",
+              "title": "CpuCores",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "cpu",
+              "title": "Cpu",
+              "unit": "pct"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "HostIp",
+          "tags": [
+            {
+              "key": "host_ip",
+              "title": "HostIp",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "cpu",
+              "title": "Cpu",
+              "unit": "pct"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Oname",
+          "tags": [
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "cpu",
+              "title": "Cpu",
+              "unit": "pct"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Os",
+          "tags": [
+            {
+              "key": "os",
+              "title": "Os",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "cpu",
+              "title": "Cpu",
+              "unit": "pct"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "cpu",
+              "title": "Cpu",
+              "unit": "pct"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "id": "K6BGpYaEZg",
+      "title": "JVM Memory Used",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 18,
+        "h": 3,
+        "x": 18,
+        "y": 11,
+        "i": "K6BGpYaEZg",
+        "minW": 4,
+        "minH": 1,
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_java_lang_memory",
+      "option": {
+        "metrics": 1,
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        }
+      },
+      "metrics": [
+        {
+          "name": "jolokia_agent_url",
+          "tags": [
+            {
+              "key": "jolokia_agent_url",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "HeapMemoryUsage.used",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "oname",
+          "tags": [
+            {
+              "key": "oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "HeapMemoryUsage.used",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "HeapMemoryUsage.used",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "type",
+          "tags": [
+            {
+              "key": "type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "HeapMemoryUsage.used",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "id": "qpGNTHKF9K",
+      "title": "Time spent in GC",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 17,
+        "h": 3,
+        "x": 36,
+        "y": 11,
+        "i": "qpGNTHKF9K",
+        "minW": 4,
+        "minH": 1,
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_java_lang_gc",
+      "option": {
+        "metrics": 2,
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "chart": "SERIES"
+      },
+      "metrics": [
+        {
+          "name": "jolokia_agent_url",
+          "tags": [
+            {
+              "key": "jolokia_agent_url",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "CollectionTime",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "name",
+          "tags": [
+            {
+              "key": "name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "CollectionTime",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "에이전트 명,이름",
+          "tags": [
+            {
+              "key": "oname",
+              "unit": "#"
+            },
+            {
+              "key": "name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "CollectionTime",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "CollectionTime",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "type",
+          "tags": [
+            {
+              "key": "type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "CollectionTime",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "id": "GGlstXuUAH",
+      "title": "Linux Disk Read Bytes",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 28,
+        "h": 3,
+        "x": 0,
+        "y": 14,
+        "i": "GGlstXuUAH",
+        "minW": 4,
+        "minH": 1,
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_kafka_server",
+      "option": {
+        "metrics": 2,
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "chart": "SERIES"
+      },
+      "metrics": [
+        {
+          "name": "Jolokia_agent_url",
+          "tags": [
+            {
+              "key": "jolokia_agent_url",
+              "title": "Jolokia_agent_url",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "Value",
+              "title": "Value",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Name",
+          "tags": [
+            {
+              "key": "name",
+              "title": "Name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "Value",
+              "title": "Value",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "oname",
+          "mql": "INJECT timepast\nHEADER { \"Value$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_kafka_server\":6h, \"telegraf_kafka_server{m5}\":3d, \"telegraf_kafka_server{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['Value'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'Value', 'oname', 'type','name' ]\nFILTER { key: \"Value\", exist: true }\nFILTER { key: \"oname\", exist: true }\nFILTER { key: \"type\", value: 'KafkaServer'}\nFILTER { key: \"name\", value: 'linux-disk-read-bytes'}\n\nCREATE { key:_id_, expr: \"pcode+'_'+oname\" }\nCREATE { key:_name_, expr: \"oname\" }\nGROUP { timeunit: 10s, merge: ['Value'], pk: _id_, last: _name_ }\nUPDATE { key: ['Value'], value: $OBJECT_MERGE_PLACE }"
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "Value",
+              "title": "Value",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Type",
+          "tags": [
+            {
+              "key": "type",
+              "title": "Type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "Value",
+              "title": "Value",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "id": "QBpTnD0xHr",
+      "title": "Linux Disk Write Bytes",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 25,
+        "h": 3,
+        "x": 28,
+        "y": 14,
+        "i": "QBpTnD0xHr",
+        "minW": 4,
+        "minH": 1,
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_kafka_server",
+      "option": {
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "metrics": 2,
+        "chart": "SERIES"
+      },
+      "metrics": [
+        {
+          "name": "Jolokia_agent_url",
+          "tags": [
+            {
+              "key": "jolokia_agent_url",
+              "title": "Jolokia_agent_url",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "Value",
+              "title": "Value",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Name",
+          "tags": [
+            {
+              "key": "name",
+              "title": "Name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "Value",
+              "title": "Value",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "oname",
+          "mql": "INJECT timepast\nHEADER { \"Value$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_kafka_server\":6h, \"telegraf_kafka_server{m5}\":3d, \"telegraf_kafka_server{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['Value'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'Value', 'oname', 'type', 'name' ]\nFILTER { key: \"Value\", exist: true }\nFILTER { key: \"oname\", exist: true }\nFILTER { key: \"type\", value: \"KafkaServer\" }\nFILTER { key: \"name\", value: \"linux-disk-write-bytes\"}\n\nCREATE { key:_id_, expr: \"pcode+'_'+oname\" }\nCREATE { key:_name_, expr: \"oname\" }\nGROUP { timeunit: 5s, merge: ['Value'], pk: _id_, last: _name_ }\nUPDATE { key: ['Value'], value: $OBJECT_MERGE_PLACE }"
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "Value",
+              "title": "Value",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Type",
+          "tags": [
+            {
+              "key": "type",
+              "title": "Type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "Value",
+              "title": "Value",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "isMultiProject": true,
+      "isDev": true,
+      "icon": "pie-chart",
+      "supports": [],
+      "metrics": [
+        {
+          "mql": "TIME-RANGE {recent: 60s, etime: $etime}\r\n\r\nHEADER { \"Value$\":\"#\" }\r\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\r\nCATEGORY telegraf_kafka_server\r\nTAGLOAD {backward: true}\r\n\r\nSELECT [ 'pcode', 'time', 'oid', 'Value', 'oname', 'type', 'name' ]\r\nFILTER { key: \"Value\", exist: true }\r\nFILTER { key: \"oname\", exist: true }\r\nFILTER { key: \"type\", value: \"ReplicaManager\" }\r\nFILTER { key: \"name\", value: \"LeaderCount\" }\r\nFIRST-ONLY { key: \"oid\" }\r\nCREATE { key:_id_, expr: \"pcode+'_'+oname\" }\r\nCREATE { key:_name_, expr: \"oname\" }\r\nGROUP { timeunit: 60s, merge: ['Value'], pk: _id_, last: _name_ }\r\nUPDATE { key: ['Value'], value: $OBJECT_MERGE_PLACE }\r\n",
+          "param": {
+            "$OBJECT_MERGE_PLACE": "sum"
+          }
+        }
+      ],
+      "title": "LeaderCount per Broker",
+      "dirname": "v1/03.db",
+      "requestApi": "LAST",
+      "widgetType": "PIE",
+      "option": {
+        "chart": "CIRCLE",
+        "metrics": 0
+      },
+      "_key_": "v1/03.db/db_cpu_percentage",
+      "id": "M1uf3PmZ50",
+      "layout": {
+        "w": 20,
+        "h": 3,
+        "x": 0,
+        "y": 4,
+        "i": "M1uf3PmZ50",
+        "minW": 4,
+        "minH": 1,
+        "moved": false,
+        "static": false
+      }
+    }
+  ],
+  "extra": {
+    "layout": {
+      "type": "FIXED",
+      "monitor": {
+        "x": 3,
+        "y": 3
+      }
+    },
+    "option": {
+      "stime": 1713253874544,
+      "etime": 1713254474544,
+      "timeAction": "LIVE_10MIN"
+    }
+  }
+}
