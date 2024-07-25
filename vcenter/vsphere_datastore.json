@@ -1,0 +1,571 @@
+{
+  "name": "vSphere Datastore",
+  "widgets": [
+    {
+      "icon": "note",
+      "supports": [],
+      "title": "리치 텍스트",
+      "dirname": "v1/99.etc",
+      "widgetType": "RICH_TEXT",
+      "requestApi": "NONE",
+      "_key_": "v1/99.etc/rich_text",
+      "id": "F6nC_lyAC",
+      "layout": {
+        "w": 57,
+        "h": 1,
+        "x": 0,
+        "y": 0,
+        "i": "F6nC_lyAC",
+        "moved": false,
+        "static": false
+      },
+      "option": {
+        "markdown": "# Datastores"
+      }
+    },
+    {
+      "id": "5P0PI3EJwN",
+      "title": "Usage Capacity",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 18,
+        "h": 22,
+        "x": 0,
+        "y": 1,
+        "i": "5P0PI3EJwN",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_vsphere_datastore_disk",
+      "option": {
+        "metrics": 6,
+        "chart": "SERIES",
+        "chartAside": {
+          "chart": "BAR",
+          "ratio": 100
+        },
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        }
+      },
+      "metrics": [
+        {
+          "name": "dcname",
+          "tags": [
+            {
+              "key": "dcname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "capacity_latest",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "disk",
+          "tags": [
+            {
+              "key": "disk",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "capacity_latest",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "dsname",
+          "tags": [
+            {
+              "key": "dsname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "capacity_latest",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "moid",
+          "tags": [
+            {
+              "key": "moid",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "capacity_latest",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "oname",
+          "tags": [
+            {
+              "key": "oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "capacity_latest",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "capacity_latest",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "source",
+          "mql": "INJECT timepast\nHEADER { \"used_percent$\":\"%\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_datastore_disk\":6h, \"telegraf_vsphere_datastore_disk{m5}\":3d, \"telegraf_vsphere_datastore_disk{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['capacity_latest'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'used_latest','capacity_latest', 'source' ]\nFILTER { key: \"capacity_latest\", exist: true }\nFILTER { key: \"source\", exist: true }\n\nCREATE { key:_id_, expr: \"source\" }\nCREATE { key:_name_, expr: \"source\" }\nGROUP { timeunit: 5s, merge: ['capacity_latest','used_latest'], pk: _id_, last: _name_ }\nUPDATE { key: ['capacity_latest'], value: $OBJECT_MERGE_PLACE }\nCREATE { key:'used_percent', expr:\"100*used_latest/capacity_latest\"}"
+        },
+        {
+          "name": "vcenter",
+          "tags": [
+            {
+              "key": "vcenter",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "capacity_latest",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "id": "TFchhRQAhN",
+      "title": "Total Capacity",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 19,
+        "h": 22,
+        "x": 18,
+        "y": 1,
+        "i": "TFchhRQAhN",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_vsphere_datastore_disk",
+      "option": {
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "metrics": 6,
+        "chart": "SERIES",
+        "chartAside": {
+          "chart": "BAR",
+          "ratio": 100
+        }
+      },
+      "metrics": [
+        {
+          "name": "Dcname",
+          "tags": [
+            {
+              "key": "dcname",
+              "title": "Dcname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "capacity_latest",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Disk",
+          "tags": [
+            {
+              "key": "disk",
+              "title": "Disk",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "capacity_latest",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Dsname",
+          "tags": [
+            {
+              "key": "dsname",
+              "title": "Dsname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "capacity_latest",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Moid",
+          "tags": [
+            {
+              "key": "moid",
+              "title": "Moid",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "capacity_latest",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Oname",
+          "tags": [
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "capacity_latest",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "capacity_latest",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Source",
+          "tags": [
+            {
+              "key": "source",
+              "title": "Source",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "capacity_latest",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Vcenter",
+          "tags": [
+            {
+              "key": "vcenter",
+              "title": "Vcenter",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "capacity_latest",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "id": "6rf5VsLfN0",
+      "title": "Free Capacity",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 20,
+        "h": 22,
+        "x": 37,
+        "y": 1,
+        "i": "6rf5VsLfN0",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_vsphere_datastore_disk",
+      "option": {
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "metrics": 6,
+        "chart": "SERIES",
+        "chartAside": {
+          "chart": "BAR",
+          "ratio": 100
+        }
+      },
+      "metrics": [
+        {
+          "name": "Dcname",
+          "tags": [
+            {
+              "key": "dcname",
+              "title": "Dcname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "capacity_latest",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Disk",
+          "tags": [
+            {
+              "key": "disk",
+              "title": "Disk",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "capacity_latest",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Dsname",
+          "tags": [
+            {
+              "key": "dsname",
+              "title": "Dsname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "capacity_latest",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Moid",
+          "tags": [
+            {
+              "key": "moid",
+              "title": "Moid",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "capacity_latest",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Oname",
+          "tags": [
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "capacity_latest",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "capacity_latest",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Source",
+          "mql": "INJECT timepast\nHEADER { \"free_capacity$\":\"B\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_datastore_disk\":6h, \"telegraf_vsphere_datastore_disk{m5}\":3d, \"telegraf_vsphere_datastore_disk{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['capacity_latest'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'capacity_latest','used_latest', 'source' ]\nFILTER { key: \"capacity_latest\", exist: true }\nFILTER { key: \"used_latest\", exist: true }\nFILTER { key: \"source\", exist: true }\n\nCREATE { key:_id_, expr: \"pcode+'_'+source\" }\nCREATE { key:_name_, expr: \"source\" }\nGROUP { timeunit: 5s, merge: ['used_latest','capacity_latest'], pk: _id_, last: _name_ }\nUPDATE { key: ['capacity_latest', 'used_latest'], value: $OBJECT_MERGE_PLACE }\nCREATE { key: free_capacity, expr:\"capacity_latest - used_latest\"}"
+        },
+        {
+          "name": "Vcenter",
+          "tags": [
+            {
+              "key": "vcenter",
+              "title": "Vcenter",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "capacity_latest",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    }
+  ],
+  "extra": {
+    "layout": {
+      "type": "FIXED",
+      "monitor": {
+        "x": 3,
+        "y": 3
+      }
+    },
+    "option": {}
+  }
+}

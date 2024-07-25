@@ -1,8 +1,9 @@
-from . import kafka
+from . import kafka, vcenter
 
 allFeatures = [kafka.getMainArgs(),]
 features = {}
 kafka.update(features)
+vcenter.update(features)
 
 def listAll():
     return allFeatures
