@@ -125,9 +125,9 @@ def getFeatureAll(url_path = "/admin/api/feature/list"):
     r = requests.get(url_getfeature, headers=headers)
 
     features = r.json()['data']
-    for feature in features:
-        yield feature
-
+    if features:
+        for feature in features:
+            yield feature
 
 def updateFeatureStatus(tk, status, url_path = "/admin/api/feature/update"):
     features = list(filter(lambda x: x['textKey']==tk, getFeatureAll()))
