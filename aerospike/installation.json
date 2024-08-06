@@ -1,0 +1,114 @@
+{
+	"en": {
+		"title": "Precautions before installation",
+		"icon": "aerospike",
+		"supports": [
+			{
+				"type": "support-version",
+				"title": "Ubuntu supported versions",
+				"version": "12.04 or higher"
+			},
+			{
+				"type": "support-version",
+				"title": "Aerospike supported versions",
+				"version": "Aerospike 5.x"
+			},
+			{
+				"type": "support-version",
+				"title": "OS supported version",
+				"version": "Redhat6 or equivalent(CentOS, Rocky Linux, Amazon Linux)"
+			},
+			{
+				"type": "support-version",
+				"title": "Operating system architecture",
+				"version": "Amd64/X86_64, Arm64/Aarch64 "
+			},
+			{
+				"type": "whatap-proxy"
+			}
+		],
+		"step": [
+			{
+				"title": "Check access key",
+				"description": "The access key is a unique ID for activating the WhaTap service.\n{get_license_feature}"
+			},
+			{
+				"title": "Generate installation script",
+				"boxes": [
+					{
+						"prepend": "Run the command below to create a script on the server where Aerospike is installed.",
+						"data": "curl http://repo.whatap.io/telegraf/feature/aerospike/install_aerospike_monitoring.sh -o install_aerospike_monitoring.sh",
+						"option": "copy"
+					}
+				]
+			},
+			{
+				"title": "Start monitoring",
+				"description": "To install the Whatap server monitoring agent and the Telegraf sidecar, please execute the following command.",
+				"boxes": [
+					{
+						"prepend": "Run the command below.",
+						"data": "chmod +x install_aerospike_monitoring.sh\nsudo ./install_aerospike_monitoring.sh \"{license_key}\" \"{proxy_server}\"",
+						"option": "copy"
+					}
+				]
+			}
+		]
+	},
+	"ko": {
+		"title": "설치 전 유의사항",
+		"icon": "aerospike",
+		"supports": [
+			{
+				"type": "support-version",
+				"title": "Ubuntu 지원 버전",
+				"version": "12.04 이상"
+			},
+			{
+				"type": "support-version",
+				"title": "Aerospike 지원 버전",
+				"version": "Aerospike 5.x 혹은 동등한 버전"
+			},
+			{
+				"type": "support-version",
+				"title": "OS 지원 버전",
+				"version": "Redhat6 or equivalent(CentOS, Rocky Linux, Amazon Linux)"
+			},
+			{
+				"type": "support-version",
+				"title": "운영체제 아키텍처",
+				"version": "Amd64/X86_64, Arm64/Aarch64 "
+			},
+			{
+				"type": "whatap-proxy"
+			}
+		],
+		"step": [
+			{
+				"title": "액세스 키 확인",
+				"description": "액세스 키는 와탭 서비스 활성화를 위한 고유 ID입니다.\n{get_license_feature}"
+			},
+			{
+				"title": "설치 스크립트 실행",
+				"boxes": [
+					{
+						"prepend": "Aerospike 가 설치된 서버에 스크립트를 생성하기 위해 아래 명령어를 실행하세요.",
+						"data": "curl http://repo.whatap.io/telegraf/feature/aerospike/install_aerospike_monitoring.sh -o install_aerospike_monitoring.sh",
+						"option": "copy"
+					}
+				]
+			},
+			{
+				"title": "모니터링 시작하기",
+				"description": "와탭 서버 모니터링 에이전트와 텔레그래프 사이드카를 설치하기 위해 아래 명령어를 실행하세요.",
+				"boxes": [
+					{
+						"prepend": "아래 명령어를 실행하세요.",
+						"data": "chmod +x install_aerospike_monitoring.sh\nsudo ./install_aerospike_monitoring.sh \"{license_key}\" \"{proxy_server}\"",
+						"option": "copy"
+					}
+				]
+			}
+		]
+	}
+}

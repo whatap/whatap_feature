@@ -1,0 +1,2117 @@
+{
+  "name": "Aerospike",
+  "widgets": [
+    {
+      "icon": "agent",
+      "supports": [
+        {
+          "productType": "SMS"
+        }
+      ],
+      "metrics": [
+        {
+          "mql": "TIME-RANGE {recent: 120s}\r\nCATEGORY telegraf_aerospike_node\r\nTAGLOAD {backward:true}\r\nselect [\"oid\",\"node_name\"]\r\nFIRST-ONLY {key:[node_name]}\r\nGROUP { timeunit:120s, merge:\"node_name\" }\r\nRENAME {src:_rows_, dst:cluster_size}\r\n"
+        }
+      ],
+      "title": "Cluster Size",
+      "dirname": "v1/02.sys",
+      "widgetType": "COUNT",
+      "requestApi": "LAST",
+      "option": {
+        "field": "cluster_size",
+        "legend": {
+          "cluster_size": {
+            "label": ""
+          }
+        },
+        "chart": "STATISTIC",
+        "metrics": 0
+      },
+      "_key_": "v1/02.sys/server_os_count",
+      "id": "j6q3xK9uqs",
+      "layout": {
+        "w": 14,
+        "h": 4,
+        "x": 0,
+        "y": 0,
+        "i": "j6q3xK9uqs",
+        "moved": false,
+        "static": false
+      }
+    },
+    {
+      "id": "ytFV9KqP8-",
+      "title": "Cluster Object counts",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 17,
+        "h": 4,
+        "x": 14,
+        "y": 0,
+        "i": "ytFV9KqP8-",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_aerospike_node",
+      "option": {
+        "metrics": 3,
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        }
+      },
+      "metrics": [
+        {
+          "name": "노드명",
+          "tags": [
+            {
+              "key": "node_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "sum",
+              "timeMerge": "avg",
+              "key": "objects",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "node_name",
+          "tags": [
+            {
+              "key": "node_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "objects",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "oname",
+          "tags": [
+            {
+              "key": "oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "objects",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "sum",
+              "timeMerge": "avg",
+              "key": "objects",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "id": "Yl-4cQDeta",
+      "title": "Aerospike Cluster DB Connections",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 22,
+        "h": 4,
+        "x": 31,
+        "y": 0,
+        "i": "Yl-4cQDeta",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_aerospike_node",
+      "option": {
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "metrics": 3
+      },
+      "metrics": [
+        {
+          "name": "aerospike_host",
+          "tags": [
+            {
+              "key": "aerospike_host",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "client_connections",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "node_name",
+          "tags": [
+            {
+              "key": "node_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "client_connections",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "oname",
+          "tags": [
+            {
+              "key": "oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "sum",
+              "timeMerge": "avg",
+              "key": "client_connections",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "sum",
+              "timeMerge": "avg",
+              "key": "client_connections",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "id": "x57Q9RPlC7",
+      "title": "ReadIops",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 14,
+        "h": 7,
+        "x": 0,
+        "y": 4,
+        "i": "x57Q9RPlC7",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "server_disk",
+      "option": {
+        "metrics": 5,
+        "chart": "SERIES",
+        "chartAside": {
+          "chart": "TABLE",
+          "layout": "horizontal",
+          "ratio": 50
+        },
+        "legend": {
+          "sum": {
+            "hide": true
+          },
+          "avg": {
+            "hide": true
+          },
+          "max": {
+            "hide": true
+          }
+        },
+        "showPlotMaxValue": true,
+        "showLegend": false
+      },
+      "metrics": [
+        {
+          "name": "alias",
+          "tags": [
+            {
+              "key": "alias",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "readIops",
+              "title": "ReadIops",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "DeviceId",
+          "tags": [
+            {
+              "key": "deviceId",
+              "title": "DeviceId",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "readIops",
+              "title": "ReadIops",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "DeviceIdHash",
+          "tags": [
+            {
+              "key": "deviceIdHash",
+              "title": "DeviceIdHash",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "readIops",
+              "title": "ReadIops",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "FileSystem",
+          "tags": [
+            {
+              "key": "fileSystem",
+              "title": "FileSystem",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "readIops",
+              "title": "ReadIops",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "FileSystemHash",
+          "tags": [
+            {
+              "key": "fileSystemHash",
+              "title": "FileSystemHash",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "readIops",
+              "title": "ReadIops",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "MountPoint,에이전트 명",
+          "tags": [
+            {
+              "key": "mountPoint",
+              "title": "MountPoint",
+              "unit": "#"
+            },
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "readIops",
+              "title": "ReadIops",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "MountPointHash",
+          "tags": [
+            {
+              "key": "mountPointHash",
+              "title": "MountPointHash",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "readIops",
+              "title": "ReadIops",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Oname",
+          "tags": [
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "readIops",
+              "title": "ReadIops",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "OS",
+          "tags": [
+            {
+              "key": "os",
+              "title": "OS",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "readIops",
+              "title": "ReadIops",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "readIops",
+              "title": "ReadIops",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "id": "qMXt8htrEs",
+      "title": "WriteIops",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 17,
+        "h": 7,
+        "x": 14,
+        "y": 4,
+        "i": "qMXt8htrEs",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "server_disk",
+      "option": {
+        "metrics": 5,
+        "chart": "SERIES",
+        "chartAside": {
+          "chart": "TABLE",
+          "layout": "horizontal",
+          "ratio": 50
+        },
+        "legend": {
+          "avg": {
+            "hide": true
+          },
+          "sum": {
+            "hide": true
+          },
+          "max": {
+            "hide": true
+          }
+        },
+        "showPlotMaxValue": true
+      },
+      "metrics": [
+        {
+          "name": "alias",
+          "tags": [
+            {
+              "key": "alias",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "writeIops",
+              "title": "WriteIops",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "DeviceId",
+          "tags": [
+            {
+              "key": "deviceId",
+              "title": "DeviceId",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "writeIops",
+              "title": "WriteIops",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "DeviceIdHash",
+          "tags": [
+            {
+              "key": "deviceIdHash",
+              "title": "DeviceIdHash",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "writeIops",
+              "title": "WriteIops",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "FileSystem",
+          "tags": [
+            {
+              "key": "fileSystem",
+              "title": "FileSystem",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "writeIops",
+              "title": "WriteIops",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "FileSystemHash",
+          "tags": [
+            {
+              "key": "fileSystemHash",
+              "title": "FileSystemHash",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "writeIops",
+              "title": "WriteIops",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "MountPoint,에이전트 명",
+          "tags": [
+            {
+              "key": "mountPoint",
+              "title": "MountPoint",
+              "unit": "#"
+            },
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "writeIops",
+              "title": "WriteIops",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "MountPointHash",
+          "tags": [
+            {
+              "key": "mountPointHash",
+              "title": "MountPointHash",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "writeIops",
+              "title": "WriteIops",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Oname",
+          "tags": [
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "writeIops",
+              "title": "WriteIops",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "OS",
+          "tags": [
+            {
+              "key": "os",
+              "title": "OS",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "writeIops",
+              "title": "WriteIops",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "writeIops",
+              "title": "WriteIops",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "id": "fLT9r9OjL2",
+      "title": "IoPercent",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 22,
+        "h": 7,
+        "x": 31,
+        "y": 4,
+        "i": "fLT9r9OjL2",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "server_disk",
+      "option": {
+        "metrics": 7,
+        "chart": "SERIES",
+        "chartAside": {
+          "chart": "TABLE",
+          "layout": "horizontal",
+          "ratio": 30
+        },
+        "legend": {
+          "sum": {
+            "hide": true
+          },
+          "avg": {
+            "hide": true
+          },
+          "max": {
+            "hide": true
+          }
+        },
+        "sort": {
+          "last": true
+        },
+        "showPlotMaxValue": true
+      },
+      "metrics": [
+        {
+          "name": "alias",
+          "tags": [
+            {
+              "key": "alias",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "ioPercent",
+              "title": "IoPercent",
+              "unit": "pct"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "DeviceId",
+          "tags": [
+            {
+              "key": "deviceId",
+              "title": "DeviceId",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "ioPercent",
+              "title": "IoPercent",
+              "unit": "pct"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "DeviceIdHash",
+          "tags": [
+            {
+              "key": "deviceIdHash",
+              "title": "DeviceIdHash",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "ioPercent",
+              "title": "IoPercent",
+              "unit": "pct"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "FileSystem",
+          "tags": [
+            {
+              "key": "fileSystem",
+              "title": "FileSystem",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "ioPercent",
+              "title": "IoPercent",
+              "unit": "pct"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "FileSystemHash",
+          "tags": [
+            {
+              "key": "fileSystemHash",
+              "title": "FileSystemHash",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "ioPercent",
+              "title": "IoPercent",
+              "unit": "pct"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "MountPoint",
+          "tags": [
+            {
+              "key": "mountPoint",
+              "title": "MountPoint",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "ioPercent",
+              "title": "IoPercent",
+              "unit": "pct"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "MountPointHash",
+          "tags": [
+            {
+              "key": "mountPointHash",
+              "title": "MountPointHash",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "ioPercent",
+              "title": "IoPercent",
+              "unit": "pct"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "MountPoint,에이전트 명",
+          "tags": [
+            {
+              "key": "mountPoint",
+              "title": "MountPoint",
+              "unit": "#"
+            },
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "ioPercent",
+              "title": "IoPercent",
+              "unit": "pct"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "OS",
+          "tags": [
+            {
+              "key": "os",
+              "title": "OS",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "ioPercent",
+              "title": "IoPercent",
+              "unit": "pct"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "ioPercent",
+              "title": "IoPercent",
+              "unit": "pct"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "id": "5mQmj6jgdU",
+      "title": "Cpu",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 31,
+        "h": 7,
+        "x": 0,
+        "y": 11,
+        "i": "5mQmj6jgdU",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "server_base",
+      "option": {
+        "metrics": 3,
+        "chart": "TON_LINE",
+        "chartAside": {
+          "layout": "horizontal",
+          "chart": "TABLE"
+        },
+        "legend": {
+          "sum": {
+            "hide": true
+          },
+          "avg": {
+            "hide": true
+          },
+          "max": {
+            "hide": true
+          }
+        },
+        "showPlotMaxValue": true
+      },
+      "metrics": [
+        {
+          "name": "alias",
+          "tags": [
+            {
+              "key": "alias",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "cpu",
+              "title": "Cpu",
+              "unit": "pct"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "CpuCores",
+          "tags": [
+            {
+              "key": "cpu_cores",
+              "title": "CpuCores",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "cpu",
+              "title": "Cpu",
+              "unit": "pct"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "HostIp",
+          "tags": [
+            {
+              "key": "host_ip",
+              "title": "HostIp",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "cpu",
+              "title": "Cpu",
+              "unit": "pct"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Oname",
+          "tags": [
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "cpu",
+              "title": "Cpu",
+              "unit": "pct"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Os",
+          "tags": [
+            {
+              "key": "os",
+              "title": "Os",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "cpu",
+              "title": "Cpu",
+              "unit": "pct"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "cpu",
+              "title": "Cpu",
+              "unit": "pct"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "id": "_BXyHJuggP",
+      "title": "MemoryUsedPct",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 22,
+        "h": 7,
+        "x": 31,
+        "y": 11,
+        "i": "_BXyHJuggP",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "server_base",
+      "option": {
+        "metrics": 3,
+        "chart": "TON_LINE",
+        "chartAside": {
+          "chart": "TABLE",
+          "layout": "horizontal"
+        },
+        "legend": {
+          "sum": {
+            "hide": true
+          },
+          "avg": {
+            "hide": true
+          },
+          "max": {
+            "hide": true
+          }
+        },
+        "showPlotMaxValue": true
+      },
+      "metrics": [
+        {
+          "name": "alias",
+          "tags": [
+            {
+              "key": "alias",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "memory_pused",
+              "title": "MemoryUsedPct",
+              "unit": "pct"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "CpuCores",
+          "tags": [
+            {
+              "key": "cpu_cores",
+              "title": "CpuCores",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "memory_pused",
+              "title": "MemoryUsedPct",
+              "unit": "pct"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "HostIp",
+          "tags": [
+            {
+              "key": "host_ip",
+              "title": "HostIp",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "memory_pused",
+              "title": "MemoryUsedPct",
+              "unit": "pct"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Oname",
+          "tags": [
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "memory_pused",
+              "title": "MemoryUsedPct",
+              "unit": "pct"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Os",
+          "tags": [
+            {
+              "key": "os",
+              "title": "Os",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "memory_pused",
+              "title": "MemoryUsedPct",
+              "unit": "pct"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "memory_pused",
+              "title": "MemoryUsedPct",
+              "unit": "pct"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "id": "CjyiiFAN6I",
+      "title": "TrafficIn",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 16,
+        "h": 7,
+        "x": 0,
+        "y": 18,
+        "i": "CjyiiFAN6I",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "server_network",
+      "option": {
+        "chart": "TON_LINE",
+        "showPlotMaxValue": true,
+        "chartAside": {
+          "chart": "TABLE",
+          "ratio": 30,
+          "layout": "horizontal"
+        },
+        "legend": {
+          "sum": {
+            "hide": true
+          },
+          "avg": {
+            "hide": true
+          },
+          "max": {
+            "hide": true
+          }
+        },
+        "metrics": 5
+      },
+      "metrics": [
+        {
+          "name": "alias",
+          "mql": "INJECT timepast\nHEADER { \"trafficIn$\":\"bps\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"server_network\":6h, \"server_network{m5}\":3d, \"server_network{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['trafficIn'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'trafficIn', 'alias', 'desc' ]\nFILTER { key: \"trafficIn\", exist: true }\nFILTER { key: \"alias\", exist: true }\nFILTER { expr: \"desc != 'lo'\"}\n\nCREATE { key:_id_, expr: \"pcode+'_'+alias\" }\nCREATE { key:_name_, expr: \"alias\" }\nGROUP { timeunit: 5s, merge: ['trafficIn'], pk: _id_, last: _name_ }\nUPDATE { key: ['trafficIn'], value: $OBJECT_MERGE_PLACE }"
+        },
+        {
+          "name": "Desc",
+          "tags": [
+            {
+              "key": "desc",
+              "title": "Desc",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "trafficIn",
+              "title": "TrafficIn",
+              "unit": "bps"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "DescHash",
+          "tags": [
+            {
+              "key": "descHash",
+              "title": "DescHash",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "trafficIn",
+              "title": "TrafficIn",
+              "unit": "bps"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "HwAddr",
+          "tags": [
+            {
+              "key": "hwAddr",
+              "title": "HwAddr",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "trafficIn",
+              "title": "TrafficIn",
+              "unit": "bps"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Ip",
+          "tags": [
+            {
+              "key": "ip",
+              "title": "Ip",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "trafficIn",
+              "title": "TrafficIn",
+              "unit": "bps"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Oname",
+          "tags": [
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "trafficIn",
+              "title": "TrafficIn",
+              "unit": "bps"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "OS",
+          "tags": [
+            {
+              "key": "os",
+              "title": "OS",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "trafficIn",
+              "title": "TrafficIn",
+              "unit": "bps"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "trafficIn",
+              "title": "TrafficIn",
+              "unit": "bps"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "id": "4U6V54aRAy",
+      "title": "TrafficOut",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 15,
+        "h": 7,
+        "x": 16,
+        "y": 18,
+        "i": "4U6V54aRAy",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "server_network",
+      "option": {
+        "metrics": 5,
+        "chart": "TON_LINE",
+        "showPlotMaxValue": true,
+        "chartAside": {
+          "chart": "TABLE",
+          "layout": "horizontal"
+        },
+        "legend": {
+          "sum": {
+            "hide": true
+          },
+          "avg": {
+            "hide": true
+          },
+          "max": {
+            "hide": true
+          }
+        }
+      },
+      "metrics": [
+        {
+          "name": "alias",
+          "tags": [
+            {
+              "key": "alias",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "trafficOut",
+              "title": "TrafficOut",
+              "unit": "bps"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Desc",
+          "tags": [
+            {
+              "key": "desc",
+              "title": "Desc",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "trafficOut",
+              "title": "TrafficOut",
+              "unit": "bps"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "DescHash",
+          "tags": [
+            {
+              "key": "descHash",
+              "title": "DescHash",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "trafficOut",
+              "title": "TrafficOut",
+              "unit": "bps"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "HwAddr",
+          "tags": [
+            {
+              "key": "hwAddr",
+              "title": "HwAddr",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "trafficOut",
+              "title": "TrafficOut",
+              "unit": "bps"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Ip",
+          "tags": [
+            {
+              "key": "ip",
+              "title": "Ip",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "trafficOut",
+              "title": "TrafficOut",
+              "unit": "bps"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Oname",
+          "mql": "INJECT timepast\nHEADER { \"trafficOut$\":\"bps\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"server_network\":6h, \"server_network{m5}\":3d, \"server_network{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['trafficOut'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'trafficOut', 'oname', 'desc' ]\nFILTER { key: \"trafficOut\", exist: true }\nFILTER { key: \"oname\", exist: true }\nFILTER { expr: \"desc != 'lo'\"}\n\nCREATE { key:_id_, expr: \"pcode+'_'+oname\" }\nCREATE { key:_name_, expr: \"oname\" }\nGROUP { timeunit: 5s, merge: ['trafficOut'], pk: _id_, last: _name_ }\nUPDATE { key: ['trafficOut'], value: $OBJECT_MERGE_PLACE }"
+        },
+        {
+          "name": "OS",
+          "tags": [
+            {
+              "key": "os",
+              "title": "OS",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "trafficOut",
+              "title": "TrafficOut",
+              "unit": "bps"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "trafficOut",
+              "title": "TrafficOut",
+              "unit": "bps"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "id": "sS-Tk7d0e4",
+      "title": "Namespace in-memory Index",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 22,
+        "h": 7,
+        "x": 31,
+        "y": 18,
+        "i": "sS-Tk7d0e4",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_aerospike_namespace",
+      "option": {
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "metrics": 4
+      },
+      "metrics": [
+        {
+          "name": "aerospike_host",
+          "tags": [
+            {
+              "key": "aerospike_host",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "memory_used_index_bytes",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "namespace",
+          "tags": [
+            {
+              "key": "namespace",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "memory_used_index_bytes",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "node_name",
+          "tags": [
+            {
+              "key": "node_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "memory_used_index_bytes",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "oname",
+          "tags": [
+            {
+              "key": "oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "memory_used_index_bytes",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "mql": "INJECT timepast\nHEADER { \"memory_used_index_bytes$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_aerospike_namespace\":6h, \"telegraf_aerospike_namespace{m5}\":3d, \"telegraf_aerospike_namespace{h1}\":unlimit } \nTAGLOAD\nINJECT default\nSELECT [ 'pcode', 'time', 'oid', 'memory_used_index_bytes', 'memory_used_sindex_bytes', 'pname' ]\nFILTER { key: \"memory_used_index_bytes\", exist: true }\nFILTER { key: \"memory_used_sindex_bytes\", exist: true }\nFILTER { key: \"pname\", exist: true }\n\nCREATE { key:_id_, expr: \"pcode+'_'+pname\" }\nCREATE { key:_name_, expr: \"pname\" }\nGROUP { timeunit: 20s, merge: ['memory_used_index_bytes','memory_used_sindex_bytes'], pk: _id_, last: _name_ }\nUPDATE { key: ['memory_used_index_bytes','memory_used_sindex_bytes'], value: sum}\nUPDATE { key: 'memory_used_index_bytes', expr: \"memory_used_index_bytes+memory_used_sindex_bytes\"}\n"
+        }
+      ]
+    },
+    {
+      "id": "GYMzhktz-Y",
+      "title": "Aerospike Cluster Disk Pressure",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 31,
+        "h": 8,
+        "x": 0,
+        "y": 25,
+        "i": "GYMzhktz-Y",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_aerospike_namespace",
+      "option": {
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "metrics": 4,
+        "chart": "TON_LINE",
+        "showPlotMaxValue": true,
+        "chartAside": {
+          "chart": "TABLE",
+          "ratio": 30,
+          "layout": "horizontal"
+        },
+        "legend": {
+          "sum": {
+            "hide": true
+          },
+          "avg": {
+            "hide": true
+          },
+          "max": {
+            "hide": true
+          }
+        }
+      },
+      "metrics": [
+        {
+          "name": "aerospike_host",
+          "tags": [
+            {
+              "key": "aerospike_host",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "device_used_bytes",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "namespace",
+          "tags": [
+            {
+              "key": "namespace",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "device_used_bytes",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "node_name",
+          "tags": [
+            {
+              "key": "node_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "device_used_bytes",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "oname",
+          "tags": [
+            {
+              "key": "oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "device_used_bytes",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "sum",
+              "timeMerge": "avg",
+              "key": "device_used_bytes",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "id": "KE28PCYRYV",
+      "title": "Namespace Size",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 22,
+        "h": 8,
+        "x": 31,
+        "y": 25,
+        "i": "KE28PCYRYV",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_aerospike_namespace",
+      "option": {
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "metrics": 4,
+        "chart": "TON_LINE",
+        "chartAside": {
+          "layout": "horizontal",
+          "chart": "TABLE"
+        },
+        "legend": {
+          "sum": {
+            "hide": true
+          },
+          "avg": {
+            "hide": true
+          },
+          "max": {
+            "hide": true
+          }
+        },
+        "showPlotMaxValue": true
+      },
+      "metrics": [
+        {
+          "name": "aerospike_host",
+          "tags": [
+            {
+              "key": "aerospike_host",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "memory_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "namespace",
+          "tags": [
+            {
+              "key": "namespace",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "memory_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "node_name",
+          "tags": [
+            {
+              "key": "node_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "memory_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "oname",
+          "tags": [
+            {
+              "key": "oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "memory_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "sum",
+              "timeMerge": "avg",
+              "key": "memory_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    }
+  ],
+  "extra": {
+    "layout": {
+      "type": "FIXED",
+      "monitor": {
+        "x": 3,
+        "y": 3
+      }
+    },
+    "option": {}
+  }
+}

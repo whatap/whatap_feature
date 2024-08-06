@@ -1,0 +1,3858 @@
+{
+  "name": "ApachePulsarOverview II",
+  "widgets": [
+    {
+      "isMultiProject": false,
+      "icon": "table",
+      "supports": [
+        {
+          "productType": "SMS"
+        }
+      ],
+      "metrics": [
+        {
+          "mql": "TIME-RANGE {duration:120s, etime:$etime}\n\nCATEGORY telegraf_apachepulsar_broker\nTAGLOAD {backward:true}\n\nSELECT [ 'pcode', 'time', 'oid', 'pulsar_storage_size', 'topic' ]\nFILTER { key: \"pulsar_storage_size\", exist: true }\nFILTER { key: \"topic\", exist: true }\nFIRST-ONLY {key:[pcode, topic]}\nCREATE { key: _id_, expr: \"topic\" }\nGROUP { timeunit:120s, pk:_id_ }\n\nUPDATE { key: \"pulsar_storage_size\", value: sum }\n\nORDER {key:[pulsar_storage_size, topic], sort: [desc, asc] }\nDELETE [pcode, oid, time]\nFIRST-ONLY {key: _id_ }\nLIMIT 10\n"
+        }
+      ],
+      "title": "Top 10 Topics Storage",
+      "dirname": "v1/02.sys",
+      "widgetType": "TABLE",
+      "requestApi": "LAST",
+      "option": {
+        "legend": {
+          "topic": {
+            "unit": "#",
+            "name": "Topic",
+            "column": "topic",
+            "width": 300,
+            "order": 0
+          },
+          "pulsar_storage_size": {
+            "unit": "#",
+            "name": "Storage Size",
+            "width": 150,
+            "order": 1
+          }
+        },
+        "metrics": 0,
+        "sort": {
+          "cpuMax": true
+        },
+        "chart": "SERIES",
+        "topn": 10,
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        }
+      },
+      "_key_": "v1/02.sys/server_process_cpu_topn",
+      "id": "xkCr27yZT",
+      "layout": {
+        "w": 12,
+        "h": 10,
+        "x": 32,
+        "y": 10,
+        "i": "xkCr27yZT",
+        "moved": false,
+        "static": false
+      }
+    },
+    {
+      "id": "rtJM5Dh-N-",
+      "title": "Consumers Count",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 16,
+        "h": 5,
+        "x": 0,
+        "y": 0,
+        "i": "rtJM5Dh-N-",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_apachepulsar_broker",
+      "option": {
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "chart": "SERIES",
+        "metrics": 0
+      },
+      "metrics": [
+        {
+          "name": "Cluster,Topic",
+          "tags": [
+            {
+              "key": "cluster",
+              "title": "Cluster",
+              "unit": "#"
+            },
+            {
+              "key": "topic",
+              "title": "Topic",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_consumers_count",
+              "title": "Pulsar_consumers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Broker",
+          "tags": [
+            {
+              "key": "broker",
+              "title": "Broker",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_consumers_count",
+              "title": "Pulsar_consumers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Cache",
+          "tags": [
+            {
+              "key": "cache",
+              "title": "Cache",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_consumers_count",
+              "title": "Pulsar_consumers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Cluster",
+          "tags": [
+            {
+              "key": "cluster",
+              "title": "Cluster",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_consumers_count",
+              "title": "Pulsar_consumers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Code",
+          "tags": [
+            {
+              "key": "code",
+              "title": "Code",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_consumers_count",
+              "title": "Pulsar_consumers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Commit",
+          "tags": [
+            {
+              "key": "commit",
+              "title": "Commit",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_consumers_count",
+              "title": "Pulsar_consumers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Gc",
+          "tags": [
+            {
+              "key": "gc",
+              "title": "Gc",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_consumers_count",
+              "title": "Pulsar_consumers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Le",
+          "tags": [
+            {
+              "key": "le",
+              "title": "Le",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_consumers_count",
+              "title": "Pulsar_consumers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Level",
+          "tags": [
+            {
+              "key": "level",
+              "title": "Level",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_consumers_count",
+              "title": "Pulsar_consumers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Metric",
+          "tags": [
+            {
+              "key": "metric",
+              "title": "Metric",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_consumers_count",
+              "title": "Pulsar_consumers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Name",
+          "tags": [
+            {
+              "key": "name",
+              "title": "Name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_consumers_count",
+              "title": "Pulsar_consumers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Namespace",
+          "tags": [
+            {
+              "key": "namespace",
+              "title": "Namespace",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_consumers_count",
+              "title": "Pulsar_consumers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Oname",
+          "tags": [
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_consumers_count",
+              "title": "Pulsar_consumers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Pool",
+          "tags": [
+            {
+              "key": "pool",
+              "title": "Pool",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_consumers_count",
+              "title": "Pulsar_consumers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_consumers_count",
+              "title": "Pulsar_consumers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Quantile",
+          "tags": [
+            {
+              "key": "quantile",
+              "title": "Quantile",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_consumers_count",
+              "title": "Pulsar_consumers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Quota_type",
+          "tags": [
+            {
+              "key": "quota_type",
+              "title": "Quota_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_consumers_count",
+              "title": "Pulsar_consumers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Remote_cluster",
+          "tags": [
+            {
+              "key": "remote_cluster",
+              "title": "Remote_cluster",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_consumers_count",
+              "title": "Pulsar_consumers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Runtime",
+          "tags": [
+            {
+              "key": "runtime",
+              "title": "Runtime",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_consumers_count",
+              "title": "Pulsar_consumers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "State",
+          "tags": [
+            {
+              "key": "state",
+              "title": "State",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_consumers_count",
+              "title": "Pulsar_consumers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Status",
+          "tags": [
+            {
+              "key": "status",
+              "title": "Status",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_consumers_count",
+              "title": "Pulsar_consumers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Subscription",
+          "tags": [
+            {
+              "key": "subscription",
+              "title": "Subscription",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_consumers_count",
+              "title": "Pulsar_consumers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Topic",
+          "tags": [
+            {
+              "key": "topic",
+              "title": "Topic",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_consumers_count",
+              "title": "Pulsar_consumers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Type",
+          "tags": [
+            {
+              "key": "type",
+              "title": "Type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_consumers_count",
+              "title": "Pulsar_consumers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Url",
+          "tags": [
+            {
+              "key": "url",
+              "title": "Url",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_consumers_count",
+              "title": "Pulsar_consumers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Vendor",
+          "tags": [
+            {
+              "key": "vendor",
+              "title": "Vendor",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_consumers_count",
+              "title": "Pulsar_consumers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Version",
+          "tags": [
+            {
+              "key": "version",
+              "title": "Version",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_consumers_count",
+              "title": "Pulsar_consumers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "id": "wBchR0yCxZ",
+      "title": "Producers Count",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 16,
+        "h": 5,
+        "x": 16,
+        "y": 0,
+        "i": "wBchR0yCxZ",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_apachepulsar_broker",
+      "option": {
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "chart": "SERIES",
+        "metrics": 0
+      },
+      "metrics": [
+        {
+          "name": "Cluster,Topic",
+          "tags": [
+            {
+              "key": "cluster",
+              "title": "Cluster",
+              "unit": "#"
+            },
+            {
+              "key": "topic",
+              "title": "Topic",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_producers_count",
+              "title": "Pulsar_producers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Broker",
+          "tags": [
+            {
+              "key": "broker",
+              "title": "Broker",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_producers_count",
+              "title": "Pulsar_producers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Cache",
+          "tags": [
+            {
+              "key": "cache",
+              "title": "Cache",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_producers_count",
+              "title": "Pulsar_producers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Cluster",
+          "tags": [
+            {
+              "key": "cluster",
+              "title": "Cluster",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_producers_count",
+              "title": "Pulsar_producers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Code",
+          "tags": [
+            {
+              "key": "code",
+              "title": "Code",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_producers_count",
+              "title": "Pulsar_producers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Commit",
+          "tags": [
+            {
+              "key": "commit",
+              "title": "Commit",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_producers_count",
+              "title": "Pulsar_producers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Gc",
+          "tags": [
+            {
+              "key": "gc",
+              "title": "Gc",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_producers_count",
+              "title": "Pulsar_producers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Le",
+          "tags": [
+            {
+              "key": "le",
+              "title": "Le",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_producers_count",
+              "title": "Pulsar_producers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Level",
+          "tags": [
+            {
+              "key": "level",
+              "title": "Level",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_producers_count",
+              "title": "Pulsar_producers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Metric",
+          "tags": [
+            {
+              "key": "metric",
+              "title": "Metric",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_producers_count",
+              "title": "Pulsar_producers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Name",
+          "tags": [
+            {
+              "key": "name",
+              "title": "Name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_producers_count",
+              "title": "Pulsar_producers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Namespace",
+          "tags": [
+            {
+              "key": "namespace",
+              "title": "Namespace",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_producers_count",
+              "title": "Pulsar_producers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Oname",
+          "tags": [
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_producers_count",
+              "title": "Pulsar_producers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Pool",
+          "tags": [
+            {
+              "key": "pool",
+              "title": "Pool",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_producers_count",
+              "title": "Pulsar_producers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_producers_count",
+              "title": "Pulsar_producers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Quantile",
+          "tags": [
+            {
+              "key": "quantile",
+              "title": "Quantile",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_producers_count",
+              "title": "Pulsar_producers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Quota_type",
+          "tags": [
+            {
+              "key": "quota_type",
+              "title": "Quota_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_producers_count",
+              "title": "Pulsar_producers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Remote_cluster",
+          "tags": [
+            {
+              "key": "remote_cluster",
+              "title": "Remote_cluster",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_producers_count",
+              "title": "Pulsar_producers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Runtime",
+          "tags": [
+            {
+              "key": "runtime",
+              "title": "Runtime",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_producers_count",
+              "title": "Pulsar_producers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "State",
+          "tags": [
+            {
+              "key": "state",
+              "title": "State",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_producers_count",
+              "title": "Pulsar_producers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Status",
+          "tags": [
+            {
+              "key": "status",
+              "title": "Status",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_producers_count",
+              "title": "Pulsar_producers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Subscription",
+          "tags": [
+            {
+              "key": "subscription",
+              "title": "Subscription",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_producers_count",
+              "title": "Pulsar_producers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Topic",
+          "tags": [
+            {
+              "key": "topic",
+              "title": "Topic",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_producers_count",
+              "title": "Pulsar_producers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Type",
+          "tags": [
+            {
+              "key": "type",
+              "title": "Type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_producers_count",
+              "title": "Pulsar_producers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Url",
+          "tags": [
+            {
+              "key": "url",
+              "title": "Url",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_producers_count",
+              "title": "Pulsar_producers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Vendor",
+          "tags": [
+            {
+              "key": "vendor",
+              "title": "Vendor",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_producers_count",
+              "title": "Pulsar_producers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Version",
+          "tags": [
+            {
+              "key": "version",
+              "title": "Version",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_producers_count",
+              "title": "Pulsar_producers_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "isMultiProject": false,
+      "icon": "table",
+      "supports": [
+        {
+          "productType": "SMS"
+        }
+      ],
+      "metrics": [
+        {
+          "mql": "TIME-RANGE {duration:120s, etime:$etime}\n\nCATEGORY telegraf_apachepulsar_broker\nTAGLOAD {backward:true}\n\nSELECT [ 'pcode', 'time', 'oid', 'pulsar_subscription_unacked_messages', 'topic' ]\nFILTER { key: \"pulsar_subscription_unacked_messages\", exist: true }\nFILTER { key: \"topic\", exist: true }\nFIRST-ONLY {key:[pcode, topic]}\nCREATE { key: _id_, expr: \"topic\" }\nGROUP { timeunit:120s, pk:_id_ }\n\nUPDATE { key: \"pulsar_subscription_unacked_messages\", value: sum }\n\nORDER {key:[pulsar_subscription_unacked_messages, topic], sort: [desc, asc] }\nDELETE [pcode, oid, time]\nFIRST-ONLY {key: _id_ }\nLIMIT 10\n"
+        }
+      ],
+      "title": "Top 10 Topics Unacked",
+      "dirname": "v1/02.sys",
+      "widgetType": "TABLE",
+      "requestApi": "LAST",
+      "option": {
+        "legend": {
+          "topic": {
+            "unit": "#",
+            "name": "Topic",
+            "column": "topic",
+            "width": 300,
+            "order": 0
+          },
+          "pulsar_subscription_unacked_messages": {
+            "unit": "#",
+            "name": "Unacked",
+            "width": 100,
+            "order": 1
+          }
+        },
+        "metrics": 0,
+        "sort": {
+          "cpuMax": true
+        },
+        "chart": "SERIES",
+        "topn": 10,
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        }
+      },
+      "_key_": "v1/02.sys/server_process_cpu_topn",
+      "id": "bvjrnF4TE",
+      "layout": {
+        "w": 12,
+        "h": 10,
+        "x": 32,
+        "y": 0,
+        "i": "bvjrnF4TE",
+        "moved": false,
+        "static": false
+      }
+    },
+    {
+      "id": "6TF1_LxNhj",
+      "title": "Messages In",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 16,
+        "h": 5,
+        "x": 0,
+        "y": 5,
+        "i": "6TF1_LxNhj",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_apachepulsar_broker",
+      "option": {
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "chart": "SERIES",
+        "metrics": 0
+      },
+      "metrics": [
+        {
+          "name": "Cluster",
+          "tags": [
+            {
+              "key": "cluster",
+              "title": "Cluster",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_messages_total",
+              "title": "Pulsar_in_messages_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Broker",
+          "tags": [
+            {
+              "key": "broker",
+              "title": "Broker",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_messages_total",
+              "title": "Pulsar_in_messages_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Cache",
+          "tags": [
+            {
+              "key": "cache",
+              "title": "Cache",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_messages_total",
+              "title": "Pulsar_in_messages_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Cluster",
+          "tags": [
+            {
+              "key": "cluster",
+              "title": "Cluster",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_messages_total",
+              "title": "Pulsar_in_messages_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Code",
+          "tags": [
+            {
+              "key": "code",
+              "title": "Code",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_messages_total",
+              "title": "Pulsar_in_messages_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Commit",
+          "tags": [
+            {
+              "key": "commit",
+              "title": "Commit",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_messages_total",
+              "title": "Pulsar_in_messages_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Gc",
+          "tags": [
+            {
+              "key": "gc",
+              "title": "Gc",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_messages_total",
+              "title": "Pulsar_in_messages_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Le",
+          "tags": [
+            {
+              "key": "le",
+              "title": "Le",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_messages_total",
+              "title": "Pulsar_in_messages_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Level",
+          "tags": [
+            {
+              "key": "level",
+              "title": "Level",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_messages_total",
+              "title": "Pulsar_in_messages_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Metric",
+          "tags": [
+            {
+              "key": "metric",
+              "title": "Metric",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_messages_total",
+              "title": "Pulsar_in_messages_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Name",
+          "tags": [
+            {
+              "key": "name",
+              "title": "Name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_messages_total",
+              "title": "Pulsar_in_messages_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Namespace",
+          "tags": [
+            {
+              "key": "namespace",
+              "title": "Namespace",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_messages_total",
+              "title": "Pulsar_in_messages_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Oname",
+          "tags": [
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_messages_total",
+              "title": "Pulsar_in_messages_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Pool",
+          "tags": [
+            {
+              "key": "pool",
+              "title": "Pool",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_messages_total",
+              "title": "Pulsar_in_messages_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_messages_total",
+              "title": "Pulsar_in_messages_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Quantile",
+          "tags": [
+            {
+              "key": "quantile",
+              "title": "Quantile",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_messages_total",
+              "title": "Pulsar_in_messages_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Quota_type",
+          "tags": [
+            {
+              "key": "quota_type",
+              "title": "Quota_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_messages_total",
+              "title": "Pulsar_in_messages_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Remote_cluster",
+          "tags": [
+            {
+              "key": "remote_cluster",
+              "title": "Remote_cluster",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_messages_total",
+              "title": "Pulsar_in_messages_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Runtime",
+          "tags": [
+            {
+              "key": "runtime",
+              "title": "Runtime",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_messages_total",
+              "title": "Pulsar_in_messages_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "State",
+          "tags": [
+            {
+              "key": "state",
+              "title": "State",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_messages_total",
+              "title": "Pulsar_in_messages_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Status",
+          "tags": [
+            {
+              "key": "status",
+              "title": "Status",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_messages_total",
+              "title": "Pulsar_in_messages_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Subscription",
+          "tags": [
+            {
+              "key": "subscription",
+              "title": "Subscription",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_messages_total",
+              "title": "Pulsar_in_messages_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Topic",
+          "tags": [
+            {
+              "key": "topic",
+              "title": "Topic",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_messages_total",
+              "title": "Pulsar_in_messages_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Type",
+          "tags": [
+            {
+              "key": "type",
+              "title": "Type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_messages_total",
+              "title": "Pulsar_in_messages_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Url",
+          "tags": [
+            {
+              "key": "url",
+              "title": "Url",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_messages_total",
+              "title": "Pulsar_in_messages_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Vendor",
+          "tags": [
+            {
+              "key": "vendor",
+              "title": "Vendor",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_messages_total",
+              "title": "Pulsar_in_messages_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Version",
+          "tags": [
+            {
+              "key": "version",
+              "title": "Version",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_messages_total",
+              "title": "Pulsar_in_messages_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "id": "oVCSIBGDek",
+      "title": "Subscriptions Count",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 16,
+        "h": 5,
+        "x": 16,
+        "y": 5,
+        "i": "oVCSIBGDek",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_apachepulsar_broker",
+      "option": {
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "chart": "SERIES",
+        "metrics": 0
+      },
+      "metrics": [
+        {
+          "name": "Cluster,에이전트 명",
+          "tags": [
+            {
+              "key": "cluster",
+              "title": "Cluster",
+              "unit": "#"
+            },
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_subscriptions_count",
+              "title": "Pulsar_subscriptions_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Broker",
+          "tags": [
+            {
+              "key": "broker",
+              "title": "Broker",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_subscriptions_count",
+              "title": "Pulsar_subscriptions_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Cache",
+          "tags": [
+            {
+              "key": "cache",
+              "title": "Cache",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_subscriptions_count",
+              "title": "Pulsar_subscriptions_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Cluster",
+          "tags": [
+            {
+              "key": "cluster",
+              "title": "Cluster",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_subscriptions_count",
+              "title": "Pulsar_subscriptions_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Code",
+          "tags": [
+            {
+              "key": "code",
+              "title": "Code",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_subscriptions_count",
+              "title": "Pulsar_subscriptions_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Commit",
+          "tags": [
+            {
+              "key": "commit",
+              "title": "Commit",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_subscriptions_count",
+              "title": "Pulsar_subscriptions_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Gc",
+          "tags": [
+            {
+              "key": "gc",
+              "title": "Gc",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_subscriptions_count",
+              "title": "Pulsar_subscriptions_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Le",
+          "tags": [
+            {
+              "key": "le",
+              "title": "Le",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_subscriptions_count",
+              "title": "Pulsar_subscriptions_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Level",
+          "tags": [
+            {
+              "key": "level",
+              "title": "Level",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_subscriptions_count",
+              "title": "Pulsar_subscriptions_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Metric",
+          "tags": [
+            {
+              "key": "metric",
+              "title": "Metric",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_subscriptions_count",
+              "title": "Pulsar_subscriptions_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Name",
+          "tags": [
+            {
+              "key": "name",
+              "title": "Name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_subscriptions_count",
+              "title": "Pulsar_subscriptions_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Namespace",
+          "tags": [
+            {
+              "key": "namespace",
+              "title": "Namespace",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_subscriptions_count",
+              "title": "Pulsar_subscriptions_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Oname",
+          "tags": [
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_subscriptions_count",
+              "title": "Pulsar_subscriptions_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Pool",
+          "tags": [
+            {
+              "key": "pool",
+              "title": "Pool",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_subscriptions_count",
+              "title": "Pulsar_subscriptions_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_subscriptions_count",
+              "title": "Pulsar_subscriptions_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Quantile",
+          "tags": [
+            {
+              "key": "quantile",
+              "title": "Quantile",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_subscriptions_count",
+              "title": "Pulsar_subscriptions_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Quota_type",
+          "tags": [
+            {
+              "key": "quota_type",
+              "title": "Quota_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_subscriptions_count",
+              "title": "Pulsar_subscriptions_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Remote_cluster",
+          "tags": [
+            {
+              "key": "remote_cluster",
+              "title": "Remote_cluster",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_subscriptions_count",
+              "title": "Pulsar_subscriptions_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Runtime",
+          "tags": [
+            {
+              "key": "runtime",
+              "title": "Runtime",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_subscriptions_count",
+              "title": "Pulsar_subscriptions_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "State",
+          "tags": [
+            {
+              "key": "state",
+              "title": "State",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_subscriptions_count",
+              "title": "Pulsar_subscriptions_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Status",
+          "tags": [
+            {
+              "key": "status",
+              "title": "Status",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_subscriptions_count",
+              "title": "Pulsar_subscriptions_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Subscription",
+          "tags": [
+            {
+              "key": "subscription",
+              "title": "Subscription",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_subscriptions_count",
+              "title": "Pulsar_subscriptions_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Topic",
+          "tags": [
+            {
+              "key": "topic",
+              "title": "Topic",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_subscriptions_count",
+              "title": "Pulsar_subscriptions_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Type",
+          "tags": [
+            {
+              "key": "type",
+              "title": "Type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_subscriptions_count",
+              "title": "Pulsar_subscriptions_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Url",
+          "tags": [
+            {
+              "key": "url",
+              "title": "Url",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_subscriptions_count",
+              "title": "Pulsar_subscriptions_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Vendor",
+          "tags": [
+            {
+              "key": "vendor",
+              "title": "Vendor",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_subscriptions_count",
+              "title": "Pulsar_subscriptions_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Version",
+          "tags": [
+            {
+              "key": "version",
+              "title": "Version",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_subscriptions_count",
+              "title": "Pulsar_subscriptions_count",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "id": "FqnumuHkWd",
+      "title": "Offloaded Size",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 16,
+        "h": 6,
+        "x": 0,
+        "y": 10,
+        "i": "FqnumuHkWd",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_apachepulsar_broker",
+      "option": {
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "chart": "SERIES",
+        "metrics": 0
+      },
+      "metrics": [
+        {
+          "name": "Cluster",
+          "tags": [
+            {
+              "key": "cluster",
+              "title": "Cluster",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_storage_offloaded_size",
+              "title": "Pulsar_storage_offloaded_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Broker",
+          "tags": [
+            {
+              "key": "broker",
+              "title": "Broker",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_storage_offloaded_size",
+              "title": "Pulsar_storage_offloaded_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Cache",
+          "tags": [
+            {
+              "key": "cache",
+              "title": "Cache",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_storage_offloaded_size",
+              "title": "Pulsar_storage_offloaded_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Cluster",
+          "tags": [
+            {
+              "key": "cluster",
+              "title": "Cluster",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_storage_offloaded_size",
+              "title": "Pulsar_storage_offloaded_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Code",
+          "tags": [
+            {
+              "key": "code",
+              "title": "Code",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_storage_offloaded_size",
+              "title": "Pulsar_storage_offloaded_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Commit",
+          "tags": [
+            {
+              "key": "commit",
+              "title": "Commit",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_storage_offloaded_size",
+              "title": "Pulsar_storage_offloaded_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Gc",
+          "tags": [
+            {
+              "key": "gc",
+              "title": "Gc",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_storage_offloaded_size",
+              "title": "Pulsar_storage_offloaded_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Le",
+          "tags": [
+            {
+              "key": "le",
+              "title": "Le",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_storage_offloaded_size",
+              "title": "Pulsar_storage_offloaded_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Level",
+          "tags": [
+            {
+              "key": "level",
+              "title": "Level",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_storage_offloaded_size",
+              "title": "Pulsar_storage_offloaded_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Metric",
+          "tags": [
+            {
+              "key": "metric",
+              "title": "Metric",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_storage_offloaded_size",
+              "title": "Pulsar_storage_offloaded_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Name",
+          "tags": [
+            {
+              "key": "name",
+              "title": "Name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_storage_offloaded_size",
+              "title": "Pulsar_storage_offloaded_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Namespace",
+          "tags": [
+            {
+              "key": "namespace",
+              "title": "Namespace",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_storage_offloaded_size",
+              "title": "Pulsar_storage_offloaded_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Oname",
+          "tags": [
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_storage_offloaded_size",
+              "title": "Pulsar_storage_offloaded_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Pool",
+          "tags": [
+            {
+              "key": "pool",
+              "title": "Pool",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_storage_offloaded_size",
+              "title": "Pulsar_storage_offloaded_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_storage_offloaded_size",
+              "title": "Pulsar_storage_offloaded_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Quantile",
+          "tags": [
+            {
+              "key": "quantile",
+              "title": "Quantile",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_storage_offloaded_size",
+              "title": "Pulsar_storage_offloaded_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Quota_type",
+          "tags": [
+            {
+              "key": "quota_type",
+              "title": "Quota_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_storage_offloaded_size",
+              "title": "Pulsar_storage_offloaded_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Remote_cluster",
+          "tags": [
+            {
+              "key": "remote_cluster",
+              "title": "Remote_cluster",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_storage_offloaded_size",
+              "title": "Pulsar_storage_offloaded_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Runtime",
+          "tags": [
+            {
+              "key": "runtime",
+              "title": "Runtime",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_storage_offloaded_size",
+              "title": "Pulsar_storage_offloaded_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "State",
+          "tags": [
+            {
+              "key": "state",
+              "title": "State",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_storage_offloaded_size",
+              "title": "Pulsar_storage_offloaded_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Status",
+          "tags": [
+            {
+              "key": "status",
+              "title": "Status",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_storage_offloaded_size",
+              "title": "Pulsar_storage_offloaded_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Subscription",
+          "tags": [
+            {
+              "key": "subscription",
+              "title": "Subscription",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_storage_offloaded_size",
+              "title": "Pulsar_storage_offloaded_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Topic",
+          "tags": [
+            {
+              "key": "topic",
+              "title": "Topic",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_storage_offloaded_size",
+              "title": "Pulsar_storage_offloaded_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Type",
+          "tags": [
+            {
+              "key": "type",
+              "title": "Type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_storage_offloaded_size",
+              "title": "Pulsar_storage_offloaded_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Url",
+          "tags": [
+            {
+              "key": "url",
+              "title": "Url",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_storage_offloaded_size",
+              "title": "Pulsar_storage_offloaded_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Vendor",
+          "tags": [
+            {
+              "key": "vendor",
+              "title": "Vendor",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_storage_offloaded_size",
+              "title": "Pulsar_storage_offloaded_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Version",
+          "tags": [
+            {
+              "key": "version",
+              "title": "Version",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_storage_offloaded_size",
+              "title": "Pulsar_storage_offloaded_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "id": "Q8Z78B91ny",
+      "title": "Bytes In",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 16,
+        "h": 6,
+        "x": 16,
+        "y": 10,
+        "i": "Q8Z78B91ny",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_apachepulsar_broker",
+      "option": {
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "chart": "SERIES",
+        "metrics": 0
+      },
+      "metrics": [
+        {
+          "name": "Cluster",
+          "tags": [
+            {
+              "key": "cluster",
+              "title": "Cluster",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_bytes_total",
+              "title": "Pulsar_in_bytes_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Broker",
+          "tags": [
+            {
+              "key": "broker",
+              "title": "Broker",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_bytes_total",
+              "title": "Pulsar_in_bytes_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Cache",
+          "tags": [
+            {
+              "key": "cache",
+              "title": "Cache",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_bytes_total",
+              "title": "Pulsar_in_bytes_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Cluster",
+          "tags": [
+            {
+              "key": "cluster",
+              "title": "Cluster",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_bytes_total",
+              "title": "Pulsar_in_bytes_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Code",
+          "tags": [
+            {
+              "key": "code",
+              "title": "Code",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_bytes_total",
+              "title": "Pulsar_in_bytes_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Commit",
+          "tags": [
+            {
+              "key": "commit",
+              "title": "Commit",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_bytes_total",
+              "title": "Pulsar_in_bytes_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Gc",
+          "tags": [
+            {
+              "key": "gc",
+              "title": "Gc",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_bytes_total",
+              "title": "Pulsar_in_bytes_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Le",
+          "tags": [
+            {
+              "key": "le",
+              "title": "Le",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_bytes_total",
+              "title": "Pulsar_in_bytes_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Level",
+          "tags": [
+            {
+              "key": "level",
+              "title": "Level",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_bytes_total",
+              "title": "Pulsar_in_bytes_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Metric",
+          "tags": [
+            {
+              "key": "metric",
+              "title": "Metric",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_bytes_total",
+              "title": "Pulsar_in_bytes_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Name",
+          "tags": [
+            {
+              "key": "name",
+              "title": "Name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_bytes_total",
+              "title": "Pulsar_in_bytes_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Namespace",
+          "tags": [
+            {
+              "key": "namespace",
+              "title": "Namespace",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_bytes_total",
+              "title": "Pulsar_in_bytes_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Oname",
+          "tags": [
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_bytes_total",
+              "title": "Pulsar_in_bytes_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Pool",
+          "tags": [
+            {
+              "key": "pool",
+              "title": "Pool",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_bytes_total",
+              "title": "Pulsar_in_bytes_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_bytes_total",
+              "title": "Pulsar_in_bytes_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Quantile",
+          "tags": [
+            {
+              "key": "quantile",
+              "title": "Quantile",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_bytes_total",
+              "title": "Pulsar_in_bytes_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Quota_type",
+          "tags": [
+            {
+              "key": "quota_type",
+              "title": "Quota_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_bytes_total",
+              "title": "Pulsar_in_bytes_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Remote_cluster",
+          "tags": [
+            {
+              "key": "remote_cluster",
+              "title": "Remote_cluster",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_bytes_total",
+              "title": "Pulsar_in_bytes_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Runtime",
+          "tags": [
+            {
+              "key": "runtime",
+              "title": "Runtime",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_bytes_total",
+              "title": "Pulsar_in_bytes_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "State",
+          "tags": [
+            {
+              "key": "state",
+              "title": "State",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_bytes_total",
+              "title": "Pulsar_in_bytes_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Status",
+          "tags": [
+            {
+              "key": "status",
+              "title": "Status",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_bytes_total",
+              "title": "Pulsar_in_bytes_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Subscription",
+          "tags": [
+            {
+              "key": "subscription",
+              "title": "Subscription",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_bytes_total",
+              "title": "Pulsar_in_bytes_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Topic",
+          "tags": [
+            {
+              "key": "topic",
+              "title": "Topic",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_bytes_total",
+              "title": "Pulsar_in_bytes_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Type",
+          "tags": [
+            {
+              "key": "type",
+              "title": "Type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_bytes_total",
+              "title": "Pulsar_in_bytes_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Url",
+          "tags": [
+            {
+              "key": "url",
+              "title": "Url",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_bytes_total",
+              "title": "Pulsar_in_bytes_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Vendor",
+          "tags": [
+            {
+              "key": "vendor",
+              "title": "Vendor",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_bytes_total",
+              "title": "Pulsar_in_bytes_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Version",
+          "tags": [
+            {
+              "key": "version",
+              "title": "Version",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_in_bytes_total",
+              "title": "Pulsar_in_bytes_total",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "id": "HrWFZOBfYU",
+      "title": "Node Cpu",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 16,
+        "h": 4,
+        "x": 0,
+        "y": 16,
+        "i": "HrWFZOBfYU",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "server_base",
+      "option": {
+        "metrics": 2,
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "chart": "TON_LINE",
+        "showPlotMaxValue": true
+      },
+      "metrics": [
+        {
+          "name": "CpuCores",
+          "tags": [
+            {
+              "key": "cpu_cores",
+              "title": "CpuCores",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "cpu",
+              "title": "Cpu",
+              "unit": "pct"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "HostIp",
+          "tags": [
+            {
+              "key": "host_ip",
+              "title": "HostIp",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "cpu",
+              "title": "Cpu",
+              "unit": "pct"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Oname",
+          "tags": [
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "cpu",
+              "title": "Cpu",
+              "unit": "pct"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Os",
+          "tags": [
+            {
+              "key": "os",
+              "title": "Os",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "cpu",
+              "title": "Cpu",
+              "unit": "pct"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "cpu",
+              "title": "Cpu",
+              "unit": "pct"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "id": "tIrWtrujXG",
+      "title": "Node Memory Used %",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 16,
+        "h": 4,
+        "x": 16,
+        "y": 16,
+        "i": "tIrWtrujXG",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "server_base",
+      "option": {
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "metrics": 2,
+        "chart": "TON_LINE",
+        "showPlotMaxValue": true
+      },
+      "metrics": [
+        {
+          "name": "CpuCores",
+          "tags": [
+            {
+              "key": "cpu_cores",
+              "title": "CpuCores",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "memory_pused",
+              "title": "MemoryUsedPct",
+              "unit": "pct"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "HostIp",
+          "tags": [
+            {
+              "key": "host_ip",
+              "title": "HostIp",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "memory_pused",
+              "title": "MemoryUsedPct",
+              "unit": "pct"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Oname",
+          "tags": [
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "memory_pused",
+              "title": "MemoryUsedPct",
+              "unit": "pct"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Os",
+          "tags": [
+            {
+              "key": "os",
+              "title": "Os",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "memory_pused",
+              "title": "MemoryUsedPct",
+              "unit": "pct"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "memory_pused",
+              "title": "MemoryUsedPct",
+              "unit": "pct"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    }
+  ],
+  "extra": {
+    "layout": {
+      "type": "FIXED",
+      "monitor": {
+        "x": 3,
+        "y": 3
+      }
+    },
+    "option": {}
+  }
+}

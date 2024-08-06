@@ -1,0 +1,628 @@
+{
+  "name": "ApachePulsarBacklog",
+  "widgets": [
+    {
+      "id": "SJ4WpkQ_RO",
+      "title": "Pulsar Backlog",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 36,
+        "h": 19,
+        "x": 0,
+        "y": 0,
+        "i": "SJ4WpkQ_RO",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_apachepulsar_broker",
+      "option": {
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "metrics": 0,
+        "chart": "TON_LINE",
+        "chartAside": {
+          "chart": "TABLE",
+          "ratio": 50,
+          "layout": "horizontal"
+        },
+        "legend": {
+          "name": {
+            "column": "NAME",
+            "width": 685.010009765625
+          },
+          "sum": {
+            "unit": "F",
+            "hide": true
+          },
+          "avg": {
+            "unit": "F",
+            "hide": true
+          },
+          "max": {
+            "unit": "F",
+            "hide": true
+          },
+          "last": {
+            "unit": "F",
+            "name": "recently"
+          }
+        },
+        "sort": {
+          "name": true
+        }
+      },
+      "metrics": [
+        {
+          "name": "Cluster,Topic",
+          "tags": [
+            {
+              "key": "cluster",
+              "title": "Cluster",
+              "unit": "#"
+            },
+            {
+              "key": "topic",
+              "title": "Topic",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_msg_backlog",
+              "title": "Pulsar_msg_backlog",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Broker",
+          "tags": [
+            {
+              "key": "broker",
+              "title": "Broker",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_msg_backlog",
+              "title": "Pulsar_msg_backlog",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Cache",
+          "tags": [
+            {
+              "key": "cache",
+              "title": "Cache",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_msg_backlog",
+              "title": "Pulsar_msg_backlog",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Cluster",
+          "tags": [
+            {
+              "key": "cluster",
+              "title": "Cluster",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_msg_backlog",
+              "title": "Pulsar_msg_backlog",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Code",
+          "tags": [
+            {
+              "key": "code",
+              "title": "Code",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_msg_backlog",
+              "title": "Pulsar_msg_backlog",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Commit",
+          "tags": [
+            {
+              "key": "commit",
+              "title": "Commit",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_msg_backlog",
+              "title": "Pulsar_msg_backlog",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Gc",
+          "tags": [
+            {
+              "key": "gc",
+              "title": "Gc",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_msg_backlog",
+              "title": "Pulsar_msg_backlog",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Le",
+          "tags": [
+            {
+              "key": "le",
+              "title": "Le",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_msg_backlog",
+              "title": "Pulsar_msg_backlog",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Level",
+          "tags": [
+            {
+              "key": "level",
+              "title": "Level",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_msg_backlog",
+              "title": "Pulsar_msg_backlog",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Metric",
+          "tags": [
+            {
+              "key": "metric",
+              "title": "Metric",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_msg_backlog",
+              "title": "Pulsar_msg_backlog",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Name",
+          "tags": [
+            {
+              "key": "name",
+              "title": "Name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_msg_backlog",
+              "title": "Pulsar_msg_backlog",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Namespace",
+          "tags": [
+            {
+              "key": "namespace",
+              "title": "Namespace",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_msg_backlog",
+              "title": "Pulsar_msg_backlog",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Oname",
+          "tags": [
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_msg_backlog",
+              "title": "Pulsar_msg_backlog",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Pool",
+          "tags": [
+            {
+              "key": "pool",
+              "title": "Pool",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_msg_backlog",
+              "title": "Pulsar_msg_backlog",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_msg_backlog",
+              "title": "Pulsar_msg_backlog",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Quantile",
+          "tags": [
+            {
+              "key": "quantile",
+              "title": "Quantile",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_msg_backlog",
+              "title": "Pulsar_msg_backlog",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Quota_type",
+          "tags": [
+            {
+              "key": "quota_type",
+              "title": "Quota_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_msg_backlog",
+              "title": "Pulsar_msg_backlog",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Remote_cluster",
+          "tags": [
+            {
+              "key": "remote_cluster",
+              "title": "Remote_cluster",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_msg_backlog",
+              "title": "Pulsar_msg_backlog",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Runtime",
+          "tags": [
+            {
+              "key": "runtime",
+              "title": "Runtime",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_msg_backlog",
+              "title": "Pulsar_msg_backlog",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "State",
+          "tags": [
+            {
+              "key": "state",
+              "title": "State",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_msg_backlog",
+              "title": "Pulsar_msg_backlog",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Status",
+          "tags": [
+            {
+              "key": "status",
+              "title": "Status",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_msg_backlog",
+              "title": "Pulsar_msg_backlog",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Subscription",
+          "tags": [
+            {
+              "key": "subscription",
+              "title": "Subscription",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_msg_backlog",
+              "title": "Pulsar_msg_backlog",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Topic",
+          "tags": [
+            {
+              "key": "topic",
+              "title": "Topic",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_msg_backlog",
+              "title": "Pulsar_msg_backlog",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Type",
+          "tags": [
+            {
+              "key": "type",
+              "title": "Type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_msg_backlog",
+              "title": "Pulsar_msg_backlog",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Url",
+          "tags": [
+            {
+              "key": "url",
+              "title": "Url",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_msg_backlog",
+              "title": "Pulsar_msg_backlog",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Vendor",
+          "tags": [
+            {
+              "key": "vendor",
+              "title": "Vendor",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_msg_backlog",
+              "title": "Pulsar_msg_backlog",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Version",
+          "tags": [
+            {
+              "key": "version",
+              "title": "Version",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_msg_backlog",
+              "title": "Pulsar_msg_backlog",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    }
+  ],
+  "extra": {
+    "layout": {
+      "type": "FIXED",
+      "monitor": {
+        "x": 3,
+        "y": 3
+      }
+    },
+    "option": {
+      "stime": 1722783600000,
+      "etime": 1722870000000,
+      "timeAction": "CUSTOM"
+    }
+  }
+}

@@ -1,0 +1,1099 @@
+{
+  "name": "ApachePulsarOverview",
+  "widgets": [
+    {
+      "isMultiProject": false,
+      "icon": "table",
+      "supports": [
+        {
+          "productType": "SMS"
+        }
+      ],
+      "metrics": [
+        {
+          "mql": "TIME-RANGE {duration:120s, etime:$etime}\n\nCATEGORY telegraf_apachepulsar_broker\nTAGLOAD {backward:true}\n\nSELECT [ 'pcode', 'time', 'oid', 'pulsar_replication_backlog', 'topic' ]\nFILTER { key: \"pulsar_replication_backlog\", exist: true }\nFILTER { key: \"topic\", exist: true }\nFIRST-ONLY {key:[pcode, topic]}\nCREATE { key: _id_, expr: \"topic\" }\nGROUP { timeunit:120s, pk:_id_ }\n\nUPDATE { key: \"pulsar_replication_backlog\", value: sum }\n\nORDER {key:[pulsar_replication_backlog, topic], sort: [desc, asc] }\nDELETE [pcode, oid, time]\nFIRST-ONLY {key: _id_ }\nLIMIT 10\n"
+        }
+      ],
+      "title": "Top 10 Replication Backlog",
+      "dirname": "v1/02.sys",
+      "widgetType": "TABLE",
+      "requestApi": "LAST",
+      "option": {
+        "legend": {
+          "topic": {
+            "unit": "#",
+            "name": "Topic",
+            "column": "topic",
+            "width": 246,
+            "order": 0
+          },
+          "pulsar_msg_backlog": {
+            "unit": "byte",
+            "name": "Backlog",
+            "column": "backlog",
+            "width": 100,
+            "order": 1
+          }
+        },
+        "metrics": 0,
+        "sort": {
+          "backlog": true
+        },
+        "chart": "SERIES",
+        "topn": 10,
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        }
+      },
+      "_key_": "v1/02.sys/server_process_cpu_topn",
+      "id": "PVyZr-FrC",
+      "layout": {
+        "w": 20,
+        "h": 8,
+        "x": 28,
+        "y": 12,
+        "i": "PVyZr-FrC",
+        "minW": 4,
+        "minH": 1,
+        "moved": false,
+        "static": false
+      }
+    },
+    {
+      "icon": "agent",
+      "supports": [
+        {
+          "productType": "SMS"
+        }
+      ],
+      "metrics": [
+        {
+          "mql": "TIME-RANGE {recent: 120s, etime:$etime}\r\n\r\nCATEGORY server_base\r\nTAGLOAD {backward:true}\r\nSELECT [oid, memory_used]\r\nFIRST-ONLY {key:[oid]}\r\n\r\nGROUP { timeunit:120s, merge:[memory_used] } \r\nUPDATE { key: \"memory_used\", value: sum }\r\n\r\n"
+        }
+      ],
+      "title": "Memory Usage",
+      "dirname": "v1/02.sys",
+      "widgetType": "COUNT",
+      "requestApi": "LAST",
+      "option": {
+        "field": "memory_used",
+        "legend": {
+          "memory_used": {
+            "label": "",
+            "unit": "byte"
+          }
+        },
+        "chart": "STATISTIC",
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "metrics": 0
+      },
+      "_key_": "v1/02.sys/server_os_count",
+      "id": "4if8XVjwU",
+      "layout": {
+        "w": 6,
+        "h": 2,
+        "x": 6,
+        "y": 2,
+        "i": "4if8XVjwU",
+        "minW": 4,
+        "minH": 1,
+        "moved": false,
+        "static": false
+      }
+    },
+    {
+      "icon": "agent",
+      "supports": [
+        {
+          "productType": "SMS"
+        }
+      ],
+      "metrics": [
+        {
+          "mql": "TIME-RANGE {recent: 120s, etime:$etime}\r\n\r\nCATEGORY server_base\r\nTAGLOAD {backward:true}\r\nSELECT [oid, cpu, cpu_cores]\r\nFIRST-ONLY {key:[oid]}\r\nCREATE { key: \"cpu_sum\", expr: \"cpu * cpu_cores\" }\r\nGROUP { timeunit:120s, merge:[cpu_sum] } \r\nUPDATE { key: \"cpu_sum\", value: sum }\r\n\r\n"
+        }
+      ],
+      "title": "CPU Usage % Total",
+      "dirname": "v1/02.sys",
+      "widgetType": "COUNT",
+      "requestApi": "LAST",
+      "option": {
+        "field": "cpu_sum",
+        "legend": {
+          "cpu_sum": {
+            "label": ""
+          }
+        },
+        "chart": "STATISTIC",
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "metrics": 0
+      },
+      "_key_": "v1/02.sys/server_os_count",
+      "id": "TuE7n7B6A",
+      "layout": {
+        "w": 6,
+        "h": 2,
+        "x": 0,
+        "y": 2,
+        "i": "TuE7n7B6A",
+        "minW": 4,
+        "minH": 1,
+        "moved": false,
+        "static": false
+      }
+    },
+    {
+      "icon": "static-chart",
+      "supports": [
+        {
+          "productType": "SMS"
+        }
+      ],
+      "metrics": [
+        {
+          "mql": " TIME-RANGE {recent: 120s, etime:$etime}\r\n\r\n CATEGORY telegraf_apachepulsar_broker\r\n\r\n TAGLOAD {backward:true}\r\n\r\n SELECT [oid, pulsar_broker_msg_backlog]\r\n FILTER { key: \"pulsar_broker_msg_backlog\", exist: true }\r\n FIRST-ONLY {key:oid}\r\n\r\n GROUP { timeunit:120s, merge:\"pulsar_broker_msg_backlog\" }\r\n\r\n UPDATE { key: \"pulsar_broker_msg_backlog\", value: sum }\r\n "
+        }
+      ],
+      "title": "Backlog",
+      "dirname": "v1/02.sys",
+      "widgetType": "COUNT",
+      "requestApi": "LAST",
+      "option": {
+        "legend": {
+          "pulsar_broker_msg_backlog": {
+            "unit": "byte",
+            "label": ""
+          }
+        },
+        "chart": "STATISTIC",
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "metrics": 0
+      },
+      "_key_": "v1/02.sys/server_avg_cpu",
+      "id": "iJ6iL1ijf",
+      "layout": {
+        "w": 9,
+        "h": 4,
+        "x": 39,
+        "y": 0,
+        "i": "iJ6iL1ijf",
+        "minW": 4,
+        "minH": 1,
+        "moved": false,
+        "static": false
+      }
+    },
+    {
+      "icon": "agent",
+      "supports": [
+        {
+          "productType": "SMS"
+        }
+      ],
+      "metrics": [
+        {
+          "mql": "TIME-RANGE {recent: 120s, etime:$etime}\r\n\r\nCATEGORY server_base\r\nTAGLOAD {backward:true}\r\nSELECT [oid, memory_total]\r\nFIRST-ONLY {key:[oid]}\r\n\r\nGROUP { timeunit:120s, merge:[memory_total] } \r\nUPDATE { key: \"memory_total\", value: sum }\r\n\r\n"
+        }
+      ],
+      "title": "Memory",
+      "dirname": "v1/02.sys",
+      "widgetType": "COUNT",
+      "requestApi": "LAST",
+      "option": {
+        "field": "memory_total",
+        "legend": {
+          "memory_total": {
+            "label": "",
+            "unit": "byte"
+          }
+        },
+        "chart": "STATISTIC",
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "metrics": 0
+      },
+      "_key_": "v1/02.sys/server_os_count",
+      "id": "gyWQBmzPg",
+      "layout": {
+        "w": 6,
+        "h": 2,
+        "x": 6,
+        "y": 0,
+        "i": "gyWQBmzPg",
+        "minW": 4,
+        "minH": 1,
+        "moved": false,
+        "static": false
+      }
+    },
+    {
+      "icon": "agent",
+      "supports": [
+        {
+          "productType": "SMS"
+        }
+      ],
+      "metrics": [
+        {
+          "mql": "\r\nTIME-RANGE {recent: 120s, etime:$etime}\r\n\r\nCATEGORY telegraf_zookeeper_status\r\n\r\nTAGLOAD {backward:true}\r\n\r\nSELECT [oid, status]\r\n\r\nFIRST-ONLY {key:[oid]}\r\n\r\nGROUP { timeunit:120s, merge:\"status\" }\r\n\r\nRENAME {src:_rows_, dst:zookeeper_count}"
+        }
+      ],
+      "title": "Zookeeper",
+      "dirname": "v1/02.sys",
+      "widgetType": "COUNT",
+      "requestApi": "LAST",
+      "option": {
+        "field": "zookeeper_count",
+        "legend": {
+          "zookeeper_count": {
+            "label": ""
+          }
+        },
+        "chart": "STATISTIC",
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "metrics": 0
+      },
+      "_key_": "v1/02.sys/server_os_count",
+      "id": "2KDVjXgVn",
+      "layout": {
+        "w": 6,
+        "h": 2,
+        "x": 12,
+        "y": 0,
+        "i": "2KDVjXgVn",
+        "minW": 4,
+        "minH": 1,
+        "moved": false,
+        "static": false
+      }
+    },
+    {
+      "icon": "agent",
+      "supports": [
+        {
+          "productType": "SMS"
+        }
+      ],
+      "metrics": [
+        {
+          "mql": "TIME-RANGE {recent: 120s, etime:$etime}\r\n\r\nCATEGORY telegraf_broker_status\r\n\r\nTAGLOAD {backward:true}\r\n\r\nSELECT [oid, status]\r\n\r\nFIRST-ONLY {key:[oid]}\r\n\r\nGROUP { timeunit:120s, merge:\"status\" }\r\n\r\nRENAME {src:_rows_, dst:broker_count}"
+        }
+      ],
+      "title": "Broker",
+      "dirname": "v1/02.sys",
+      "widgetType": "COUNT",
+      "requestApi": "LAST",
+      "option": {
+        "field": "broker_count",
+        "legend": {
+          "broker_count": {
+            "label": ""
+          }
+        },
+        "chart": "STATISTIC",
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "metrics": 0
+      },
+      "_key_": "v1/02.sys/server_os_count",
+      "id": "kF-F89-FR",
+      "layout": {
+        "w": 6,
+        "h": 2,
+        "x": 18,
+        "y": 0,
+        "i": "kF-F89-FR",
+        "minW": 4,
+        "minH": 1,
+        "moved": false,
+        "static": false
+      }
+    },
+    {
+      "icon": "agent",
+      "supports": [
+        {
+          "productType": "SMS"
+        }
+      ],
+      "metrics": [
+        {
+          "mql": "TIME-RANGE {recent: 120s, etime:$etime}\r\n\r\nCATEGORY telegraf_bookkeeper_status\r\n\r\nTAGLOAD {backward:true}\r\n\r\nSELECT [oid, status]\r\n\r\nFIRST-ONLY {key:[oid]}\r\n\r\nGROUP { timeunit:120s, merge:\"status\" }\r\n\r\nRENAME {src:_rows_, dst:booker_count}"
+        }
+      ],
+      "title": "Bookies",
+      "dirname": "v1/02.sys",
+      "widgetType": "COUNT",
+      "requestApi": "LAST",
+      "option": {
+        "field": "booker_count",
+        "legend": {
+          "booker_count": {
+            "label": ""
+          }
+        },
+        "chart": "STATISTIC",
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "metrics": 0
+      },
+      "_key_": "v1/02.sys/server_os_count",
+      "id": "HkFzT41Zq4",
+      "layout": {
+        "w": 6,
+        "h": 2,
+        "x": 24,
+        "y": 0,
+        "i": "HkFzT41Zq4",
+        "minW": 4,
+        "minH": 1,
+        "moved": false,
+        "static": false
+      }
+    },
+    {
+      "icon": "agent",
+      "supports": [
+        {
+          "productType": "SMS"
+        }
+      ],
+      "metrics": [
+        {
+          "mql": "TIME-RANGE {recent: 120s, etime:$etime}\r\n\r\nCATEGORY server_base\r\nTAGLOAD {backward:true}\r\nSELECT [oid, cpu_cores]\r\nFIRST-ONLY {key:[oid]}\r\n\r\nGROUP { timeunit:120s, merge:[cpu_cores] } \r\nUPDATE { key: \"cpu_cores\", value: sum }\r\n\r\n"
+        }
+      ],
+      "title": "CPU Cores Total",
+      "dirname": "v1/02.sys",
+      "widgetType": "COUNT",
+      "requestApi": "LAST",
+      "option": {
+        "field": "cpu_cores",
+        "legend": {
+          "cpu_cores": {
+            "label": ""
+          }
+        },
+        "chart": "STATISTIC",
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "metrics": 0
+      },
+      "_key_": "v1/02.sys/server_os_count",
+      "id": "JmtuVhIUP",
+      "layout": {
+        "w": 6,
+        "h": 2,
+        "x": 0,
+        "y": 0,
+        "i": "JmtuVhIUP",
+        "minW": 4,
+        "minH": 1,
+        "moved": false,
+        "static": false
+      }
+    },
+    {
+      "icon": "static-chart",
+      "supports": [
+        {
+          "productType": "SMS"
+        }
+      ],
+      "metrics": [
+        {
+          "mql": "TIME-RANGE {recent: 120s, etime:$etime}\r\n\r\nCATEGORY telegraf_zookeeper_status\r\n\r\nTAGLOAD {backward:true}\r\n\r\nSELECT [oid, status]\r\n\r\nFIRST-ONLY {key:[oid]}\r\n\r\nGROUP { timeunit:120s, merge:\"status\" }\r\n\r\nUPDATE { key: \"status\", value: sum }\r\n\r\nCREATE { key: \"up\", expr: \"100 * status / _rows_\"}"
+        }
+      ],
+      "title": "Zookeeper Up",
+      "dirname": "v1/02.sys",
+      "widgetType": "COUNT",
+      "requestApi": "LAST",
+      "option": {
+        "legend": {
+          "up": {
+            "unit": "P",
+            "label": ""
+          }
+        },
+        "chart": "STATISTIC",
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "metrics": 0
+      },
+      "_key_": "v1/02.sys/server_avg_cpu",
+      "id": "r4tQVHyRm",
+      "layout": {
+        "w": 6,
+        "h": 2,
+        "x": 12,
+        "y": 2,
+        "i": "r4tQVHyRm",
+        "minW": 4,
+        "minH": 1,
+        "moved": false,
+        "static": false
+      }
+    },
+    {
+      "icon": "static-chart",
+      "supports": [
+        {
+          "productType": "SMS"
+        }
+      ],
+      "metrics": [
+        {
+          "mql": "TIME-RANGE {recent: 120s, etime:$etime}\r\n\r\nCATEGORY telegraf_broker_status\r\n\r\nTAGLOAD {backward:true}\r\n\r\nSELECT [oid, status]\r\n\r\nFIRST-ONLY {key:[oid]}\r\n\r\nGROUP { timeunit:120s, merge:\"status\" }\r\n\r\nUPDATE { key: \"status\", value: sum }\r\n\r\nCREATE { key: \"up\", expr: \"100 * status / _rows_\"}"
+        }
+      ],
+      "title": "Broker Up",
+      "dirname": "v1/02.sys",
+      "widgetType": "COUNT",
+      "requestApi": "LAST",
+      "option": {
+        "legend": {
+          "up": {
+            "unit": "P",
+            "label": ""
+          }
+        },
+        "chart": "STATISTIC",
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "metrics": 0
+      },
+      "_key_": "v1/02.sys/server_avg_cpu",
+      "id": "JGU2tyDxE",
+      "layout": {
+        "w": 6,
+        "h": 2,
+        "x": 18,
+        "y": 2,
+        "i": "JGU2tyDxE",
+        "minW": 4,
+        "minH": 1,
+        "moved": false,
+        "static": false
+      }
+    },
+    {
+      "icon": "static-chart",
+      "supports": [
+        {
+          "productType": "SMS"
+        }
+      ],
+      "metrics": [
+        {
+          "mql": "TIME-RANGE {recent: 120s, etime:$etime}\r\n\r\nCATEGORY telegraf_bookkeeper_status\r\n\r\nTAGLOAD {backward:true}\r\n\r\nSELECT [oid, status]\r\n\r\nFIRST-ONLY {key:[oid]}\r\n\r\nGROUP { timeunit:120s, merge:\"status\" }\r\n\r\nUPDATE { key: \"status\", value: sum }\r\n\r\nCREATE { key: \"up\", expr: \"100 * status / _rows_\"}"
+        }
+      ],
+      "title": "Bookies Up",
+      "dirname": "v1/02.sys",
+      "widgetType": "COUNT",
+      "requestApi": "LAST",
+      "option": {
+        "legend": {
+          "up": {
+            "unit": "P",
+            "label": ""
+          }
+        },
+        "chart": "STATISTIC",
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "metrics": 0
+      },
+      "_key_": "v1/02.sys/server_avg_cpu",
+      "id": "oJizyvlXT",
+      "layout": {
+        "w": 6,
+        "h": 2,
+        "x": 24,
+        "y": 2,
+        "i": "oJizyvlXT",
+        "minW": 4,
+        "minH": 1,
+        "moved": false,
+        "static": false
+      }
+    },
+    {
+      "icon": "static-chart",
+      "supports": [
+        {
+          "productType": "SMS"
+        }
+      ],
+      "metrics": [
+        {
+          "mql": " TIME-RANGE {recent: 120s, etime:$etime}\r\n\r\n CATEGORY telegraf_apachepulsar_broker\r\n\r\n TAGLOAD {backward:true}\r\n\r\n SELECT [oid, pulsar_broker_storage_size]\r\n FILTER { key: \"pulsar_broker_storage_size\", exist: true }\r\n FIRST-ONLY {key:oid}\r\n\r\n GROUP { timeunit:120s, merge:\"pulsar_broker_storage_size\" }\r\n\r\n UPDATE { key: \"pulsar_broker_storage_size\", value: sum }\r\n "
+        }
+      ],
+      "title": "Broker Storage Size",
+      "dirname": "v1/02.sys",
+      "widgetType": "COUNT",
+      "requestApi": "LAST",
+      "option": {
+        "legend": {
+          "pulsar_broker_storage_size": {
+            "unit": "byte",
+            "label": ""
+          }
+        },
+        "chart": "STATISTIC",
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "metrics": 0
+      },
+      "_key_": "v1/02.sys/server_avg_cpu",
+      "id": "MwvhvzEFP",
+      "layout": {
+        "w": 9,
+        "h": 4,
+        "x": 30,
+        "y": 0,
+        "i": "MwvhvzEFP",
+        "minW": 4,
+        "minH": 1,
+        "moved": false,
+        "static": false
+      }
+    },
+    {
+      "id": "yoMEVZwfCz",
+      "title": "Messaging Storage",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 14,
+        "h": 4,
+        "x": 0,
+        "y": 4,
+        "i": "yoMEVZwfCz",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_apachepulsar_broker",
+      "option": {
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "chart": "SERIES",
+        "metrics": 0
+      },
+      "metrics": [
+        {
+          "name": "Cluster",
+          "mql": "INJECT timepast\nHEADER { \"pulsar_broker_storage_size$\":\"#\" }\nCATEGORY {\"telegraf_apachepulsar_broker\":6h, \"telegraf_apachepulsar_broker{m5}\":3d, \"telegraf_apachepulsar_broker{h1}\":unlimit } \nTAGLOAD\nINJECT default\nSELECT [ 'pcode', 'time', 'oid', 'pulsar_broker_storage_size', 'cluster' ]\nFILTER { key: \"pulsar_broker_storage_size\", exist: true }\nFILTER { key: \"cluster\", exist: true }\n\nCREATE { key:_id_, expr: \"cluster\" }\nCREATE { key:_name_, expr: \"cluster\" }\nGROUP { timeunit: 10s, merge: ['pulsar_broker_storage_size'], pk: _id_, last: _name_ }\nUPDATE { key: ['pulsar_broker_storage_size'], value: sum }",
+          "param": {
+            "$OBJECT_MERGE_PLACE": "sum"
+          }
+        }
+      ]
+    },
+    {
+      "id": "IipYxWETEw",
+      "title": "Message Rate (msg/s)",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 14,
+        "h": 4,
+        "x": 14,
+        "y": 4,
+        "i": "IipYxWETEw",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_apachepulsar_broker",
+      "option": {
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "chart": "SERIES",
+        "metrics": 0
+      },
+      "metrics": [
+        {
+          "name": "Cluster",
+          "tags": [
+            {
+              "key": "cluster",
+              "title": "Cluster",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "sum",
+              "timeMerge": "avg",
+              "key": "pulsar_broker_rate_in",
+              "title": "Pulsar_broker_rate_in",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "id": "GTiC94GtmQ",
+      "title": "Messaging Backlog",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 14,
+        "h": 4,
+        "x": 0,
+        "y": 8,
+        "i": "GTiC94GtmQ",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_apachepulsar_broker",
+      "option": {
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "chart": "SERIES",
+        "metrics": 0
+      },
+      "metrics": [
+        {
+          "name": "Cluster",
+          "tags": [
+            {
+              "key": "cluster",
+              "title": "Cluster",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_broker_msg_backlog",
+              "title": "Pulsar_broker_msg_backlog",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "id": "z9NCaEcUx1",
+      "title": "Throughput (bytes/s)",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 14,
+        "h": 4,
+        "x": 14,
+        "y": 8,
+        "i": "z9NCaEcUx1",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_apachepulsar_broker",
+      "option": {
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "chart": "SERIES",
+        "metrics": 0
+      },
+      "metrics": [
+        {
+          "name": "Cluster",
+          "tags": [
+            {
+              "key": "cluster",
+              "title": "Cluster",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "sum",
+              "timeMerge": "avg",
+              "key": "pulsar_broker_throughput_in",
+              "title": "In",
+              "unit": "#"
+            },
+            {
+              "key": "pulsar_broker_throughput_out",
+              "title": "Out",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "isMultiProject": false,
+      "icon": "table",
+      "supports": [
+        {
+          "productType": "SMS"
+        }
+      ],
+      "metrics": [
+        {
+          "mql": "TIME-RANGE {duration:120s, etime:$etime}\n\nCATEGORY telegraf_apachepulsar_broker\nTAGLOAD {backward:true}\n\nSELECT [ 'pcode', 'time', 'oid', 'pulsar_msg_backlog', 'topic' ]\nFILTER { key: \"pulsar_msg_backlog\", exist: true }\nFILTER { key: \"topic\", exist: true }\nFIRST-ONLY {key:[pcode, topic]}\nCREATE { key: _id_, expr: \"topic\" }\nGROUP { timeunit:120s, pk:_id_ }\n\nUPDATE { key: \"pulsar_msg_backlog\", value: sum }\n\nORDER {key:[pulsar_msg_backlog, topic], sort: [desc, asc] }\nDELETE [pcode, oid, time]\nFIRST-ONLY {key: _id_ }\nLIMIT 10\n"
+        }
+      ],
+      "title": "Top 10 topics backlog",
+      "dirname": "v1/02.sys",
+      "widgetType": "TABLE",
+      "requestApi": "LAST",
+      "option": {
+        "legend": {
+          "topic": {
+            "unit": "#",
+            "name": "Topic",
+            "column": "topic",
+            "width": 246,
+            "order": 0
+          },
+          "pulsar_msg_backlog": {
+            "unit": "byte",
+            "name": "Backlog",
+            "column": "backlog",
+            "width": 100,
+            "order": 1
+          }
+        },
+        "metrics": 0,
+        "sort": {
+          "backlog": true
+        },
+        "chart": "SERIES",
+        "topn": 10,
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        }
+      },
+      "_key_": "v1/02.sys/server_process_cpu_topn",
+      "id": "06s61Ak7W",
+      "layout": {
+        "w": 20,
+        "h": 8,
+        "x": 28,
+        "y": 4,
+        "i": "06s61Ak7W",
+        "minW": 4,
+        "minH": 1,
+        "moved": false,
+        "static": false
+      }
+    },
+    {
+      "id": "ggTuN5JZ2z",
+      "title": "Replication Backlog",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 14,
+        "h": 4,
+        "x": 0,
+        "y": 12,
+        "i": "ggTuN5JZ2z",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_apachepulsar_broker",
+      "option": {
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "chart": "SERIES",
+        "metrics": 0
+      },
+      "metrics": [
+        {
+          "name": "Remote_cluster",
+          "tags": [
+            {
+              "key": "remote_cluster",
+              "title": "Remote_cluster",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "sum",
+              "timeMerge": "avg",
+              "key": "pulsar_replication_backlog",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "id": "sSt31zOKKt",
+      "title": "Replication Throughput",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 14,
+        "h": 4,
+        "x": 14,
+        "y": 12,
+        "i": "sSt31zOKKt",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_apachepulsar_broker",
+      "option": {
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "chart": "SERIES",
+        "metrics": 0
+      },
+      "metrics": [
+        {
+          "name": "Cluster",
+          "tags": [
+            {
+              "key": "cluster",
+              "title": "Cluster",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "sum",
+              "timeMerge": "avg",
+              "key": "pulsar_replication_throughput_in",
+              "unit": "#",
+              "title": "In"
+            },
+            {
+              "objectMerge": "sum",
+              "timeMerge": "avg",
+              "key": "pulsar_replication_throughput_out",
+              "title": "Out",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "id": "79LI4w29gb",
+      "title": "Replication Rate",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 14,
+        "h": 4,
+        "x": 0,
+        "y": 16,
+        "i": "79LI4w29gb",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_apachepulsar_broker",
+      "option": {
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "chart": "SERIES",
+        "metrics": 0
+      },
+      "metrics": [
+        {
+          "name": "Cluster,Topic",
+          "mql": "INJECT timepast\nHEADER { \"pulsar_replication_rate_in$\":\"#\", \"pulsar_replication_rate_out$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_apachepulsar_broker\":6h, \"telegraf_apachepulsar_broker{m5}\":3d, \"telegraf_apachepulsar_broker{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['pulsar_replication_rate_in','pulsar_replication_rate_out'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'pulsar_replication_rate_in', 'pulsar_replication_rate_out', 'cluster', 'topic' ]\nFILTER { key: \"pulsar_replication_rate_in\", exist: true }\nFILTER { key: \"pulsar_replication_rate_out\", exist: true }\nFILTER { key: \"cluster\", exist: true }\nFILTER { key: \"topic\", exist: true }\n\nCREATE { key:_id_, expr: \"pcode+'_'+cluster+'_'+topic\" }\nCREATE { key:_name_, expr: \"cluster+' / '+topic\" }\nGROUP { timeunit: 10s, merge: ['pulsar_replication_rate_in','pulsar_replication_rate_out'], pk: _id_, last: _name_ }\nUPDATE { key: ['pulsar_replication_rate_in','pulsar_replication_rate_out'], value: avg }"
+        }
+      ]
+    },
+    {
+      "id": "XwM65La0bZ",
+      "title": "Subscription Unacked Messages",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 14,
+        "h": 4,
+        "x": 14,
+        "y": 16,
+        "i": "XwM65La0bZ",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_apachepulsar_broker",
+      "option": {
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "chart": "SERIES",
+        "metrics": 0
+      },
+      "metrics": [
+        {
+          "name": "Cluster,Topic",
+          "tags": [
+            {
+              "key": "cluster",
+              "title": "Cluster",
+              "unit": "#"
+            },
+            {
+              "key": "topic",
+              "title": "Topic",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "pulsar_subscription_unacked_messages",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    }
+  ],
+  "extra": {
+    "layout": {
+      "type": "FIXED",
+      "monitor": {
+        "x": 3,
+        "y": 3
+      }
+    },
+    "option": {
+      "stime": 1722768532134,
+      "etime": 1722768832134,
+      "timeAction": "LIVE_5MIN"
+    }
+  }
+}
