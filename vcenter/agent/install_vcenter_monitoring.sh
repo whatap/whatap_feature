@@ -84,7 +84,7 @@ EOF
 
 # Download Telegraf binary and Jolokia JAR
 download_dependencies() {
-    echo "Downloading Telegraf binary and Jolokia JAR..."
+    echo "Downloading Telegraf binary..."
 
     # Determine OS architecture
     ARCH=$(uname -m)

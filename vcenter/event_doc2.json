@@ -1,0 +1,14 @@
+[
+  {
+    "eventMessage": "HOST CPU ${usage_average} > 70 %",
+    "eventTitle": "HOST CPU > 70 %",
+    "repeatDuration": 0,
+    "select": "",
+    "rule": "usage_average > 70",
+    "silentSec": 300,
+    "category": "telegraf_vsphere_host_cpu",
+    "enabled": false,
+    "repeatCount": 0,
+    "stateful": false
+  }
+]

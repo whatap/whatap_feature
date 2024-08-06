@@ -1,5 +1,5 @@
 {
-  "name": "vSphere Summary",
+  "name": "VMware Summary",
   "widgets": [
     {
       "id": "QHMkn6Y51",
@@ -824,23 +824,33 @@
         "legend": {
           "vcenter_count": {
             "label": "vCenter",
-            "type": ""
+            "type": "",
+            "hide": false,
+            "order": 0
           },
           "cluster_count": {
             "label": "Cluster",
-            "type": ""
+            "type": "",
+            "hide": false,
+            "order": 1
           },
           "esxhost_count": {
             "label": "ESXHost",
-            "type": ""
+            "type": "",
+            "hide": false,
+            "order": 2
           },
           "vm_count": {
             "label": "VM",
-            "type": ""
+            "type": "",
+            "hide": false,
+            "order": 3
           },
           "ds_count": {
             "label": "DataStore",
-            "type": ""
+            "type": "",
+            "hide": false,
+            "order": 4
           }
         },
         "chart": "STATISTIC",

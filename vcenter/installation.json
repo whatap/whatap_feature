@@ -10,8 +10,8 @@
 			},
 			{
 				"type": "support-version",
-				"title": "Kafka supported versions",
-				"version": "Apache Kafka 3.x or higher"
+				"title": "VMware supported versions",
+				"version": "VMware 6.x, 7.x"
 			},
 			{
 				"type": "support-version",
@@ -36,8 +36,8 @@
 				"title": "Generate installation script",
 				"boxes": [
 					{
-						"prepend": "Run the command below to create a script on the server where KAFKA is installed.",
-						"data": "curl http://repo.whatap.io/telegraf/feature/kafka/install_kafka_monitoring.sh -o install_kafka_monitoring.sh",
+						"prepend": "Run the command below to create a script on the server where VMWARE is installed.",
+						"data": "curl http://repo.whatap.io/telegraf/feature/vmware/install_vcenter_monitoring.sh -o install_vcenter_monitoring.sh",
 						"option": "copy"
 					}
 				]
