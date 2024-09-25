@@ -110,5 +110,61 @@
 				]
 			}
 		]
+	},
+	"ja": {
+		"title": "設置前の注意事項",
+		"icon": "aerospike",
+		"supports": [
+			{
+				"type": "support-version",
+				"title": "Ubuntuサポートバージョン",
+				"version": "12.04以上"
+			},
+			{
+				"type": "support-version",
+				"title": "Aerospikeサポートバージョン",
+				"version": "Aerospike 5.x"
+			},
+			{
+				"type": "support-version",
+				"title": "OS対応バージョン",
+				"version": "Redhat6 or equivalent(CentOS, Rocky Linux, Amazon Linux)"
+			},
+			{
+				"type": "support-version",
+				"title": "オペレーティングシステムのアーキテクチャ",
+				"version": "Amd64/X86_64, Arm64/Aarch64 "
+			},
+			{
+				"type": "whatap-proxy"
+			}
+		],
+		"step": [
+			{
+				"title": "アクセスキーの確認",
+				"description": "アクセスキーは、WhaTapサービスを有効にするための一意のIDです。\n{get_license_feature}"
+			},
+			{
+				"title": "インストールスクリプトの生成",
+				"boxes": [
+					{
+						"prepend": "Aerospikeがインストールされているサーバーにスクリプトを生成するには、以下のコマンドを実行してください。",
+						"data": "curl http://repo.whatap.io/telegraf/feature/aerospike/install_aerospike_monitoring.sh -o install_aerospike_monitoring.sh",
+						"option": "copy"
+					}
+				]
+			},
+			{
+				"title": "モニタリングを始める",
+				"description": "WhatapサーバーモニタリングエージェントとTelegrafサイドカーをインストールするには、以下のコマンドを実行してください。",
+				"boxes": [
+					{
+						"prepend": "以下のコマンドを実行してください。",
+						"data": "chmod +x install_aerospike_monitoring.sh\nsudo ./install_aerospike_monitoring.sh \"{license_key}\" \"{proxy_server}\"",
+						"option": "copy"
+					}
+				]
+			}
+		]
 	}
 }

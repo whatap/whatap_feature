@@ -1,0 +1,2036 @@
+{
+  "name": "vHost Performance Overview",
+  "widgets": [
+    {
+      "icon": "note",
+      "supports": [],
+      "title": "리치 텍스트",
+      "dirname": "v1/99.etc",
+      "widgetType": "RICH_TEXT",
+      "requestApi": "NONE",
+      "_key_": "v1/99.etc/rich_text",
+      "id": "2PsmvDihFx",
+      "layout": {
+        "w": 60,
+        "h": 1,
+        "x": 0,
+        "y": 0,
+        "i": "2PsmvDihFx",
+        "moved": false,
+        "static": false
+      },
+      "option": {
+        "markdown": "[vHost] CPU/MEM",
+        "panel": {
+          "backgroundColor": "#FFE73E",
+          "header": {
+            "display": ""
+          }
+        }
+      }
+    },
+    {
+      "id": "Y4IqlLQ6fA",
+      "title": "CPU-TotalUsage(%)",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 20,
+        "h": 4,
+        "x": 0,
+        "y": 1,
+        "i": "Y4IqlLQ6fA",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_vsphere_host_cpu",
+      "option": {
+        "metrics": 0,
+        "chart": "TON_LINE",
+        "chartAside": {
+          "chart": "unset"
+        },
+        "panel": {
+          "header": {
+            "fontSize": 13,
+            "display": ""
+          }
+        },
+        "showLegend": true,
+        "showPlotMaxValue": true
+      },
+      "metrics": [
+        {
+          "name": "Esxhostname,Cpu",
+          "mql": "INJECT timepast\nHEADER { \"usage_average$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_host_cpu\":6h, \"telegraf_vsphere_host_cpu{m5}\":3d, \"telegraf_vsphere_host_cpu{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['usage_average'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'usage_average', 'esxhostname', 'cpu' ]\nFILTER { key: \"usage_average\", exist: true }\nFILTER { key: \"esxhostname\", exist: true }\nFILTER { key: \"cpu\", exist: true }\nFILTER { key: \"cpu\", value: \"instance-total\" }\n\nCREATE { key:_id_, expr: \"pcode+'_'+esxhostname+'_'+cpu\" }\nCREATE { key:_name_, expr: \"esxhostname+' / '+cpu\" }\nGROUP { timeunit: 5s, merge: ['usage_average'], pk: _id_, last: _name_ }\nUPDATE { key: ['usage_average'], value: $OBJECT_MERGE_PLACE }"
+        },
+        {
+          "name": "Dcname",
+          "tags": [
+            {
+              "key": "dcname",
+              "title": "Dcname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usage_average",
+              "title": "Usage_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Esxhostname",
+          "tags": [
+            {
+              "key": "esxhostname",
+              "title": "Esxhostname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usage_average",
+              "title": "Usage_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Moid",
+          "tags": [
+            {
+              "key": "moid",
+              "title": "Moid",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usage_average",
+              "title": "Usage_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Oname",
+          "tags": [
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usage_average",
+              "title": "Usage_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usage_average",
+              "title": "Usage_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Source",
+          "tags": [
+            {
+              "key": "source",
+              "title": "Source",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usage_average",
+              "title": "Usage_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Vcenter",
+          "tags": [
+            {
+              "key": "vcenter",
+              "title": "Vcenter",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usage_average",
+              "title": "Usage_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "id": "0E-yZqiP0b",
+      "title": "CPU-TotalUsage(MHz)",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 21,
+        "h": 4,
+        "x": 20,
+        "y": 1,
+        "i": "0E-yZqiP0b",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_vsphere_host_cpu",
+      "option": {
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "metrics": 0,
+        "chart": "TON_LINE",
+        "chartAside": {
+          "chart": "unset"
+        },
+        "showLegend": true
+      },
+      "metrics": [
+        {
+          "name": "Esxhostname,Cpu",
+          "mql": "INJECT timepast\nHEADER { \"usagemhz_average$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_host_cpu\":6h, \"telegraf_vsphere_host_cpu{m5}\":3d, \"telegraf_vsphere_host_cpu{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['usagemhz_average'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'usagemhz_average', 'esxhostname', 'cpu' ]\nFILTER { key: \"usagemhz_average\", exist: true }\nFILTER { key: \"esxhostname\", exist: true }\nFILTER { key: \"cpu\", exist: true }\nFILTER { key: \"cpu\", value: \"instance-total\" }\n\nCREATE { key:_id_, expr: \"pcode+'_'+esxhostname+'_'+cpu\" }\nCREATE { key:_name_, expr: \"esxhostname+' / '+cpu\" }\nGROUP { timeunit: 5s, merge: ['usagemhz_average'], pk: _id_, last: _name_ }\nUPDATE { key: ['usagemhz_average'], value: $OBJECT_MERGE_PLACE }"
+        },
+        {
+          "name": "Dcname",
+          "tags": [
+            {
+              "key": "dcname",
+              "title": "Dcname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usagemhz_average",
+              "title": "Usagemhz_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Esxhostname",
+          "tags": [
+            {
+              "key": "esxhostname",
+              "title": "Esxhostname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usagemhz_average",
+              "title": "Usagemhz_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Moid",
+          "tags": [
+            {
+              "key": "moid",
+              "title": "Moid",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usagemhz_average",
+              "title": "Usagemhz_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Oname",
+          "tags": [
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usagemhz_average",
+              "title": "Usagemhz_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usagemhz_average",
+              "title": "Usagemhz_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Source",
+          "tags": [
+            {
+              "key": "source",
+              "title": "Source",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usagemhz_average",
+              "title": "Usagemhz_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Vcenter",
+          "tags": [
+            {
+              "key": "vcenter",
+              "title": "Vcenter",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usagemhz_average",
+              "title": "Usagemhz_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "id": "s88DcPJ0ls",
+      "title": "CPU-Readay(%)",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 19,
+        "h": 4,
+        "x": 41,
+        "y": 1,
+        "i": "s88DcPJ0ls",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_vsphere_host_cpu",
+      "option": {
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "chart": "TON_LINE",
+        "chartAside": {
+          "chart": "unset"
+        },
+        "metrics": 0,
+        "horizontalLines": [
+          {
+            "color": "#F34747",
+            "value": 20,
+            "title": ""
+          }
+        ],
+        "yAxis": null,
+        "showLegend": true
+      },
+      "metrics": [
+        {
+          "name": "Esxhostname,Cpu",
+          "mql": "INJECT timepast\nHEADER { \"readiness_average$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_host_cpu\":6h, \"telegraf_vsphere_host_cpu{m5}\":3d, \"telegraf_vsphere_host_cpu{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['readiness_average'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'readiness_average', 'esxhostname', 'cpu' ]\nFILTER { key: \"readiness_average\", exist: true }\nFILTER { key: \"esxhostname\", exist: true }\nFILTER { key: \"cpu\", exist: true }\nFILTER { key: \"cpu\", value: \"instance-total\" }\n\nCREATE { key:_id_, expr: \"pcode+'_'+esxhostname+'_'+cpu\" }\nCREATE { key:_name_, expr: \"esxhostname+' / '+cpu\" }\nGROUP { timeunit: 5s, merge: ['readiness_average'], pk: _id_, last: _name_ }\nUPDATE { key: ['readiness_average'], value: $OBJECT_MERGE_PLACE }"
+        },
+        {
+          "name": "Dcname",
+          "tags": [
+            {
+              "key": "dcname",
+              "title": "Dcname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "readiness_average",
+              "title": "Readiness_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Esxhostname",
+          "tags": [
+            {
+              "key": "esxhostname",
+              "title": "Esxhostname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "readiness_average",
+              "title": "Readiness_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Moid",
+          "tags": [
+            {
+              "key": "moid",
+              "title": "Moid",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "readiness_average",
+              "title": "Readiness_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Oname",
+          "tags": [
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "readiness_average",
+              "title": "Readiness_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "readiness_average",
+              "title": "Readiness_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Source",
+          "tags": [
+            {
+              "key": "source",
+              "title": "Source",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "readiness_average",
+              "title": "Readiness_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Vcenter",
+          "tags": [
+            {
+              "key": "vcenter",
+              "title": "Vcenter",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "readiness_average",
+              "title": "Readiness_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "id": "eHAAZy9vVh",
+      "title": "MEM-Usage(%)",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 15,
+        "h": 4,
+        "x": 0,
+        "y": 5,
+        "i": "eHAAZy9vVh",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_vsphere_host_mem",
+      "option": {
+        "metrics": 1,
+        "chart": "TON_LINE",
+        "chartAside": {
+          "chart": "unset"
+        },
+        "panel": {
+          "header": {
+            "display": "",
+            "fontSize": 13
+          }
+        },
+        "showLegend": true
+      },
+      "metrics": [
+        {
+          "name": "Dcname",
+          "tags": [
+            {
+              "key": "dcname",
+              "title": "Dcname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usage_average",
+              "title": "Usage_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Esxhostname",
+          "tags": [
+            {
+              "key": "esxhostname",
+              "title": "Esxhostname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usage_average",
+              "title": "Usage_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Moid",
+          "tags": [
+            {
+              "key": "moid",
+              "title": "Moid",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usage_average",
+              "title": "Usage_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Oname",
+          "tags": [
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usage_average",
+              "title": "Usage_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usage_average",
+              "title": "Usage_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Source",
+          "tags": [
+            {
+              "key": "source",
+              "title": "Source",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usage_average",
+              "title": "Usage_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Vcenter",
+          "tags": [
+            {
+              "key": "vcenter",
+              "title": "Vcenter",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usage_average",
+              "title": "Usage_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "id": "0hEDrt3WAS",
+      "title": "MEM-Vmmemctl(KB)",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 15,
+        "h": 4,
+        "x": 45,
+        "y": 5,
+        "i": "0hEDrt3WAS",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_vsphere_host_mem",
+      "option": {
+        "metrics": 1,
+        "chart": "TON_LINE",
+        "chartAside": {
+          "chart": "unset"
+        },
+        "panel": {
+          "header": {
+            "display": "",
+            "fontSize": 13
+          }
+        },
+        "showLegend": true
+      },
+      "metrics": [
+        {
+          "name": "Dcname",
+          "tags": [
+            {
+              "key": "dcname",
+              "title": "Dcname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "vmmemctl_average",
+              "title": "Vmmemctl_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Esxhostname",
+          "tags": [
+            {
+              "key": "esxhostname",
+              "title": "Esxhostname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "vmmemctl_average",
+              "title": "Vmmemctl_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Moid",
+          "tags": [
+            {
+              "key": "moid",
+              "title": "Moid",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "vmmemctl_average",
+              "title": "Vmmemctl_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Oname",
+          "tags": [
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "vmmemctl_average",
+              "title": "Vmmemctl_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "vmmemctl_average",
+              "title": "Vmmemctl_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Source",
+          "tags": [
+            {
+              "key": "source",
+              "title": "Source",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "vmmemctl_average",
+              "title": "Vmmemctl_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Vcenter",
+          "tags": [
+            {
+              "key": "vcenter",
+              "title": "Vcenter",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "vmmemctl_average",
+              "title": "Vmmemctl_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "id": "uj8hpnfwLU",
+      "title": "MEM-Active(KB)",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 15,
+        "h": 4,
+        "x": 30,
+        "y": 5,
+        "i": "uj8hpnfwLU",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_vsphere_host_mem",
+      "option": {
+        "metrics": 1,
+        "chart": "TON_LINE",
+        "chartAside": {
+          "chart": "unset"
+        },
+        "panel": {
+          "header": {
+            "display": "",
+            "fontSize": 13
+          }
+        },
+        "showLegend": true
+      },
+      "metrics": [
+        {
+          "name": "Dcname",
+          "tags": [
+            {
+              "key": "dcname",
+              "title": "Dcname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "active_average",
+              "title": "Active_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Esxhostname",
+          "tags": [
+            {
+              "key": "esxhostname",
+              "title": "Esxhostname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "active_average",
+              "title": "Active_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Moid",
+          "tags": [
+            {
+              "key": "moid",
+              "title": "Moid",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "active_average",
+              "title": "Active_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Oname",
+          "tags": [
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "active_average",
+              "title": "Active_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "active_average",
+              "title": "Active_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Source",
+          "tags": [
+            {
+              "key": "source",
+              "title": "Source",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "active_average",
+              "title": "Active_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Vcenter",
+          "tags": [
+            {
+              "key": "vcenter",
+              "title": "Vcenter",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "active_average",
+              "title": "Active_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "id": "4ZS5UOkcvq",
+      "title": "MEM-Granted(KB)",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 15,
+        "h": 4,
+        "x": 15,
+        "y": 5,
+        "i": "4ZS5UOkcvq",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_vsphere_host_mem",
+      "option": {
+        "metrics": 1,
+        "chart": "TON_LINE",
+        "chartAside": {
+          "chart": "unset"
+        },
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        },
+        "showLegend": true
+      },
+      "metrics": [
+        {
+          "name": "Dcname",
+          "tags": [
+            {
+              "key": "dcname",
+              "title": "Dcname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "granted_average",
+              "title": "Granted_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Esxhostname",
+          "tags": [
+            {
+              "key": "esxhostname",
+              "title": "Esxhostname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "granted_average",
+              "title": "Granted_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Moid",
+          "tags": [
+            {
+              "key": "moid",
+              "title": "Moid",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "granted_average",
+              "title": "Granted_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Oname",
+          "tags": [
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "granted_average",
+              "title": "Granted_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "granted_average",
+              "title": "Granted_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Source",
+          "tags": [
+            {
+              "key": "source",
+              "title": "Source",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "granted_average",
+              "title": "Granted_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Vcenter",
+          "tags": [
+            {
+              "key": "vcenter",
+              "title": "Vcenter",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "granted_average",
+              "title": "Granted_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "id": "D5UXF1ui8X",
+      "title": "NET-Total(KBps) : RX+TX",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 20,
+        "h": 4,
+        "x": 0,
+        "y": 10,
+        "i": "D5UXF1ui8X",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_vsphere_host_net",
+      "option": {
+        "panel": {
+          "header": {
+            "fontSize": 13,
+            "display": ""
+          }
+        },
+        "metrics": 0,
+        "chart": "TON_LINE",
+        "chartAside": {
+          "chart": "unset"
+        },
+        "showLegend": true
+      },
+      "metrics": [
+        {
+          "name": "Esxhostname,Interface",
+          "mql": "INJECT timepast\nHEADER { \"usage_average$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_host_net\":6h, \"telegraf_vsphere_host_net{m5}\":3d, \"telegraf_vsphere_host_net{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['usage_average'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'usage_average', 'esxhostname', 'interface' ]\nFILTER { key: \"usage_average\", exist: true }\nFILTER { key: \"esxhostname\", exist: true }\nFILTER { key: \"interface\", exist: true }\nFILTER { key: \"interface\", value: \"instance-total\" }\n\nCREATE { key:_id_, expr: \"pcode+'_'+esxhostname+'_'+interface\" }\nCREATE { key:_name_, expr: \"esxhostname+' / '+interface\" }\nGROUP { timeunit: 5s, merge: ['usage_average'], pk: _id_, last: _name_ }\nUPDATE { key: ['usage_average'], value: $OBJECT_MERGE_PLACE }"
+        },
+        {
+          "name": "Esxhostname",
+          "tags": [
+            {
+              "key": "esxhostname",
+              "title": "Esxhostname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usage_average",
+              "title": "Usage_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Interface",
+          "tags": [
+            {
+              "key": "interface",
+              "title": "Interface",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usage_average",
+              "title": "Usage_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Moid",
+          "tags": [
+            {
+              "key": "moid",
+              "title": "Moid",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usage_average",
+              "title": "Usage_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Oname",
+          "tags": [
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usage_average",
+              "title": "Usage_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usage_average",
+              "title": "Usage_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Source",
+          "tags": [
+            {
+              "key": "source",
+              "title": "Source",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usage_average",
+              "title": "Usage_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Vcenter",
+          "tags": [
+            {
+              "key": "vcenter",
+              "title": "Vcenter",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usage_average",
+              "title": "Usage_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "icon": "note",
+      "supports": [],
+      "title": "리치 텍스트",
+      "dirname": "v1/99.etc",
+      "widgetType": "RICH_TEXT",
+      "requestApi": "NONE",
+      "_key_": "v1/99.etc/rich_text",
+      "id": "AhXx0tzjJ",
+      "layout": {
+        "w": 40,
+        "h": 1,
+        "x": 0,
+        "y": 9,
+        "i": "AhXx0tzjJ",
+        "moved": false,
+        "static": false
+      },
+      "option": {
+        "markdown": "[vHost] NET Rx+Tx / Datastore R/W Total",
+        "panel": {
+          "backgroundColor": "#C0CA33",
+          "header": {
+            "display": ""
+          }
+        }
+      }
+    },
+    {
+      "icon": "note",
+      "supports": [],
+      "title": "리치 텍스트",
+      "dirname": "v1/99.etc",
+      "widgetType": "RICH_TEXT",
+      "requestApi": "NONE",
+      "_key_": "v1/99.etc/rich_text",
+      "id": "VewiN5ues",
+      "layout": {
+        "w": 20,
+        "h": 1,
+        "x": 40,
+        "y": 9,
+        "i": "VewiN5ues",
+        "moved": false,
+        "static": false
+      },
+      "option": {
+        "markdown": "[vHost] Running VM(s)",
+        "panel": {
+          "backgroundColor": "#DCEFFF",
+          "header": {
+            "display": ""
+          }
+        }
+      }
+    },
+    {
+      "id": "mSLFM9rV-c",
+      "title": "Running VM(s)",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 20,
+        "h": 4,
+        "x": 40,
+        "y": 10,
+        "i": "mSLFM9rV-c",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_vsphere_vm_cpu",
+      "option": {
+        "metrics": 0,
+        "panel": {
+          "header": {
+            "fontSize": 13,
+            "display": ""
+          }
+        },
+        "chart": "TON_LINE",
+        "chartAside": {
+          "chart": "unset"
+        },
+        "showLegend": true
+      },
+      "metrics": [
+        {
+          "name": "Esxhostname",
+          "mql": "INJECT timepast\nHEADER { \"_rows_$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_vm_cpu\":6h, \"telegraf_vsphere_vm_cpu{m5}\":3d, \"telegraf_vsphere_vm_cpu{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['usage_average'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'usage_average', 'esxhostname' ]\nFILTER { key: \"usage_average\", exist: true }\nFILTER { key: \"esxhostname\", exist: true }\n\nCREATE { key:_id_, expr: \"pcode+'_'+esxhostname\" }\nCREATE { key:_name_, expr: \"esxhostname\" }\nGROUP { timeunit: 5s, pk: _id_, last: _name_ }"
+        },
+        {
+          "name": "Dcname",
+          "tags": [
+            {
+              "key": "dcname",
+              "title": "Dcname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usage_average",
+              "title": "Usage_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Esxhostname",
+          "tags": [
+            {
+              "key": "esxhostname",
+              "title": "Esxhostname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usage_average",
+              "title": "Usage_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Guest",
+          "tags": [
+            {
+              "key": "guest",
+              "title": "Guest",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usage_average",
+              "title": "Usage_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Guesthostname",
+          "tags": [
+            {
+              "key": "guesthostname",
+              "title": "Guesthostname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usage_average",
+              "title": "Usage_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Moid",
+          "tags": [
+            {
+              "key": "moid",
+              "title": "Moid",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usage_average",
+              "title": "Usage_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Oname",
+          "tags": [
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usage_average",
+              "title": "Usage_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usage_average",
+              "title": "Usage_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Rpname",
+          "tags": [
+            {
+              "key": "rpname",
+              "title": "Rpname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usage_average",
+              "title": "Usage_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Source",
+          "tags": [
+            {
+              "key": "source",
+              "title": "Source",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usage_average",
+              "title": "Usage_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Uuid",
+          "tags": [
+            {
+              "key": "uuid",
+              "title": "Uuid",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usage_average",
+              "title": "Usage_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Vcenter",
+          "tags": [
+            {
+              "key": "vcenter",
+              "title": "Vcenter",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usage_average",
+              "title": "Usage_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Vmname",
+          "tags": [
+            {
+              "key": "vmname",
+              "title": "Vmname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "usage_average",
+              "title": "Usage_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    },
+    {
+      "id": "W2aML8569W",
+      "title": "Datastore R/W Total(KBps)",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "w": 20,
+        "h": 4,
+        "x": 20,
+        "y": 10,
+        "i": "W2aML8569W",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_vsphere_host_datastore",
+      "option": {
+        "metrics": 0,
+        "chart": "TON_LINE",
+        "showLegend": true,
+        "panel": {
+          "header": {
+            "fontSize": 13,
+            "display": ""
+          }
+        }
+      },
+      "metrics": [
+        {
+          "name": "Dcname,Dsname",
+          "mql": "INJECT timepast\nHEADER { \"RWTotal$\":\"#\"  }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_host_datastore\":6h, \"telegraf_vsphere_host_datastore{m5}\":3d, \"telegraf_vsphere_host_datastore{h1}\":unlimit } \nTAGLOAD\nINJECT default\n\nUPDATE { key: ['rwtotal','read_average','write_average'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'read_average', 'write_average', 'dcname', 'dsname' ]\nFILTER { key: \"read_average\", exist: true }\nFILTER { key: \"write_average\", exist: true }\nFILTER { key: \"dcname\", exist: true }\nFILTER { key: \"dsname\", exist: true }\n\nCREATE { key:_id_, expr: \"pcode+'_'+dcname+'_'+dsname\" }\nCREATE { key:_name_, expr: \"dcname+' / '+dsname\" }\nCREATE { key:RWTotal, expr: \"read_average + write_average\"}\n\nGROUP { timeunit: 5s, merge: ['read_average','write_average','RWTotal'], pk: _id_, last: _name_ }\nUPDATE { key: ['RWTotal','_rwtotal_','read_average','write_average'], value: $OBJECT_MERGE_PLACE }"
+        },
+        {
+          "name": "Dsname",
+          "tags": [
+            {
+              "key": "dsname",
+              "title": "Dsname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "read_average",
+              "title": "Read_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Esxhostname",
+          "tags": [
+            {
+              "key": "esxhostname",
+              "title": "Esxhostname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "read_average",
+              "title": "Read_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Lun",
+          "tags": [
+            {
+              "key": "lun",
+              "title": "Lun",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "read_average",
+              "title": "Read_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Moid",
+          "tags": [
+            {
+              "key": "moid",
+              "title": "Moid",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "read_average",
+              "title": "Read_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Oname",
+          "tags": [
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "read_average",
+              "title": "Read_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "read_average",
+              "title": "Read_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Source",
+          "tags": [
+            {
+              "key": "source",
+              "title": "Source",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "read_average",
+              "title": "Read_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        },
+        {
+          "name": "Vcenter",
+          "tags": [
+            {
+              "key": "vcenter",
+              "title": "Vcenter",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "read_average",
+              "title": "Read_average",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated"
+        }
+      ]
+    }
+  ],
+  "extra": {
+    "layout": {
+      "type": "FIXED",
+      "monitor": {
+        "x": 3,
+        "y": 3
+      }
+    },
+    "option": {}
+  }
+}
