@@ -208,7 +208,7 @@
       ],
       "metrics": [
         {
-          "mql": "TIME-RANGE {duration:60s, etime:$etime}\nCATEGORY telegraf_kafka_controller\nTAGLOAD {backward:true}\nSELECT [ 'pcode','oid', 'time', 'oid', 'Value', 'type', 'name' ]\nFILTER { key: \"Value\", exist: true }\nFILTER { key: \"type\", value: \"KafkaController\" }\nFILTER { key: \"name\", value: \"ActiveControllerCount\" }\nFIRST-ONLY {key:\"oid\"}\n\nGROUP {timeunit:60s, pk:pcode, merge:[Value] }\nUPDATE { key:[Value], value:sum }\n\n"
+          "mql": "TIME-RANGE {duration:60s, etime:$etime}\nCATEGORY telegraf_kafka_controller\nTAGLOAD {backward:true}\nSELECT [ 'pcode','oid', 'time', 'oid', 'Value', 'type', 'name','jolokia_agent_url' ]\nFILTER { key: \"Value\", exist: true }\nFILTER { key: \"type\", value: \"KafkaController\" }\nFILTER { key: \"name\", value: \"ActiveControllerCount\" }\nFIRST-ONLY {key:[\"oid\",\"jolokia_agent_url\"]}\n\nGROUP {timeunit:60s, pk:pcode, merge:[Value] }\nUPDATE { key:[Value], value:sum }\n\n"
         }
       ],
       "title": "Active Controller Count",
@@ -253,7 +253,7 @@
       ],
       "metrics": [
         {
-          "mql": "TIME-RANGE {recent: 60s, etime: $etime}\r\n\r\nCATEGORY telegraf_kafka_server\r\nTAGLOAD {backward:true}\r\nSELECT [ 'pcode', 'oid', 'time', 'oid', 'Value', 'type', 'name' ]\r\nFILTER { key: \"Value\", exist: true }\r\nFILTER { key: \"type\", value: \"ReplicaManager\" }\r\nFILTER { key: \"name\", value: \"LeaderCount\" }\r\nFIRST-ONLY { key: \"oid\"}\r\nGROUP { timeunit:60s, pk:pcode, merge:[Value] }\r\nUPDATE { key:[Value], value:count }\r\n\r\n"
+          "mql": "TIME-RANGE {recent: 60s, etime: $etime}\r\n\r\nCATEGORY telegraf_kafka_server\r\nTAGLOAD {backward:true}\r\nSELECT [ 'pcode', 'oid', 'time', 'oid', 'Value', 'type', 'name', 'jolokia_agent_url' ]\r\nFILTER { key: \"Value\", exist: true }\r\nFILTER { key: \"type\", value: \"ReplicaManager\" }\r\nFILTER { key: \"name\", value: \"LeaderCount\" }\r\nFIRST-ONLY { key: [\"oid\",\"jolokia_agent_url\"]}\r\nGROUP { timeunit:60s, pk:pcode, merge:[Value] }\r\nUPDATE { key:[Value], value:count }\r\n\r\n"
         }
       ],
       "title": "Brokers Online",
@@ -297,7 +297,7 @@
       ],
       "metrics": [
         {
-          "mql": "TIME-RANGE {recent: 60s, etime: $etime}\r\n\r\nCATEGORY telegraf_kafka_server\r\nTAGLOAD {backward:true}\r\nSELECT [ 'pcode', 'oid', 'time', 'oid', 'Value', 'type', 'name' ]\r\nFILTER { key: \"Value\", exist: true }\r\nFILTER { key: \"type\", value: \"ReplicaManager\" }\r\nFILTER { key: \"name\", value: \"PartitionCount\" }\r\nFIRST-ONLY { key: \"oid\" }\r\nGROUP {  timeunit: 60s, pk:pcode, merge:[Value] }\r\nUPDATE { key:[Value], value:sum }\r\n"
+          "mql": "TIME-RANGE {recent: 60s, etime: $etime}\r\n\r\nCATEGORY telegraf_kafka_server\r\nTAGLOAD {backward:true}\r\nSELECT [ 'pcode', 'oid', 'time', 'oid', 'Value', 'type', 'name','jolokia_agent_url' ]\r\nFILTER { key: \"Value\", exist: true }\r\nFILTER { key: \"type\", value: \"ReplicaManager\" }\r\nFILTER { key: \"name\", value: \"PartitionCount\" }\r\nFIRST-ONLY { key: [\"oid\",\"jolokia_agent_url\"] }\r\nGROUP {  timeunit: 60s, pk:pcode, merge:[Value] }\r\nUPDATE { key:[Value], value:sum }\r\n"
         }
       ],
       "title": "Online Partitions",
@@ -342,7 +342,7 @@
       ],
       "metrics": [
         {
-          "mql": "TIME-RANGE {recent: 60s, etime: $etime}\n\nCATEGORY telegraf_kafka_controller\nTAGLOAD {backward:true}\nSELECT [ 'pcode', 'time', 'oid', 'Value', 'type', 'name' ]\nFILTER { key: \"Value\", exist: true }\nFILTER { key: \"type\", value: \"KafkaController\" }\nFILTER { key: \"name\", value: \"PreferredReplicaImbalanceCount\" }\nFIRST-ONLY { key: \"oid\"}\nGROUP { timeunit:60s, pk:pcode, merge:[Value] }\nUPDATE { key:[Value], value:sum }\n"
+          "mql": "TIME-RANGE {recent: 60s, etime: $etime}\n\nCATEGORY telegraf_kafka_controller\nTAGLOAD {backward:true}\nSELECT [ 'pcode', 'time', 'oid', 'Value', 'type', 'name', 'jolokia_agent_url' ]\nFILTER { key: \"Value\", exist: true }\nFILTER { key: \"type\", value: \"KafkaController\" }\nFILTER { key: \"name\", value: \"PreferredReplicaImbalanceCount\" }\nFIRST-ONLY { key: [\"oid\",\"jolokia_agent_url\"]}\nGROUP { timeunit:60s, pk:pcode, merge:[Value] }\nUPDATE { key:[Value], value:sum }\n"
         }
       ],
       "title": "Preferred Replica Imbalance",
@@ -387,7 +387,7 @@
       ],
       "metrics": [
         {
-          "mql": "TIME-RANGE {recent: 60s, etime: $etime}\r\n\r\nCATEGORY telegraf_kafka_server\r\nTAGLOAD {backward:true}\r\nSELECT [ 'pcode', 'time', 'oid', 'Value', 'type', 'name' ]\r\nFILTER { key: \"Value\", exist: true }\r\nFILTER { key: \"type\", value: \"ReplicaManager\" }\r\nFILTER { key: \"name\", value: \"UnderReplicatedPartitions\" }\r\nFIRST-ONLY { key: \"oid\" }\r\nGROUP { timeunit:60s, pk:pcode, merge:[Value] }\r\nUPDATE { key:[Value], value:sum }\r\n"
+          "mql": "TIME-RANGE {recent: 60s, etime: $etime}\r\n\r\nCATEGORY telegraf_kafka_server\r\nTAGLOAD {backward:true}\r\nSELECT [ 'pcode', 'time', 'oid', 'Value', 'type', 'name','jolokia_agent_url' ]\r\nFILTER { key: \"Value\", exist: true }\r\nFILTER { key: \"type\", value: \"ReplicaManager\" }\r\nFILTER { key: \"name\", value: \"UnderReplicatedPartitions\" }\r\nFIRST-ONLY { key: [\"oid\",\"jolokia_agent_url\"] }\r\nGROUP { timeunit:60s, pk:pcode, merge:[Value] }\r\nUPDATE { key:[Value], value:sum }\r\n"
         }
       ],
       "title": "Under Replicated Partitions",
@@ -432,7 +432,7 @@
       ],
       "metrics": [
         {
-          "mql": "TIME-RANGE {recent: 60s, etime: $etime}\r\n\r\nCATEGORY telegraf_kafka_server\r\nTAGLOAD {backward:true}\r\nSELECT [ 'pcode', 'time', 'oid', 'Value', 'type', 'name' ]\r\nFILTER { key: \"Value\", exist: true }\r\nFILTER { key: \"type\", value: \"ReplicaManager\" }\r\nFILTER { key: \"name\", value: \"UnderMinIsrPartitionCount\" }\r\nFIRST-ONLY { key: \"oid\" }\r\nGROUP { timeunit:60s, pk:pcode, merge:[Value] }\r\nUPDATE { key:[Value], value:sum }"
+          "mql": "TIME-RANGE {recent: 60s, etime: $etime}\r\n\r\nCATEGORY telegraf_kafka_server\r\nTAGLOAD {backward:true}\r\nSELECT [ 'pcode', 'time', 'oid', 'Value', 'type', 'name', 'jolokia_agent_url' ]\r\nFILTER { key: \"Value\", exist: true }\r\nFILTER { key: \"type\", value: \"ReplicaManager\" }\r\nFILTER { key: \"name\", value: \"UnderMinIsrPartitionCount\" }\r\nFIRST-ONLY { key: [\"oid\",\"jolokia_agent_url\"] }\r\nGROUP { timeunit:60s, pk:pcode, merge:[Value] }\r\nUPDATE { key:[Value], value:sum }"
         }
       ],
       "title": "Under min ISR Partitions",
@@ -475,7 +475,7 @@
       ],
       "metrics": [
         {
-          "mql": "TIME-RANGE {recent: 60s, etime: $etime}\r\n\r\nCATEGORY telegraf_kafka_controller\r\nTAGLOAD {backward:true}\r\nSELECT [ 'pcode', 'time', 'oid', 'Value', 'type', 'name' ]\r\nFILTER { key: \"Value\", exist: true }\r\nFILTER { key: \"type\", value: \"KafkaController\" }\r\nFILTER { key: \"name\", value: \"OfflinePartitionsCount\" }\r\nFIRST-ONLY { key: \"oid\" }\r\nGROUP { timeunit:20s, pk:pcode, merge:[Value]}\r\nUPDATE { key:[Value], value:sum }"
+          "mql": "TIME-RANGE {recent: 60s, etime: $etime}\r\n\r\nCATEGORY telegraf_kafka_controller\r\nTAGLOAD {backward:true}\r\nSELECT [ 'pcode', 'time', 'oid', 'Value', 'type', 'name', 'jolokia_agent_url' ]\r\nFILTER { key: \"Value\", exist: true }\r\nFILTER { key: \"type\", value: \"KafkaController\" }\r\nFILTER { key: \"name\", value: \"OfflinePartitionsCount\" }\r\nFIRST-ONLY { key: [\"oid\",\"jolokia_agent_url\"] }\r\nGROUP { timeunit:20s, pk:pcode, merge:[Value]}\r\nUPDATE { key:[Value], value:sum }"
         }
       ],
       "title": "Offline Partitions Count",
@@ -520,7 +520,7 @@
       ],
       "metrics": [
         {
-          "mql": "TIME-RANGE {recent: 60s, etime: $etime}\r\n\r\nCATEGORY telegraf_kafka_controller\r\nTAGLOAD {backward:true}\r\nSELECT [ 'pcode', 'time', 'oid', 'OneMinuteRate', 'type', 'name' ]\r\nFILTER { key: \"OneMinuteRate\", exist: true }\r\nFILTER { key: \"type\", value: \"ControllerStats\" }\r\nFILTER { key: \"name\", value: \"UncleanLeaderElectionsPerSec\" }\r\nFIRST-ONLY { key: \"oid\" }\r\nGROUP { timeunit:60s, pk:pcode, merge:[OneMinuteRate] }\r\nUPDATE { key:[OneMinuteRate], value:sum }\r\n"
+          "mql": "TIME-RANGE {recent: 60s, etime: $etime}\r\n\r\nCATEGORY telegraf_kafka_controller\r\nTAGLOAD {backward:true}\r\nSELECT [ 'pcode', 'time', 'oid', 'OneMinuteRate', 'type', 'name', 'jolokia_agent_url' ]\r\nFILTER { key: \"OneMinuteRate\", exist: true }\r\nFILTER { key: \"type\", value: \"ControllerStats\" }\r\nFILTER { key: \"name\", value: \"UncleanLeaderElectionsPerSec\" }\r\nFIRST-ONLY { key: [\"oid\", \"jolokia_agent_url\"] }\r\nGROUP { timeunit:60s, pk:pcode, merge:[OneMinuteRate] }\r\nUPDATE { key:[OneMinuteRate], value:sum }\r\n"
         }
       ],
       "title": "Unclean Leader Election Rate",
@@ -763,10 +763,14 @@
           "mqlType": "automated"
         },
         {
-          "name": "oname",
+          "name": "에이전트 명,jolokia_agent_url",
           "tags": [
             {
               "key": "oname",
+              "unit": "#"
+            },
+            {
+              "key": "jolokia_agent_url",
               "unit": "#"
             }
           ],
@@ -890,7 +894,7 @@
           "mqlType": "automated"
         },
         {
-          "name": "에이전트 명,이름",
+          "name": "에이전트 명,이름,jolokia_agent_url",
           "tags": [
             {
               "key": "oname",
@@ -898,6 +902,10 @@
             },
             {
               "key": "name",
+              "unit": "#"
+            },
+            {
+              "key": "jolokia_agent_url",
               "unit": "#"
             }
           ],
@@ -1026,7 +1034,7 @@
         },
         {
           "name": "oname",
-          "mql": "INJECT timepast\nHEADER { \"Value$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_kafka_server\":6h, \"telegraf_kafka_server{m5}\":3d, \"telegraf_kafka_server{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['Value'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'Value', 'oname', 'type','name' ]\nFILTER { key: \"Value\", exist: true }\nFILTER { key: \"oname\", exist: true }\nFILTER { key: \"type\", value: 'KafkaServer'}\nFILTER { key: \"name\", value: 'linux-disk-read-bytes'}\n\nCREATE { key:_id_, expr: \"pcode+'_'+oname\" }\nCREATE { key:_name_, expr: \"oname\" }\nGROUP { timeunit: 10s, merge: ['Value'], pk: _id_, last: _name_ }\nUPDATE { key: ['Value'], value: $OBJECT_MERGE_PLACE }"
+          "mql": "INJECT timepast\nHEADER { \"Value$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_kafka_server\":6h, \"telegraf_kafka_server{m5}\":3d, \"telegraf_kafka_server{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['Value'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'Value', 'oname', 'type','name', 'jolokia_agent_url' ]\nFILTER { key: \"Value\", exist: true }\nFILTER { key: \"oname\", exist: true }\nFILTER { key: \"type\", value: 'KafkaServer'}\nFILTER { key: \"name\", value: 'linux-disk-read-bytes'}\n\nCREATE { key:_id_, expr: \"jolokia_agent_url+'_'+oname\" }\nCREATE { key:_name_, expr: \"oname+'_'+jolokia_agent_url\" }\nGROUP { timeunit: 10s, merge: ['Value'], pk: _id_, last: _name_ }\nUPDATE { key: ['Value'], value: $OBJECT_MERGE_PLACE }"
         },
         {
           "name": "Project",
@@ -1146,7 +1154,7 @@
         },
         {
           "name": "oname",
-          "mql": "INJECT timepast\nHEADER { \"Value$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_kafka_server\":6h, \"telegraf_kafka_server{m5}\":3d, \"telegraf_kafka_server{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['Value'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'Value', 'oname', 'type', 'name' ]\nFILTER { key: \"Value\", exist: true }\nFILTER { key: \"oname\", exist: true }\nFILTER { key: \"type\", value: \"KafkaServer\" }\nFILTER { key: \"name\", value: \"linux-disk-write-bytes\"}\n\nCREATE { key:_id_, expr: \"pcode+'_'+oname\" }\nCREATE { key:_name_, expr: \"oname\" }\nGROUP { timeunit: 5s, merge: ['Value'], pk: _id_, last: _name_ }\nUPDATE { key: ['Value'], value: $OBJECT_MERGE_PLACE }"
+          "mql": "INJECT timepast\nHEADER { \"Value$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_kafka_server\":6h, \"telegraf_kafka_server{m5}\":3d, \"telegraf_kafka_server{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['Value'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'Value', 'oname', 'type', 'name', 'jolokia_agent_url']\nFILTER { key: \"Value\", exist: true }\nFILTER { key: \"oname\", exist: true }\nFILTER { key: \"type\", value: \"KafkaServer\" }\nFILTER { key: \"name\", value: \"linux-disk-write-bytes\"}\n\nCREATE { key:_id_, expr: \"jolokia_agent_url+'_'+oname\" }\nCREATE { key:_name_, expr: \"oname+'_'+jolokia_agent_url\" }\nGROUP { timeunit: 5s, merge: ['Value'], pk: _id_, last: _name_ }\nUPDATE { key: ['Value'], value: $OBJECT_MERGE_PLACE }"
         },
         {
           "name": "Project",
@@ -1197,7 +1205,7 @@
       "supports": [],
       "metrics": [
         {
-          "mql": "TIME-RANGE {recent: 60s, etime: $etime}\r\n\r\nHEADER { \"Value$\":\"#\" }\r\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\r\nCATEGORY telegraf_kafka_server\r\nTAGLOAD {backward: true}\r\n\r\nSELECT [ 'pcode', 'time', 'oid', 'Value', 'oname', 'type', 'name' ]\r\nFILTER { key: \"Value\", exist: true }\r\nFILTER { key: \"oname\", exist: true }\r\nFILTER { key: \"type\", value: \"ReplicaManager\" }\r\nFILTER { key: \"name\", value: \"LeaderCount\" }\r\nFIRST-ONLY { key: \"oid\" }\r\nCREATE { key:_id_, expr: \"pcode+'_'+oname\" }\r\nCREATE { key:_name_, expr: \"oname\" }\r\nGROUP { timeunit: 60s, merge: ['Value'], pk: _id_, last: _name_ }\r\nUPDATE { key: ['Value'], value: $OBJECT_MERGE_PLACE }\r\n",
+          "mql": "TIME-RANGE {recent: 60s, etime: $etime}\r\n\r\nHEADER { \"Value$\":\"#\" }\r\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\r\nCATEGORY telegraf_kafka_server\r\nTAGLOAD {backward: true}\r\n\r\nSELECT [ 'pcode', 'time', 'oid', 'Value', 'oname', 'type', 'name', 'jolokia_agent_url' ]\r\nFILTER { key: \"Value\", exist: true }\r\nFILTER { key: \"oname\", exist: true }\r\nFILTER { key: \"type\", value: \"ReplicaManager\" }\r\nFILTER { key: \"name\", value: \"LeaderCount\" }\r\nFIRST-ONLY { key: [\"oid\", \"jolokia_agent_url\"] }\r\nCREATE { key:_id_, expr: \"oid+'_'+jolokia_agent_url\" }\r\nCREATE { key:_name_, expr: \"oname+'_'+jolokia_agent_url\" }\r\nGROUP { timeunit: 60s, merge: ['Value'], pk: _id_, last: _name_ }\r\nUPDATE { key: ['Value'], value: $OBJECT_MERGE_PLACE }\r\n",
           "param": {
             "$OBJECT_MERGE_PLACE": "sum"
           }

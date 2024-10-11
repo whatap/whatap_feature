@@ -173,7 +173,8 @@
             "display": ""
           }
         },
-        "metrics": 3
+        "metrics": 3,
+        "chart": "SERIES"
       },
       "metrics": [
         {
@@ -459,7 +460,7 @@
         },
         {
           "name": "oname",
-          "mql": "INJECT timepast\nHEADER { \"OneMinuteRate$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_kafka_server\":6h, \"telegraf_kafka_server{m5}\":3d, \"telegraf_kafka_server{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['OneMinuteRate'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'OneMinuteRate', 'oname', 'type', 'name' ]\nFILTER { key: \"OneMinuteRate\", exist: true }\nFILTER { key: \"oname\", exist: true }\nFILTER { key: \"type\", value: \"SessionExpireListener\"}\nFILTER { key: \"name\", value: \"ZooKeeperDisconnectsPerSec\"}\n\nCREATE { key:_id_, expr: \"pcode+'_'+oname\" }\nCREATE { key:_name_, expr: \"oname\" }\nGROUP { timeunit: 5s, merge: ['OneMinuteRate'], pk: _id_, last: _name_ }\nUPDATE { key: ['OneMinuteRate'], value: $OBJECT_MERGE_PLACE }",
+          "mql": "INJECT timepast\nHEADER { \"OneMinuteRate$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_kafka_server\":6h, \"telegraf_kafka_server{m5}\":3d, \"telegraf_kafka_server{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['OneMinuteRate'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'OneMinuteRate', 'oname', 'type', 'name','jolokia_agent_url' ]\nFILTER { key: \"OneMinuteRate\", exist: true }\nFILTER { key: \"oname\", exist: true }\nFILTER { key: \"type\", value: \"SessionExpireListener\"}\nFILTER { key: \"name\", value: \"ZooKeeperDisconnectsPerSec\"}\n\nCREATE { key:_id_, expr: \"jolokia_agent_url+'_'+oid\" }\nCREATE { key:_name_, expr: \"oname+'_'+jolokia_agent_url\" }\nGROUP { timeunit: 5s, merge: ['OneMinuteRate'], pk: _id_, last: _name_ }\nUPDATE { key: ['OneMinuteRate'], value: $OBJECT_MERGE_PLACE }",
           "param": {
             "$OBJECT_MERGE_PLACE": "sum"
           }
@@ -581,7 +582,7 @@
         },
         {
           "name": "oname",
-          "mql": "INJECT timepast\nHEADER { \"OneMinuteRate$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_kafka_server\":6h, \"telegraf_kafka_server{m5}\":3d, \"telegraf_kafka_server{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['OneMinuteRate'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'OneMinuteRate', 'oname', 'type', 'name' ]\nFILTER { key: \"OneMinuteRate\", exist: true }\nFILTER { key: \"oname\", exist: true }\nFILTER { key: \"type\", value: \"SessionExpireListener\"}\nFILTER { key: \"name\", value: \"ZooKeeperAuthFailuresPerSec\"}\n\nCREATE { key:_id_, expr: \"pcode+'_'+oname\" }\nCREATE { key:_name_, expr: \"oname\" }\nGROUP { timeunit: 10s, merge: ['OneMinuteRate'], pk: _id_, last: _name_ }\nUPDATE { key: ['OneMinuteRate'], value: $OBJECT_MERGE_PLACE }",
+          "mql": "INJECT timepast\nHEADER { \"OneMinuteRate$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_kafka_server\":6h, \"telegraf_kafka_server{m5}\":3d, \"telegraf_kafka_server{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['OneMinuteRate'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'OneMinuteRate', 'oname', 'type', 'name', 'jolokia_agent_url' ]\nFILTER { key: \"OneMinuteRate\", exist: true }\nFILTER { key: \"oname\", exist: true }\nFILTER { key: \"type\", value: \"SessionExpireListener\"}\nFILTER { key: \"name\", value: \"ZooKeeperAuthFailuresPerSec\"}\n\nCREATE { key:_id_, expr: \"jolokia_agent_url+'_'+oid\" }\nCREATE { key:_name_, expr: \"oname+'_'+jolokia_agent_url\" }\nGROUP { timeunit: 10s, merge: ['OneMinuteRate'], pk: _id_, last: _name_ }\nUPDATE { key: ['OneMinuteRate'], value: $OBJECT_MERGE_PLACE }",
           "param": {
             "$OBJECT_MERGE_PLACE": "sum"
           }

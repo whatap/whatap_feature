@@ -30,6 +30,34 @@ def string_to_byte_array_constant(string):
     byte_array_constant = ', '.join(f'0x{byte:02x}' for byte in byte_array)
     return f'bytearray([{byte_array_constant}])'
 
+def strip_unused_metrics(doc):
+    updated_doc = doc
+    if 'widgets' in updated_doc:
+        for widget in updated_doc['widgets']:
+            if 'option' in widget:
+                option = widget['option']
+                if 'metrics' in option:
+                    target_metrics_idx = option['metrics']
+                    option['metrics'] = 0
+            
+                    if 'metrics' in widget:
+                        metrics = widget['metrics']
+                        if len(metrics) > target_metrics_idx:
+                            updated_metrics = [metrics[target_metrics_idx]]                            
+                            widget['metrics'] = updated_metrics
+
+    return updated_doc
+
+import os
+def debug_to_file(filename, doc):
+    # 파일 이름에 "_modified"를 추가
+    name, ext = os.path.splitext(filename)
+    modified_filename = f"{name}_modified{ext}"
+    
+    # 파일에 doc 내용을 작성
+    with open(modified_filename, 'w') as file:
+        file.write(doc)
+
 def write_module(source_files, target_file):
     with open(target_file, 'w', encoding='utf-8') as f:
         for (attrname, source_file) in source_files:
@@ -40,8 +68,10 @@ def write_module(source_files, target_file):
                     dashboardjson = open(subfile, 'r').read()
                     name = json.loads(dashboardjson)['name']
                     f.write(f'\n("{name}",')
-                    f.write(string_to_byte_array_constant(json.dumps(json.loads(dashboardjson))))
+                    f.write(string_to_byte_array_constant(json.dumps(strip_unused_metrics(json.loads(dashboardjson)))))
                     f.write('),\n')
+                    debug_to_file(subfile,json.dumps(strip_unused_metrics(json.loads(dashboardjson))))
+
                 f.write(']\n')
             elif attrname == "events":    
                 f.write(f'{attrname}=[')
@@ -85,11 +115,11 @@ def vcenter():
         ("main","vcenter/main.json"),
         ("meta","vcenter/meta.json"),
         ("installation","vcenter/installation.json"),
-        ("dashboards",("vcenter/vmware_summary.json",
-                                   "vcenter/vmware_hosts.json",
-                                   "vcenter/vmware_datastore.json",
-                                   "vcenter/vmware_vms.json",
-                                   "vcenter/vmware_performance_overview.json",
+        ("dashboards",("vcenter/vHost Performance Overview.json",
+                                   "vcenter/VMGuest Performance Overview.json",
+                                   "vcenter/VMware Datastore.json",
+                                   "vcenter/VMware Hosts.json",
+                                   "vcenter/VMware Summary.json",
                                    )),
         ("events",[("METRICS","vcenter/event_doc.json")])
         ]
@@ -124,7 +154,7 @@ def apachepulsar():
 
 
 if __name__ == '__main__':
-    #kafka()
-    vcenter()
-    aerospike()
-    apachepulsar()
+    kafka()
+    #vcenter()
+    #aerospike()
+    #apachepulsar()
