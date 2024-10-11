@@ -1,4 +1,54 @@
 {
+	"ja": {
+		"title": "設置前の注意事項",
+		"icon": "vCetner",
+		"supports": [
+			{
+				"type": "support-version",
+				"title": "Ubuntuサポートバージョン",
+				"version": "12.04以上"
+			},
+			{
+				"type": "support-version",
+				"title": "VMWare サポートバージョン",
+				"version": "VMWare 6.x, 7.x"
+			},
+			{
+				"type": "support-version",
+				"title": "OS対応バージョン",
+				"version": "Redhat6 or equivalent(CentOS, Rocky Linux, Amazon Linux)"
+			},
+			{
+				"type": "support-version",
+				"title": "オペレーティングシステムのアーキテクチャ",
+				"version": "Amd64/X86_64, Arm64/Aarch64 "
+			},
+			{
+				"type": "whatap-proxy"
+			}
+		],
+		"step": [
+			{
+				"title": "アクセスキーの確認",
+				"description": "アクセスキーは、ワタップサービスを有効にするための一意のIDです。\n{get_license_feature}"
+			},
+			{
+				"title": "インストールスクリプトの生成",
+				"boxes": [
+					{
+						"prepend": "KAFKAがインストールされているサーバーにスクリプトを生成するには、以下のコマンドを実行してください。",
+						"data": "curl http://repo.whatap.io/telegraf/feature/vmware/install_vcenter_monitoring.sh -o install_vcenter_monitoring.sh",
+						"option": "copy"
+					},
+					{
+						"prepend": "以下のコマンドを実行してください。",
+						"data": "chmod +x install_vcenter_monitoring.sh\nsudo ./install_center_monitoring.sh \"{license_key}\" \"{proxy_server}\"",
+						"option": "copy"
+					}
+				]
+			}
+		]
+	},
 	"en": {
 		"title": "Precautions before installation",
 		"icon": "vcenter",

@@ -50,11 +50,12 @@ import json
 def getMetaJson():
     metadata = {
         "desc": {
-            "icon": "vcenter",
+            "icon": "vsphere",
             "pricingUrl": "https://www.whatap.io/ko/pricing/#server-space",
             "summary": {
                 "ko": "vCenter를 통해 서버 가상화 환경을 효율적으로 관리하세요. 실시간 모니터링과 강력한 관리 도구로 서버의 상태를 한눈에 파악하고, 문제 발생 시 빠르게 대응할 수 있습니다. 이제 vCenter로 IT 인프라를 최적화하고 운영 효율성을 극대화하세요.",
-                "en": "Efficiently manage your virtualized server environment with vCenter. With real-time monitoring and powerful management tools, you can easily assess server health and respond quickly to any issues. Optimize your IT infrastructure and maximize operational efficiency with vCenter today."
+                "en": "Efficiently manage your virtualized server environment with vCenter. With real-time monitoring and powerful management tools, you can easily assess server health and respond quickly to any issues. Optimize your IT infrastructure and maximize operational efficiency with vCenter today.",
+                "ja": "vCenterを使用して仮想化されたサーバー環境を効率的に管理しましょう。リアルタイムモニタリングおよび強力な管理ツールにより、サーバーの健全性を簡単に評価し、問題が発生した場合には迅速に対応できます。vCenterでITインフラを最適化し、運用効率を最大限に引き上げてください。",
             }
         },
         "releaseEnvs": ["DEV", "PREVIEW", "SERVICE"]
@@ -82,10 +83,14 @@ def getDashboardDoc( dataDoc):
 
 def getDashboardDocs():
 
-    return [json.dumps(json.loads(read_file("vsphere_summary.json"))),
-           json.dumps(json.loads(read_file("vsphere_hosts.json"))),
-           json.dumps(json.loads(read_file("vsphere_vms.json"))),
-           json.dumps(json.loads(read_file("vsphere_datastore.json")))]
+    return [json.dumps(json.loads(read_file("vHost Performance Overview.json"))),
+           json.dumps(json.loads(read_file("VMGuest Performance Overview.json"))),
+           json.dumps(json.loads(read_file("VMware Datastore.json"))),
+           json.dumps(json.loads(read_file("VMware Hosts.json"))),
+           json.dumps(json.loads(read_file("VMware Performance Overview.json"))),
+           json.dumps(json.loads(read_file("VMware VMs.json"))),
+           json.dumps(json.loads(read_file("VMware Summary.json"))),
+           ]
 
 
 def createFeature(url_prefix=url_prefix, url_path = "/admin/api/feature/create", url_cookie=url_cookie):
@@ -207,9 +212,9 @@ def writeMeta():
         f.write(getMetaJson())
     body = {
     "platform":"INFRA",
-    "textKey":"VCENTER_DEV_ONE",
+    "textKey":"VCENTER_DEV_TWO",
     "name":"vCenter",
-    "description":"vCenter BETA RC 0604",
+    "description":"vCenter BETA RC 1004",
     "status":"beta"}
     with open('main.json','w') as f:
         f.write(json.dumps(body))
@@ -226,6 +231,6 @@ def main():
 
 if __name__ == '__main__':
     #main()
-    #writeMeta()
-    addEvent(pcode=2924)
+    writeMeta()
+    #addEvent(pcode=2924)
     # addEvent2()
