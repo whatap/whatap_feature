@@ -152,9 +152,35 @@ def apachepulsar():
     target_file = "whfeature/features/apachepulsar.py"
     write_module(source_files, target_file)
 
+def nginx():
+    source_files = [
+        ("main","nginx/main.json"),
+        ("meta","nginx/meta.json"),
+        ("installation","nginx/installation.json"),
+        ("dashboards",("nginx/nginx_overview.json",)),
+        ("events",[])
+        ]
+    target_file = "whfeature/features/nginx.py"
+    write_module(source_files, target_file)
+
+def apache():
+    source_files = [
+        ("main","apache/main.json"),
+        ("meta","apache/meta.json"),
+        ("installation","apache/installation.json"),
+        ("dashboards",("apache/apache_overview.json",
+                       "apache/apache_throughput.json",
+                       "apache/apache_worker_performance.json")),
+        ("events",[])
+        ]
+    target_file = "whfeature/features/apache.py"
+    write_module(source_files, target_file)
+
 
 if __name__ == '__main__':
-    kafka()
+    #kafka()
     #vcenter()
     #aerospike()
     #apachepulsar()
+    nginx()
+    apache()

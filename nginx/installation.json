@@ -1,0 +1,152 @@
+{
+    "ja": {
+        "title": "設置前の注意事項",
+        "icon": "nginx",
+        "supports": [
+            {
+                "type": "support-version",
+                "title": "Ubuntuサポートバージョン",
+                "version": "12.04以上"
+            },
+            {
+                "type": "support-version",
+                "title": "Nginxサポートバージョン",
+                "version": "Nginx 1.4.x以降"
+            },
+            {
+                "type": "support-version",
+                "title": "OS対応バージョン",
+                "version": "Redhat6または同等（CentOS、Rocky Linux、Amazon Linux）"
+            },
+            {
+                "type": "support-version",
+                "title": "オペレーティングシステムのアーキテクチャ",
+                "version": "Amd64/X86_64, Arm64/Aarch64"
+            },
+            {
+                "type": "whatap-proxy"
+            }
+        ],
+        "step": [
+            {
+                "title": "アクセスキーの確認",
+                "description": "アクセスキーは、WhaTapサービスを有効にするための一意のIDです。\n{get_license_feature}"
+            },
+            {
+                "title": "インストールスクリプトの生成",
+                "boxes": [
+                    {
+                        "prepend": "NGINXがインストールされているサーバーにスクリプトを生成するには、以下のコマンドを実行してください。",
+                        "data": "curl http://repo.whatap.io/telegraf/feature/nginx/install_nginx_monitoring.sh -o install_nginx_monitoring.sh",
+                        "option": "copy"
+                    },
+                    {
+                        "prepend": "以下のコマンドを実行してください。",
+                        "data": "chmod +x install_nginx_monitoring.sh\nsudo ./install_nginx_monitoring.sh \"{license_key}\" \"{proxy_server}\"",
+                        "option": "copy"
+                    }
+                ]
+            }
+        ]
+    },
+    "en": {
+        "title": "Precautions before installation",
+        "icon": "nginx",
+        "supports": [
+            {
+                "type": "support-version",
+                "title": "Ubuntu supported versions",
+                "version": "12.04 or higher"
+            },
+            {
+                "type": "support-version",
+                "title": "Nginx supported versions",
+                "version": "Nginx 1.4.x or higher"
+            },
+            {
+                "type": "support-version",
+                "title": "OS supported version",
+                "version": "Redhat6 or equivalent (CentOS, Rocky Linux, Amazon Linux)"
+            },
+            {
+                "type": "support-version",
+                "title": "Operating system architecture",
+                "version": "Amd64/X86_64, Arm64/Aarch64"
+            },
+            {
+                "type": "whatap-proxy"
+            }
+        ],
+        "step": [
+            {
+                "title": "Check access key",
+                "description": "The access key is a unique ID for activating the WhaTap service.\n{get_license_feature}"
+            },
+            {
+                "title": "Generate installation script",
+                "boxes": [
+                    {
+                        "prepend": "Run the command below to create a script on the server where NGINX is installed.",
+                        "data": "curl http://repo.whatap.io/telegraf/feature/nginx/install_nginx_monitoring.sh -o install_nginx_monitoring.sh",
+                        "option": "copy"
+                    },
+                    {
+                        "prepend": "Run the command below.",
+                        "data": "chmod +x install_nginx_monitoring.sh\nsudo ./install_nginx_monitoring.sh \"{license_key}\" \"{proxy_server}\"",
+                        "option": "copy"
+                    }
+                ]
+            }
+        ]
+    },
+    "ko": {
+        "title": "설치 전 유의사항",
+        "icon": "nginx",
+        "supports": [
+            {
+                "type": "support-version",
+                "title": "Ubuntu 지원 버전",
+                "version": "12.04 이상"
+            },
+            {
+                "type": "support-version",
+                "title": "Nginx 지원 버전",
+                "version": "Nginx 1.4.x 이상"
+            },
+            {
+                "type": "support-version",
+                "title": "OS 지원 버전",
+                "version": "Redhat6 or equivalent(CentOS, Rocky Linux, Amazon Linux)"
+            },
+            {
+                "type": "support-version",
+                "title": "운영체제 아키텍처",
+                "version": "Amd64/X86_64, Arm64/Aarch64 "
+            },
+            {
+                "type": "whatap-proxy"
+            }
+        ],
+        "step": [
+            {
+                "title": "액세스 키 확인",
+                "description": "액세스 키는 와탭 서비스 활성화를 위한 고유 ID입니다.\n{get_license_feature}"
+            },
+            {
+                "title": "설치 스크립트 생성",
+                "boxes": [
+                    {
+                        "prepend": "NGINX가 설치된 서버에 스크립트를 생성하기 위해 아래 명령어를 실행하세요.",
+                        "data": "curl http://repo.whatap.io/telegraf/feature/nginx/install_nginx_monitoring.sh -o install_nginx_monitoring.sh",
+                        "option": "copy"
+                    },
+                    {
+                        "prepend": "아래 명령어를 실행하세요.",
+                        "data": "chmod +x install_nginx_monitoring.sh\nsudo ./install_nginx_monitoring.sh \"{license_key}\" \"{proxy_server}\"",
+                        "option": "copy"
+                    }
+                ]
+            }
+        ]
+    }
+}

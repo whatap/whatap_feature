@@ -1,0 +1,1689 @@
+{
+    "name": "Apache Worker Performance",
+    "widgets": [
+      {
+        "icon": "note",
+        "supports": [],
+        "title": "리치 텍스트",
+        "dirname": "v1/99.etc",
+        "widgetType": "RICH_TEXT",
+        "requestApi": "NONE",
+        "_key_": "v1/99.etc/rich_text",
+        "id": "-PQ32yFIf",
+        "layout": {
+          "x": 0,
+          "y": 0,
+          "w": 48,
+          "h": 1,
+          "minH": 1,
+          "minW": 4,
+          "i": "-PQ32yFIf",
+          "moved": false,
+          "static": false
+        },
+        "option": {
+          "markdown": "# Host Load"
+        }
+      },
+      {
+        "icon": "note",
+        "supports": [],
+        "title": "리치 텍스트",
+        "dirname": "v1/99.etc",
+        "widgetType": "RICH_TEXT",
+        "requestApi": "NONE",
+        "_key_": "v1/99.etc/rich_text",
+        "id": "BR9rbqm9T",
+        "layout": {
+          "h": 1,
+          "w": 48,
+          "x": 0,
+          "y": 9,
+          "i": "BR9rbqm9T",
+          "moved": false,
+          "static": false
+        },
+        "option": {
+          "markdown": "# Workers"
+        }
+      },
+      {
+        "icon": "note",
+        "supports": [],
+        "title": "리치 텍스트",
+        "dirname": "v1/99.etc",
+        "widgetType": "RICH_TEXT",
+        "requestApi": "NONE",
+        "_key_": "v1/99.etc/rich_text",
+        "id": "i3UuQEy8m",
+        "layout": {
+          "h": 1,
+          "w": 48,
+          "x": 0,
+          "y": 14,
+          "i": "i3UuQEy8m",
+          "moved": false,
+          "static": false
+        },
+        "option": {
+          "markdown": "# Connections"
+        }
+      },
+      {
+        "id": "ryl6929MkP",
+        "title": "BusyWorkers",
+        "isMultiProject": true,
+        "supports": [
+          {
+            "platform": "INFRA"
+          }
+        ],
+        "layout": {
+          "h": 4,
+          "w": 16,
+          "x": 0,
+          "y": 10,
+          "i": "ryl6929MkP",
+          "moved": false,
+          "static": false
+        },
+        "requestApi": "SERIES",
+        "widgetType": "SERIES",
+        "icon": "line-chart",
+        "category": "telegraf_apache",
+        "option": {},
+        "metrics": [
+          {
+            "name": "oname",
+            "tags": [
+              {
+                "key": "oname",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "BusyWorkers",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "port",
+            "tags": [
+              {
+                "key": "port",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "BusyWorkers",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "Project",
+            "tags": [
+              {
+                "key": "pname",
+                "title": "Project",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "BusyWorkers",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "server",
+            "tags": [
+              {
+                "key": "server",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "BusyWorkers",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          }
+        ]
+      },
+      {
+        "id": "ktB3dYBxhw",
+        "title": "IdleWorkers",
+        "isMultiProject": true,
+        "supports": [
+          {
+            "platform": "INFRA"
+          }
+        ],
+        "layout": {
+          "h": 4,
+          "w": 16,
+          "x": 16,
+          "y": 10,
+          "i": "ktB3dYBxhw",
+          "moved": false,
+          "static": false
+        },
+        "requestApi": "SERIES",
+        "widgetType": "SERIES",
+        "icon": "line-chart",
+        "category": "telegraf_apache",
+        "option": {},
+        "metrics": [
+          {
+            "name": "oname",
+            "tags": [
+              {
+                "key": "oname",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "IdleWorkers",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "port",
+            "tags": [
+              {
+                "key": "port",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "IdleWorkers",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "Project",
+            "tags": [
+              {
+                "key": "pname",
+                "title": "Project",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "IdleWorkers",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "server",
+            "tags": [
+              {
+                "key": "server",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "IdleWorkers",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          }
+        ]
+      },
+      {
+        "id": "QgKURcHrta",
+        "title": "ConnsAsyncClosing",
+        "isMultiProject": true,
+        "supports": [
+          {
+            "platform": "INFRA"
+          }
+        ],
+        "layout": {
+          "h": 4,
+          "w": 24,
+          "x": 24,
+          "y": 19,
+          "i": "QgKURcHrta",
+          "moved": false,
+          "static": false
+        },
+        "requestApi": "SERIES",
+        "widgetType": "SERIES",
+        "icon": "line-chart",
+        "category": "telegraf_apache",
+        "option": {},
+        "metrics": [
+          {
+            "name": "oname",
+            "tags": [
+              {
+                "key": "oname",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "ConnsAsyncClosing",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "port",
+            "tags": [
+              {
+                "key": "port",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "ConnsAsyncClosing",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "Project",
+            "tags": [
+              {
+                "key": "pname",
+                "title": "Project",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "ConnsAsyncClosing",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "server",
+            "tags": [
+              {
+                "key": "server",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "ConnsAsyncClosing",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          }
+        ]
+      },
+      {
+        "id": "piN-Fq-6yU",
+        "title": "ConnsAsyncKeepAlive",
+        "isMultiProject": true,
+        "supports": [
+          {
+            "platform": "INFRA"
+          }
+        ],
+        "layout": {
+          "h": 4,
+          "w": 24,
+          "x": 0,
+          "y": 19,
+          "i": "piN-Fq-6yU",
+          "moved": false,
+          "static": false
+        },
+        "requestApi": "SERIES",
+        "widgetType": "SERIES",
+        "icon": "line-chart",
+        "category": "telegraf_apache",
+        "option": {},
+        "metrics": [
+          {
+            "name": "oname",
+            "tags": [
+              {
+                "key": "oname",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "ConnsAsyncKeepAlive",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "port",
+            "tags": [
+              {
+                "key": "port",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "ConnsAsyncKeepAlive",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "Project",
+            "tags": [
+              {
+                "key": "pname",
+                "title": "Project",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "ConnsAsyncKeepAlive",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "server",
+            "tags": [
+              {
+                "key": "server",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "ConnsAsyncKeepAlive",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          }
+        ]
+      },
+      {
+        "id": "GZgSiHg8-q",
+        "title": "ConnsAsyncWriting",
+        "isMultiProject": true,
+        "supports": [
+          {
+            "platform": "INFRA"
+          }
+        ],
+        "layout": {
+          "h": 4,
+          "w": 24,
+          "x": 24,
+          "y": 15,
+          "i": "GZgSiHg8-q",
+          "moved": false,
+          "static": false
+        },
+        "requestApi": "SERIES",
+        "widgetType": "SERIES",
+        "icon": "line-chart",
+        "category": "telegraf_apache",
+        "option": {},
+        "metrics": [
+          {
+            "name": "oname",
+            "tags": [
+              {
+                "key": "oname",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "ConnsAsyncWriting",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "port",
+            "tags": [
+              {
+                "key": "port",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "ConnsAsyncWriting",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "Project",
+            "tags": [
+              {
+                "key": "pname",
+                "title": "Project",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "ConnsAsyncWriting",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "server",
+            "tags": [
+              {
+                "key": "server",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "ConnsAsyncWriting",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          }
+        ]
+      },
+      {
+        "id": "h0Gpu1bPGw",
+        "title": "ConnsTotal",
+        "isMultiProject": true,
+        "supports": [
+          {
+            "platform": "INFRA"
+          }
+        ],
+        "layout": {
+          "h": 4,
+          "w": 24,
+          "x": 0,
+          "y": 15,
+          "i": "h0Gpu1bPGw",
+          "moved": false,
+          "static": false
+        },
+        "requestApi": "SERIES",
+        "widgetType": "SERIES",
+        "icon": "line-chart",
+        "category": "telegraf_apache",
+        "option": {},
+        "metrics": [
+          {
+            "name": "oname",
+            "tags": [
+              {
+                "key": "oname",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "ConnsTotal",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "port",
+            "tags": [
+              {
+                "key": "port",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "ConnsTotal",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "Project",
+            "tags": [
+              {
+                "key": "pname",
+                "title": "Project",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "ConnsTotal",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "server",
+            "tags": [
+              {
+                "key": "server",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "ConnsTotal",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          }
+        ]
+      },
+      {
+        "id": "Jen5ZdGd3q",
+        "title": "CPUChildrenSystem",
+        "isMultiProject": true,
+        "supports": [
+          {
+            "platform": "INFRA"
+          }
+        ],
+        "layout": {
+          "h": 4,
+          "w": 24,
+          "x": 24,
+          "y": 5,
+          "i": "Jen5ZdGd3q",
+          "moved": false,
+          "static": false
+        },
+        "requestApi": "SERIES",
+        "widgetType": "SERIES",
+        "icon": "line-chart",
+        "category": "telegraf_apache",
+        "option": {},
+        "metrics": [
+          {
+            "name": "oname",
+            "tags": [
+              {
+                "key": "oname",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "CPUChildrenSystem",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "port",
+            "tags": [
+              {
+                "key": "port",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "CPUChildrenSystem",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "Project",
+            "tags": [
+              {
+                "key": "pname",
+                "title": "Project",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "CPUChildrenSystem",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "server",
+            "tags": [
+              {
+                "key": "server",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "CPUChildrenSystem",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          }
+        ]
+      },
+      {
+        "id": "jXsG2icEl3",
+        "title": "CPUChildrenUser",
+        "isMultiProject": true,
+        "supports": [
+          {
+            "platform": "INFRA"
+          }
+        ],
+        "layout": {
+          "h": 4,
+          "w": 24,
+          "x": 0,
+          "y": 5,
+          "i": "jXsG2icEl3",
+          "moved": false,
+          "static": false
+        },
+        "requestApi": "SERIES",
+        "widgetType": "SERIES",
+        "icon": "line-chart",
+        "category": "telegraf_apache",
+        "option": {},
+        "metrics": [
+          {
+            "name": "oname",
+            "tags": [
+              {
+                "key": "oname",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "CPUChildrenUser",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "port",
+            "tags": [
+              {
+                "key": "port",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "CPUChildrenUser",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "Project",
+            "tags": [
+              {
+                "key": "pname",
+                "title": "Project",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "CPUChildrenUser",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "server",
+            "tags": [
+              {
+                "key": "server",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "CPUChildrenUser",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          }
+        ]
+      },
+      {
+        "id": "FuOQIX55Zq",
+        "title": "CPULoad",
+        "isMultiProject": true,
+        "supports": [
+          {
+            "platform": "INFRA"
+          }
+        ],
+        "layout": {
+          "h": 4,
+          "w": 16,
+          "x": 0,
+          "y": 1,
+          "i": "FuOQIX55Zq",
+          "moved": false,
+          "static": false
+        },
+        "requestApi": "SERIES",
+        "widgetType": "SERIES",
+        "icon": "line-chart",
+        "category": "telegraf_apache",
+        "option": {},
+        "metrics": [
+          {
+            "name": "oname",
+            "tags": [
+              {
+                "key": "oname",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "CPULoad",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "port",
+            "tags": [
+              {
+                "key": "port",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "CPULoad",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "Project",
+            "tags": [
+              {
+                "key": "pname",
+                "title": "Project",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "CPULoad",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "server",
+            "tags": [
+              {
+                "key": "server",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "CPULoad",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          }
+        ]
+      },
+      {
+        "id": "Hd-4cjttZM",
+        "title": "CPUSystem",
+        "isMultiProject": true,
+        "supports": [
+          {
+            "platform": "INFRA"
+          }
+        ],
+        "layout": {
+          "h": 4,
+          "w": 16,
+          "x": 32,
+          "y": 1,
+          "i": "Hd-4cjttZM",
+          "moved": false,
+          "static": false
+        },
+        "requestApi": "SERIES",
+        "widgetType": "SERIES",
+        "icon": "line-chart",
+        "category": "telegraf_apache",
+        "option": {},
+        "metrics": [
+          {
+            "name": "oname",
+            "tags": [
+              {
+                "key": "oname",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "CPUSystem",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "port",
+            "tags": [
+              {
+                "key": "port",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "CPUSystem",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "Project",
+            "tags": [
+              {
+                "key": "pname",
+                "title": "Project",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "CPUSystem",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "server",
+            "tags": [
+              {
+                "key": "server",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "CPUSystem",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          }
+        ]
+      },
+      {
+        "id": "iZjygmCU7c",
+        "title": "CPUUser",
+        "isMultiProject": true,
+        "supports": [
+          {
+            "platform": "INFRA"
+          }
+        ],
+        "layout": {
+          "h": 4,
+          "w": 16,
+          "x": 16,
+          "y": 1,
+          "i": "iZjygmCU7c",
+          "moved": false,
+          "static": false
+        },
+        "requestApi": "SERIES",
+        "widgetType": "SERIES",
+        "icon": "line-chart",
+        "category": "telegraf_apache",
+        "option": {},
+        "metrics": [
+          {
+            "name": "oname",
+            "tags": [
+              {
+                "key": "oname",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "CPUUser",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "port",
+            "tags": [
+              {
+                "key": "port",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "CPUUser",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "Project",
+            "tags": [
+              {
+                "key": "pname",
+                "title": "Project",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "CPUUser",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "server",
+            "tags": [
+              {
+                "key": "server",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "CPUUser",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          }
+        ]
+      },
+      {
+        "id": "jvnxR1MrMQ",
+        "title": "GracefulWorkers",
+        "isMultiProject": true,
+        "supports": [
+          {
+            "platform": "INFRA"
+          }
+        ],
+        "layout": {
+          "h": 4,
+          "w": 16,
+          "x": 32,
+          "y": 10,
+          "i": "jvnxR1MrMQ",
+          "moved": false,
+          "static": false
+        },
+        "requestApi": "SERIES",
+        "widgetType": "SERIES",
+        "icon": "line-chart",
+        "category": "telegraf_apache",
+        "option": {},
+        "metrics": [
+          {
+            "name": "oname",
+            "tags": [
+              {
+                "key": "oname",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "GracefulWorkers",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "port",
+            "tags": [
+              {
+                "key": "port",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "GracefulWorkers",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "Project",
+            "tags": [
+              {
+                "key": "pname",
+                "title": "Project",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "GracefulWorkers",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "server",
+            "tags": [
+              {
+                "key": "server",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "GracefulWorkers",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          }
+        ]
+      },
+      {
+        "id": "AoFund70WH",
+        "title": "Processes",
+        "isMultiProject": true,
+        "supports": [
+          {
+            "platform": "INFRA"
+          }
+        ],
+        "layout": {
+          "h": 4,
+          "w": 24,
+          "x": 0,
+          "y": 24,
+          "i": "AoFund70WH",
+          "moved": false,
+          "static": false
+        },
+        "requestApi": "SERIES",
+        "widgetType": "SERIES",
+        "icon": "line-chart",
+        "category": "telegraf_apache",
+        "option": {},
+        "metrics": [
+          {
+            "name": "oname",
+            "tags": [
+              {
+                "key": "oname",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "Processes",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "port",
+            "tags": [
+              {
+                "key": "port",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "Processes",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "Project",
+            "tags": [
+              {
+                "key": "pname",
+                "title": "Project",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "Processes",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "server",
+            "tags": [
+              {
+                "key": "server",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "Processes",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          }
+        ]
+      },
+      {
+        "icon": "note",
+        "supports": [],
+        "title": "리치 텍스트",
+        "dirname": "v1/99.etc",
+        "widgetType": "RICH_TEXT",
+        "requestApi": "NONE",
+        "_key_": "v1/99.etc/rich_text",
+        "id": "Qsc87eLh4",
+        "layout": {
+          "h": 1,
+          "w": 48,
+          "x": 0,
+          "y": 23,
+          "i": "Qsc87eLh4",
+          "moved": false,
+          "static": false
+        },
+        "option": {
+          "markdown": "# Apache Server"
+        }
+      },
+      {
+        "id": "gPZAV_dA4y",
+        "title": "ParentServerConfigGeneration",
+        "isMultiProject": true,
+        "supports": [
+          {
+            "platform": "INFRA"
+          }
+        ],
+        "layout": {
+          "h": 4,
+          "w": 24,
+          "x": 24,
+          "y": 28,
+          "i": "gPZAV_dA4y",
+          "moved": false,
+          "static": false
+        },
+        "requestApi": "SERIES",
+        "widgetType": "SERIES",
+        "icon": "line-chart",
+        "category": "telegraf_apache",
+        "option": {},
+        "metrics": [
+          {
+            "name": "oname",
+            "tags": [
+              {
+                "key": "oname",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "ParentServerConfigGeneration",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "port",
+            "tags": [
+              {
+                "key": "port",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "ParentServerConfigGeneration",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "Project",
+            "tags": [
+              {
+                "key": "pname",
+                "title": "Project",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "ParentServerConfigGeneration",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "server",
+            "tags": [
+              {
+                "key": "server",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "ParentServerConfigGeneration",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          }
+        ]
+      },
+      {
+        "id": "JRL23xVFKHe",
+        "title": "ParentServerMPMGeneration",
+        "isMultiProject": true,
+        "supports": [
+          {
+            "platform": "INFRA"
+          }
+        ],
+        "layout": {
+          "h": 4,
+          "w": 24,
+          "x": 0,
+          "y": 28,
+          "i": "JRL23xVFKHe",
+          "moved": false,
+          "static": false
+        },
+        "requestApi": "SERIES",
+        "widgetType": "SERIES",
+        "icon": "line-chart",
+        "category": "telegraf_apache",
+        "option": {},
+        "metrics": [
+          {
+            "name": "oname",
+            "tags": [
+              {
+                "key": "oname",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "ParentServerMPMGeneration",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "port",
+            "tags": [
+              {
+                "key": "port",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "ParentServerMPMGeneration",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "Project",
+            "tags": [
+              {
+                "key": "pname",
+                "title": "Project",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "ParentServerMPMGeneration",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "server",
+            "tags": [
+              {
+                "key": "server",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "ParentServerMPMGeneration",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          }
+        ]
+      },
+      {
+        "id": "lIk3c2589h",
+        "title": "Stopping",
+        "isMultiProject": true,
+        "supports": [
+          {
+            "platform": "INFRA"
+          }
+        ],
+        "layout": {
+          "h": 4,
+          "w": 24,
+          "x": 24,
+          "y": 24,
+          "i": "lIk3c2589h",
+          "moved": false,
+          "static": false
+        },
+        "requestApi": "SERIES",
+        "widgetType": "SERIES",
+        "icon": "line-chart",
+        "category": "telegraf_apache",
+        "option": {},
+        "metrics": [
+          {
+            "name": "oname",
+            "tags": [
+              {
+                "key": "oname",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "Stopping",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "port",
+            "tags": [
+              {
+                "key": "port",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "Stopping",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "Project",
+            "tags": [
+              {
+                "key": "pname",
+                "title": "Project",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "Stopping",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          },
+          {
+            "name": "server",
+            "tags": [
+              {
+                "key": "server",
+                "unit": "#"
+              }
+            ],
+            "fields": [
+              {
+                "objectMerge": "avg",
+                "timeMerge": "avg",
+                "key": "Stopping",
+                "unit": "#"
+              }
+            ],
+            "mqlType": "automated"
+          }
+        ]
+      }
+    ],
+    "extra": {
+      "layout": {
+        "type": "FIXED",
+        "monitor": {
+          "x": 3,
+          "y": 3
+        }
+      },
+      "option": {}
+    }
+  }

@@ -170,7 +170,7 @@
         },
         {
           "name": "source",
-          "mql": "INJECT timepast\nHEADER { \"used_percent$\":\"%\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_datastore_disk\":6h, \"telegraf_vsphere_datastore_disk{m5}\":3d, \"telegraf_vsphere_datastore_disk{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['capacity_latest'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'used_latest','capacity_latest', 'source' ]\nFILTER { key: \"capacity_latest\", exist: true }\nFILTER { key: \"source\", exist: true }\n\nCREATE { key:_id_, expr: \"source\" }\nCREATE { key:_name_, expr: \"source\" }\nGROUP { timeunit: 5s, merge: ['capacity_latest','used_latest'], pk: _id_, last: _name_ }\nUPDATE { key: ['capacity_latest'], value: $OBJECT_MERGE_PLACE }\nCREATE { key:'used_percent', expr:\"100*used_latest/capacity_latest\"}"
+          "mql": "TIME-RANGE {recent: 2000s, etime:$etime}\nHEADER { \"used_percent$\":\"%\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_datastore_disk\":6h, \"telegraf_vsphere_datastore_disk{m5}\":3d, \"telegraf_vsphere_datastore_disk{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['capacity_latest'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'used_latest','capacity_latest', 'source' ]\nFILTER { key: \"capacity_latest\", exist: true }\nFILTER { key: \"source\", exist: true }\n\nCREATE { key:_id_, expr: \"source\" }\nCREATE { key:_name_, expr: \"source\" }\nGROUP { timeunit: 5s, merge: ['capacity_latest','used_latest'], pk: _id_, last: _name_ }\nUPDATE { key: ['capacity_latest'], value: $OBJECT_MERGE_PLACE }\nCREATE { key:'used_percent', expr:\"100*used_latest/capacity_latest\"}"
         },
         {
           "name": "vcenter",
@@ -344,22 +344,7 @@
         },
         {
           "name": "Source",
-          "tags": [
-            {
-              "key": "source",
-              "title": "Source",
-              "unit": "#"
-            }
-          ],
-          "fields": [
-            {
-              "objectMerge": "avg",
-              "timeMerge": "avg",
-              "key": "capacity_latest",
-              "unit": "#"
-            }
-          ],
-          "mqlType": "automated"
+          "mql": "TIME-RANGE {recent: 2000s, etime:$etime}\nHEADER { \"capacity_latest$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_datastore_disk\":6h, \"telegraf_vsphere_datastore_disk{m5}\":3d, \"telegraf_vsphere_datastore_disk{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['capacity_latest'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'capacity_latest', 'source' ]\nFILTER { key: \"capacity_latest\", exist: true }\nFILTER { key: \"source\", exist: true }\n\nCREATE { key:_id_, expr: \"pcode+'_'+source\" }\nCREATE { key:_name_, expr: \"source\" }\nGROUP { timeunit: 5s, merge: ['capacity_latest'], pk: _id_, last: _name_ }\nUPDATE { key: ['capacity_latest'], value: $OBJECT_MERGE_PLACE }"
         },
         {
           "name": "Vcenter",
@@ -534,7 +519,7 @@
         },
         {
           "name": "Source",
-          "mql": "INJECT timepast\nHEADER { \"free_capacity$\":\"B\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_datastore_disk\":6h, \"telegraf_vsphere_datastore_disk{m5}\":3d, \"telegraf_vsphere_datastore_disk{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['capacity_latest'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'capacity_latest','used_latest', 'source' ]\nFILTER { key: \"capacity_latest\", exist: true }\nFILTER { key: \"used_latest\", exist: true }\nFILTER { key: \"source\", exist: true }\n\nCREATE { key:_id_, expr: \"pcode+'_'+source\" }\nCREATE { key:_name_, expr: \"source\" }\nGROUP { timeunit: 5s, merge: ['used_latest','capacity_latest'], pk: _id_, last: _name_ }\nUPDATE { key: ['capacity_latest', 'used_latest'], value: $OBJECT_MERGE_PLACE }\nCREATE { key: free_capacity, expr:\"capacity_latest - used_latest\"}"
+          "mql": "TIME-RANGE {recent: 2000s, etime:$etime}\nHEADER { \"free_capacity$\":\"B\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_datastore_disk\":6h, \"telegraf_vsphere_datastore_disk{m5}\":3d, \"telegraf_vsphere_datastore_disk{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['capacity_latest'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'capacity_latest','used_latest', 'source' ]\nFILTER { key: \"capacity_latest\", exist: true }\nFILTER { key: \"used_latest\", exist: true }\nFILTER { key: \"source\", exist: true }\n\nCREATE { key:_id_, expr: \"pcode+'_'+source\" }\nCREATE { key:_name_, expr: \"source\" }\nGROUP { timeunit: 5s, merge: ['used_latest','capacity_latest'], pk: _id_, last: _name_ }\nUPDATE { key: ['capacity_latest', 'used_latest'], value: $OBJECT_MERGE_PLACE }\nCREATE { key: free_capacity, expr:\"capacity_latest - used_latest\"}"
         },
         {
           "name": "Vcenter",
