@@ -672,7 +672,7 @@
       "metrics": [
         {
           "name": "status",
-          "mql": "\r\nTIME-RANGE {recent: 120s}\r\nCATEGORY telegraf_vsphere_host_cpu\r\nTAGLOAD {backward:true}\r\nSELECT [time, oid,cpu, vcenter, clustername, esxhostname, usage_average]\r\nFILTER {key:\"vcenter\", exist: true}\r\nFILTER {key:\"esxhostname\", exist: true}\r\nFILTER {key:\"cpu\", value: \"instance-total\"}\r\nFIRST-ONLY {key:[time, vcenter, clustername, esxhostname]}\r\nGROUP {key:[vcenter, clustername], merge:usage_average, last:[vcenter, clustername]}\r\nupdate {key:usage_average, value:avg}\r\nORDER {key:[\"usage_average\"], sort:desc}\r\nselect [vcenter, clustername, usage_average]\r\nFIRST-ONLY {key:[ vcenter, clustername]}\r\n"
+          "mql": "\r\nTIME-RANGE {recent: 120s}\r\nCATEGORY telegraf_vsphere_host_cpu\r\nTAGLOAD {backward:true}\r\nSELECT [time, oid,cpu, vcenter, clustername, esxhostname, usage_average]\r\nFILTER {key:\"vcenter\", exist: true}\r\nFILTER {key:\"esxhostname\", exist: true}\r\nFILTER {key:\"cpu\", value: \"instance-total\"}\r\nFIRST-ONLY {key:[vcenter, clustername, esxhostname]}\r\nCREATE { key: _pk_, expr: \"vcenter+'\\\\'+clustername\"}\r\nGROUP {pk:_pk_, merge:usage_average, last:[vcenter, clustername]}\r\nupdate {key:usage_average, value:avg}\r\nORDER {key:[\"usage_average\"], sort:desc}\r\nselect [vcenter, clustername, usage_average]\r\nFIRST-ONLY {key:[ vcenter, clustername]}\r\n"
         }
       ],
       "title": "CPU Usage",
@@ -745,7 +745,7 @@
       "metrics": [
         {
           "name": "status",
-          "mql": "TIME-RANGE {recent: 120s}\r\nCATEGORY telegraf_vsphere_host_mem\r\nTAGLOAD {backward:true}\r\nSELECT [time, oid, vcenter, clustername, esxhostname, usage_average]\r\nFILTER {key:\"vcenter\", exist: true}\r\nFILTER {key:\"esxhostname\", exist: true}\r\nFIRST-ONLY {key:[ vcenter, clustername, esxhostname]}\r\nGROUP {key:[vcenter, clustername], merge:usage_average, last:[vcenter, clustername]}\r\nupdate {key:usage_average, value:avg}\r\nORDER {key:[\"usage_average\"], sort:desc}\r\nselect [vcenter, clustername, usage_average]\r\nFIRST-ONLY {key:[ vcenter, clustername]}\r\n\r\n"
+          "mql": "TIME-RANGE {recent: 120s}\r\nCATEGORY telegraf_vsphere_host_mem\r\nTAGLOAD {backward:true}\r\nSELECT [time, oid, vcenter, clustername, esxhostname, usage_average]\r\nFILTER {key:\"vcenter\", exist: true}\r\nFILTER {key:\"esxhostname\", exist: true}\r\nFIRST-ONLY {key:[ vcenter, clustername, esxhostname]}\r\nCREATE { key: _pk_, expr: \"vcenter+'\\\\'+clustername\" }\r\nGROUP {pk:_pk_, merge:usage_average, last:[vcenter, clustername]}\r\nupdate {key:usage_average, value:avg}\r\nORDER {key:[\"usage_average\"], sort:desc}\r\nselect [vcenter, clustername, usage_average]\r\nFIRST-ONLY {key:[ vcenter, clustername]}\r\n\r\n"
         }
       ],
       "title": "Memory Usage",
@@ -1038,7 +1038,7 @@
       "metrics": [
         {
           "name": "status",
-          "mql": " \r\nTIME-RANGE {recent: 120s}\r\nCATEGORY telegraf_vsphere_host_sys\r\nTAGLOAD {backward:true}\r\nSELECT [time, oid,vcenter, clustername, uptime_latest]\r\nFILTER {key:\"vcenter\", exist: true}\r\n\r\nORDER {key:[\"time\",\"uptime_latest\"], sort:desc}\r\nFIRST-ONLY {key:[vcenter, clustername]}\r\nLIMIT 1\r\n\r\n"
+          "mql": " \r\nTIME-RANGE {recent: 120s}\r\nCATEGORY telegraf_vsphere_host_sys\r\nTAGLOAD {backward:true}\r\nSELECT [time, oid,vcenter, clustername, uptime_latest]\r\nFILTER {key:\"vcenter\", exist: true}\r\n\r\nORDER {key:[\"uptime_latest\"], sort:desc}\r\nFIRST-ONLY {key:[vcenter, clustername]}\r\n\r\n\r\n"
         }
       ],
       "title": "Uptime",
