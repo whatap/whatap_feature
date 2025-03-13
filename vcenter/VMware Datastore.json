@@ -56,7 +56,8 @@
           "header": {
             "display": ""
           }
-        }
+        },
+        "globalTime": true
       },
       "metrics": [
         {
@@ -170,7 +171,10 @@
         },
         {
           "name": "source",
-          "mql": "TIME-RANGE {recent: 2000s, etime:$etime}\nHEADER { \"used_percent$\":\"%\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_datastore_disk\":6h, \"telegraf_vsphere_datastore_disk{m5}\":3d, \"telegraf_vsphere_datastore_disk{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['capacity_latest'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'used_latest','capacity_latest', 'source' ]\nFILTER { key: \"capacity_latest\", exist: true }\nFILTER { key: \"source\", exist: true }\n\nCREATE { key:_id_, expr: \"source\" }\nCREATE { key:_name_, expr: \"source\" }\nGROUP { timeunit: 5s, merge: ['capacity_latest','used_latest'], pk: _id_, last: _name_ }\nUPDATE { key: ['capacity_latest'], value: $OBJECT_MERGE_PLACE }\nCREATE { key:'used_percent', expr:\"100*used_latest/capacity_latest\"}"
+          "mql": "\nTIME-RANGE {recent: 60m, etime:$etime}\nHEADER { \"used_percent$\":\"%\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY \"telegraf_vsphere_datastore_disk\"\nTAGLOAD {\"backward\": true}\nSELECT [ 'pcode', 'time', 'oid', 'used_latest', 'source' ]\nFILTER { key: \"used_latest\", exist: true }\nFILTER { key: \"source\", exist: true }\nFIRST-ONLY { key: [oid, source]}\nJOIN { query: CAP, pk: [oid, source], field: [\"capacity_latest\"] }\nCREATE { key:_id_, expr: \"source\" }\nCREATE { key:_name_, expr: \"source\" }\nCREATE { key:used_percent, expr:\"100*used_latest/capacity_latest\"}\n\nSUB CAP\nTIME-RANGE {recent: 60m, etime:$etime}\nCATEGORY \"telegraf_vsphere_datastore_disk\"\nTAGLOAD {backward: true}\nSELECT [ 'oid', 'capacity_latest', 'source' ]\nFILTER { key: \"capacity_latest\", exist: true }\nFILTER { key: \"source\", exist: true }\nFIRST-ONLY { key: [oid,source]}\nEND\n",
+          "inject": {
+            "default": "TIME-RANGE{recent:1h}"
+          }
         },
         {
           "name": "vcenter",
@@ -225,7 +229,11 @@
         "chartAside": {
           "chart": "BAR",
           "ratio": 100
-        }
+        },
+        "globalTime": true,
+        "stime": 1741766767000,
+        "etime": 1741770367000,
+        "timeAction": "LIVE_1HOUR"
       },
       "metrics": [
         {
@@ -344,7 +352,10 @@
         },
         {
           "name": "Source",
-          "mql": "TIME-RANGE {recent: 2000s, etime:$etime}\nHEADER { \"capacity_latest$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_datastore_disk\":6h, \"telegraf_vsphere_datastore_disk{m5}\":3d, \"telegraf_vsphere_datastore_disk{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['capacity_latest'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'capacity_latest', 'source' ]\nFILTER { key: \"capacity_latest\", exist: true }\nFILTER { key: \"source\", exist: true }\n\nCREATE { key:_id_, expr: \"pcode+'_'+source\" }\nCREATE { key:_name_, expr: \"source\" }\nGROUP { timeunit: 5s, merge: ['capacity_latest'], pk: _id_, last: _name_ }\nUPDATE { key: ['capacity_latest'], value: $OBJECT_MERGE_PLACE }"
+          "mql": "TIME-RANGE {recent: 60m, etime:$etime}\nHEADER { \"capacity_latest_bytes$\":\"B\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY \"telegraf_vsphere_datastore_disk\"\nTAGLOAD {\"backward\": true}\nSELECT [ 'pcode', 'time', 'oid', 'capacity_latest', 'source' ]\nFILTER { key: \"capacity_latest\", exist: true }\nFILTER { key: \"source\", exist: true }\nFIRST-ONLY { key: [oid, source]}\nCREATE { key: \"capacity_latest_bytes\", expr:\"capacity_latest*1024\"}\nCREATE { key:_id_, expr: \"source\" }\nCREATE { key:_name_, expr: \"source\" }\n",
+          "inject": {
+            "default": "TIME-RANGE{recent:1h}"
+          }
         },
         {
           "name": "Vcenter",
@@ -400,7 +411,11 @@
         "chartAside": {
           "chart": "BAR",
           "ratio": 100
-        }
+        },
+        "globalTime": true,
+        "stime": 1741766795000,
+        "etime": 1741770395000,
+        "timeAction": "LIVE_1HOUR"
       },
       "metrics": [
         {
@@ -519,7 +534,10 @@
         },
         {
           "name": "Source",
-          "mql": "TIME-RANGE {recent: 2000s, etime:$etime}\nHEADER { \"free_capacity$\":\"B\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_datastore_disk\":6h, \"telegraf_vsphere_datastore_disk{m5}\":3d, \"telegraf_vsphere_datastore_disk{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['capacity_latest'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'capacity_latest','used_latest', 'source' ]\nFILTER { key: \"capacity_latest\", exist: true }\nFILTER { key: \"used_latest\", exist: true }\nFILTER { key: \"source\", exist: true }\n\nCREATE { key:_id_, expr: \"pcode+'_'+source\" }\nCREATE { key:_name_, expr: \"source\" }\nGROUP { timeunit: 5s, merge: ['used_latest','capacity_latest'], pk: _id_, last: _name_ }\nUPDATE { key: ['capacity_latest', 'used_latest'], value: $OBJECT_MERGE_PLACE }\nCREATE { key: free_capacity, expr:\"capacity_latest - used_latest\"}"
+          "mql": "TIME-RANGE {recent: 60m, etime:$etime}\nHEADER { \"free_capacity$\":\"B\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY \"telegraf_vsphere_datastore_disk\"\nTAGLOAD {\"backward\": true}\nSELECT [ 'pcode', 'time', 'oid', 'used_latest', 'source' ]\nFILTER { key: \"used_latest\", exist: true }\nFILTER { key: \"source\", exist: true }\nFIRST-ONLY { key: [oid, source]}\nJOIN { query: CAP, pk: [oid, source], field: [\"capacity_latest\"] }\nCREATE { key:_id_, expr: \"source\" }\nCREATE { key:_name_, expr: \"source\" }\nCREATE { key:'free_capacity', expr:\"(capacity_latest - used_latest)*1024\"}\n\nSUB CAP\nTIME-RANGE {recent: 60m, etime:$etime}\nCATEGORY \"telegraf_vsphere_datastore_disk\"\nTAGLOAD {backward: true}\nSELECT [ 'oid', 'capacity_latest', 'source' ]\nFILTER { key: \"capacity_latest\", exist: true }\nFILTER { key: \"source\", exist: true }\nFIRST-ONLY { key: [oid,source]}\nEND\n",
+          "inject": {
+            "default": "TIME-RANGE{recent:1h}"
+          }
         },
         {
           "name": "Vcenter",
@@ -551,6 +569,10 @@
         "y": 3
       }
     },
-    "option": {}
+    "option": {
+      "stime": 1741768692000,
+      "etime": 1741772292000,
+      "timeAction": "LIVE_1HOUR"
+    }
   }
 }

@@ -615,7 +615,7 @@
       ],
       "metrics": [
         {
-          "mql": "\r\nTIME-RANGE {recent: 120s}\r\nCATEGORY telegraf_vsphere_host_mem\r\nTAGLOAD {backward:true}\r\nSELECT [time, vcenter, clustername, esxhostname, totalCapacity_average]\r\nFILTER {key:\"vcenter\", exist: true}\r\nFILTER {key:\"esxhostname\", exist: true}\r\nFIRST-ONLY {key:[vcenter, esxhostname]}\r\nGROUP { pk: [vcenter], merge:totalCapacity_average }\r\nUPDATE {key:totalCapacity_average, value:sum}\r\nCREATE {key:host_mem, expr:\"totalCapacity_average*1024*1024\"}\r\n\r\nJOIN { query: vm, pk: [vcenter], field: [\"vm_mem\"] }\r\nCREATE {key:\"mem_over_ratio\", expr:\"vm_mem / host_mem\"}\r\nselect [ mem_over_ratio, vm_mem,host_mem ]\r\n\r\nSUB vm\r\nTIME-RANGE {recent: 10m}\r\nCATEGORY telegraf_vsphere_vm_mem\r\nTAGLOAD {backward:true}\r\nSELECT [time, vcenter, uuid,entitlement_average\r\n]\r\nFILTER {key:\"uuid\", exist: true}\r\nFIRST-ONLY {key:[vcenter, uuid]}\r\nGROUP { timeunit:120s, merge:\"entitlement_average\", pk:[vcenter] }\r\nUPDATE {key:entitlement_average, value: sum}\r\nCREATE {key:vm_mem, expr: \"entitlement_average*1024\"}\r\nSELECT [time, vcenter, vm_mem]\r\nEND\r\n"
+          "mql": "\r\nTIME-RANGE {recent: 180s}\r\nCATEGORY telegraf_vsphere_host_mem\r\nTAGLOAD {backward:true}\r\nSELECT [time, vcenter, clustername, esxhostname, totalCapacity_average]\r\nFILTER {key:\"vcenter\", exist: true}\r\nFILTER {key:\"esxhostname\", exist: true}\r\nFIRST-ONLY {key:[vcenter, esxhostname]}\r\nGROUP { pk: [vcenter], merge:totalCapacity_average }\r\nUPDATE {key:totalCapacity_average, value:sum}\r\nCREATE {key:host_mem, expr:\"totalCapacity_average*1024*1024\"}\r\n\r\nJOIN { query: vm, pk: [vcenter], field: [\"vm_mem\"] }\r\nCREATE {key:\"mem_over_ratio\", expr:\"vm_mem / host_mem\"}\r\nselect [ mem_over_ratio, vm_mem,host_mem ]\r\n\r\nSUB vm\r\nTIME-RANGE {recent: 10m}\r\nCATEGORY telegraf_vsphere_vm_mem\r\nTAGLOAD {backward:true}\r\nSELECT [time, vcenter, uuid,entitlement_average\r\n]\r\nFILTER {key:\"uuid\", exist: true}\r\nFIRST-ONLY {key:[vcenter, uuid]}\r\nGROUP { timeunit:120s, merge:\"entitlement_average\", pk:[vcenter] }\r\nUPDATE {key:entitlement_average, value: sum}\r\nCREATE {key:vm_mem, expr: \"entitlement_average*1024\"}\r\nSELECT [time, vcenter, vm_mem]\r\nEND\r\n"
         }
       ],
       "title": "All Overprovisioned Memory",
@@ -672,7 +672,7 @@
       "metrics": [
         {
           "name": "status",
-          "mql": "\r\nTIME-RANGE {recent: 120s}\r\nCATEGORY telegraf_vsphere_host_cpu\r\nTAGLOAD {backward:true}\r\nSELECT [time, oid,cpu, vcenter, clustername, esxhostname, usage_average]\r\nFILTER {key:\"vcenter\", exist: true}\r\nFILTER {key:\"esxhostname\", exist: true}\r\nFILTER {key:\"cpu\", value: \"instance-total\"}\r\nFIRST-ONLY {key:[vcenter, clustername, esxhostname]}\r\nCREATE { key: _pk_, expr: \"vcenter+'\\\\'+clustername\"}\r\nGROUP {pk:_pk_, merge:usage_average, last:[vcenter, clustername]}\r\nupdate {key:usage_average, value:avg}\r\nORDER {key:[\"usage_average\"], sort:desc}\r\nselect [vcenter, clustername, usage_average]\r\nFIRST-ONLY {key:[ vcenter, clustername]}\r\n"
+          "mql": "\r\nTIME-RANGE {recent: 180s}\r\nCATEGORY telegraf_vsphere_host_cpu\r\nTAGLOAD {backward:true}\r\nSELECT [time, oid,cpu, vcenter, clustername, esxhostname, usage_average]\r\nFILTER {key:\"vcenter\", exist: true}\r\nFILTER {key:\"esxhostname\", exist: true}\r\nFILTER {key:\"cpu\", value: \"instance-total\"}\r\nFIRST-ONLY {key:[vcenter, clustername, esxhostname]}\r\nCREATE { key: _pk_, expr: \"vcenter+'\\\\'+clustername\"}\r\nGROUP {pk:_pk_, merge:usage_average, last:[vcenter, clustername]}\r\nupdate {key:usage_average, value:avg}\r\nORDER {key:[\"usage_average\"], sort:desc}\r\nselect [vcenter, clustername, usage_average]\r\nFIRST-ONLY {key:[ vcenter, clustername]}\r\n"
         }
       ],
       "title": "CPU Usage",
@@ -745,7 +745,7 @@
       "metrics": [
         {
           "name": "status",
-          "mql": "TIME-RANGE {recent: 120s}\r\nCATEGORY telegraf_vsphere_host_mem\r\nTAGLOAD {backward:true}\r\nSELECT [time, oid, vcenter, clustername, esxhostname, usage_average]\r\nFILTER {key:\"vcenter\", exist: true}\r\nFILTER {key:\"esxhostname\", exist: true}\r\nFIRST-ONLY {key:[ vcenter, clustername, esxhostname]}\r\nCREATE { key: _pk_, expr: \"vcenter+'\\\\'+clustername\" }\r\nGROUP {pk:_pk_, merge:usage_average, last:[vcenter, clustername]}\r\nupdate {key:usage_average, value:avg}\r\nORDER {key:[\"usage_average\"], sort:desc}\r\nselect [vcenter, clustername, usage_average]\r\nFIRST-ONLY {key:[ vcenter, clustername]}\r\n\r\n"
+          "mql": "TIME-RANGE {recent: 180s}\r\nCATEGORY telegraf_vsphere_host_mem\r\nTAGLOAD {backward:true}\r\nSELECT [time, oid, vcenter, clustername, esxhostname, usage_average]\r\nFILTER {key:\"vcenter\", exist: true}\r\nFILTER {key:\"esxhostname\", exist: true}\r\nFIRST-ONLY {key:[ vcenter, clustername, esxhostname]}\r\nCREATE { key: _pk_, expr: \"vcenter+'\\\\'+clustername\" }\r\nGROUP {pk:_pk_, merge:usage_average, last:[vcenter, clustername]}\r\nupdate {key:usage_average, value:avg}\r\nORDER {key:[\"usage_average\"], sort:desc}\r\nselect [vcenter, clustername, usage_average]\r\nFIRST-ONLY {key:[ vcenter, clustername]}\r\n\r\n"
         }
       ],
       "title": "Memory Usage",
@@ -813,7 +813,7 @@
       ],
       "metrics": [
         {
-          "mql": "\r\nTIME-RANGE {recent:120s, etime:$etime}\r\nCATEGORY telegraf_vsphere_host_cpu\r\nTAGLOAD {backward:true}\r\n\r\nSELECT [oid, vcenter]\r\nFILTER {key:\"vcenter\", exist: true}\r\nGROUP { pk: \"vcenter\", merge: [vcenter] }\r\nUPDATE {key:\"vcenter\", value:count}\r\nGROUP { pk: \"pcode\" }\r\nRENAME {src:_rows_, dst:vcenter_count}\r\nDELETE [vcenter]\r\nJOIN { query: cluster, pk: \"pcode\", field: [\"cluster_count\"] }\r\nJOIN { query: esxhost, pk: \"pcode\", field: [\"esxhost_count\"] }\r\nJOIN { query: vm, pk: \"pcode\", field: [\"vm_count\"] }\r\nJOIN { query: ds, pk: \"pcode\", field: [\"ds_count\"] }\r\n\r\nSELECT [\"vcenter_count\",\"cluster_count\",\"esxhost_count\",\"vm_count\", \"ds_count\"]\r\nFIRST-ONLY\r\n\r\n\r\nSUB cluster\r\nTIME-RANGE {recent: 120s, etime:$etime}\r\nCATEGORY telegraf_vsphere_host_cpu\r\nTAGLOAD {backward:true}\r\nSELECT [oid, clustername]\r\nFILTER {key:\"clustername\", exist: true}\r\nGROUP { pk: \"clustername\", merge: [clustername] }\r\nUPDATE {key:\"clustername\", value:count}\r\nGROUP { pk: \"pcode\" }\r\nRENAME {src:_rows_, dst:cluster_count}\r\nDELETE [clustername]\r\nEND\r\n\r\nSUB esxhost\r\nTIME-RANGE {recent: 120s, etime:$etime}\r\nCATEGORY telegraf_vsphere_host_cpu\r\nTAGLOAD {backward:true}\r\nSELECT [oid, esxhostname]\r\nFILTER {key:\"esxhostname\", exist: true}\r\nGROUP { pk: \"esxhostname\", merge: [esxhostname] }\r\nUPDATE {key:\"esxhostname\", value:count}\r\nGROUP { pk: \"pcode\" }\r\nRENAME {src:_rows_, dst:esxhost_count}\r\nDELETE [esxhostname]\r\nEND\r\n\r\n\r\nSUB vm\r\nTIME-RANGE {recent: 120s, etime:$etime}\r\nCATEGORY telegraf_vsphere_vm_cpu\r\nTAGLOAD {backward:true}\r\nSELECT [oid, vmname]\r\nFILTER {key:\"vmname\", exist: true}\r\nFIRST-ONLY {key:[vmname]}\r\nGROUP { pk: \"vmname\", merge: [vmname] }\r\nUPDATE {key:\"vmname\", value:count}\r\nGROUP { pk: \"pcode\" }\r\nRENAME {src:_rows_, dst:vm_count}\r\nDELETE [vmname]\r\nEND\r\n\r\n\r\nSUB ds\r\nTIME-RANGE {recent: 2000s, etime:$etime}\r\nCATEGORY telegraf_vsphere_datastore_disk\r\nTAGLOAD {backward:true}\r\nSELECT [oid, dsname]\r\nFILTER {key:\"dsname\", exist: true}\r\nFIRST-ONLY {key: dsname}\r\nGROUP { pk: \"dsname\" }\r\nUPDATE {key:\"dsname\", value:count}\r\nGROUP { pk: \"pcode\" }\r\nRENAME {src:_rows_, dst:ds_count}\r\nDELETE [dsname]\r\nEND\r\n"
+          "mql": "\r\nTIME-RANGE {recent: 180s, etime:$etime}\r\nCATEGORY telegraf_vsphere_host_cpu\r\nTAGLOAD {backward:true}\r\n\r\nSELECT [oid, vcenter]\r\nFILTER {key:\"vcenter\", exist: true}\r\nGROUP { pk: \"vcenter\", merge: [vcenter] }\r\nUPDATE {key:\"vcenter\", value:count}\r\nGROUP { pk: \"pcode\" }\r\nRENAME {src:_rows_, dst:vcenter_count}\r\nDELETE [vcenter]\r\nJOIN { query: cluster, pk: \"pcode\", field: [\"cluster_count\"] }\r\nJOIN { query: esxhost, pk: \"pcode\", field: [\"esxhost_count\"] }\r\nJOIN { query: vm, pk: \"pcode\", field: [\"vm_count\"] }\r\nJOIN { query: ds, pk: \"pcode\", field: [\"ds_count\"] }\r\n\r\nSELECT [\"vcenter_count\",\"cluster_count\",\"esxhost_count\",\"vm_count\", \"ds_count\"]\r\nFIRST-ONLY\r\n\r\n\r\nSUB cluster\r\nTIME-RANGE {recent: 180s, etime:$etime}\r\nCATEGORY telegraf_vsphere_host_cpu\r\nTAGLOAD {backward:true}\r\nSELECT [oid, clustername]\r\nFILTER {key:\"clustername\", exist: true}\r\nGROUP { pk: \"clustername\", merge: [clustername] }\r\nUPDATE {key:\"clustername\", value:count}\r\nGROUP { pk: \"pcode\" }\r\nRENAME {src:_rows_, dst:cluster_count}\r\nDELETE [clustername]\r\nEND\r\n\r\nSUB esxhost\r\nTIME-RANGE {recent: 180s, etime:$etime}\r\nCATEGORY telegraf_vsphere_host_cpu\r\nTAGLOAD {backward:true}\r\nSELECT [oid, esxhostname]\r\nFILTER {key:\"esxhostname\", exist: true}\r\nGROUP { pk: \"esxhostname\", merge: [esxhostname] }\r\nUPDATE {key:\"esxhostname\", value:count}\r\nGROUP { pk: \"pcode\" }\r\nRENAME {src:_rows_, dst:esxhost_count}\r\nDELETE [esxhostname]\r\nEND\r\n\r\n\r\nSUB vm\r\nTIME-RANGE {recent: 180s, etime:$etime}\r\nCATEGORY telegraf_vsphere_vm_cpu\r\nTAGLOAD {backward:true}\r\nSELECT [oid, vmname]\r\nFILTER {key:\"vmname\", exist: true}\r\nFIRST-ONLY {key:[vmname]}\r\nGROUP { pk: \"vmname\", merge: [vmname] }\r\nUPDATE {key:\"vmname\", value:count}\r\nGROUP { pk: \"pcode\" }\r\nRENAME {src:_rows_, dst:vm_count}\r\nDELETE [vmname]\r\nEND\r\n\r\n\r\nSUB ds\r\nTIME-RANGE {recent: 2000s, etime:$etime}\r\nCATEGORY telegraf_vsphere_datastore_disk\r\nTAGLOAD {backward:true}\r\nSELECT [oid, dsname]\r\nFILTER {key:\"dsname\", exist: true}\r\nFIRST-ONLY {key: dsname}\r\nGROUP { pk: \"dsname\" }\r\nUPDATE {key:\"dsname\", value:count}\r\nGROUP { pk: \"pcode\" }\r\nRENAME {src:_rows_, dst:ds_count}\r\nDELETE [dsname]\r\nEND\r\n"
         }
       ],
       "title": "vSphere Overview",
@@ -956,7 +956,7 @@
       ],
       "metrics": [
         {
-          "mql": " \r\n\r\nTIME-RANGE {recent: 120s, etime:$etime}\r\nCATEGORY telegraf_vsphere_host_cpu\r\nTAGLOAD {backward:true}\r\nSELECT [time, oid,cpu, vcenter, clustername, esxhostname, usage_average]\r\nFILTER {key:\"vcenter\", exist: true}\r\nFILTER {key:\"esxhostname\", exist: true}\r\nFILTER {expr: \" cpu != 'instance-total'\"}\r\nFIRST-ONLY {key:[vcenter, clustername, esxhostname, cpu]}\r\nGROUP { pk: [vcenter, clustername, esxhostname] }\r\nRENAME {src:_rows_, dst:host_cpu}\r\nJOIN { query: vm, pk: [vcenter,clustername, esxhostname], field: [\"vm_cpu\"] }\r\nGROUP { merge:[vm_cpu, host_cpu]}\r\nUPDATE { key:[vm_cpu, host_cpu], value:sum}\r\nCREATE {key:\"cpu_over_ratio\", expr:\"vm_cpu / host_cpu\"}\r\nselect [ time, vcenter, esxhostname,cpu_over_ratio, vm_cpu,host_cpu ]\r\n\r\nSUB vm\r\nTIME-RANGE {recent: 120s, etime:$etime}\r\nCATEGORY telegraf_vsphere_vm_cpu\r\nTAGLOAD {backward:true}\r\nSELECT [time, oid,cpu, moid,vcenter, clustername, esxhostname]\r\nFILTER {key:\"vcenter\", exist: true}\r\n\r\nFILTER {key:\"esxhostname\", exist: true}\r\nFILTER {expr: \" cpu != 'instance-total'\"}\r\nFIRST-ONLY {key:[vcenter, clustername, esxhostname,moid,cpu]}\r\nGROUP { pk: [vcenter, clustername, esxhostname]}\r\nRENAME {src:_rows_, dst:vm_cpu}\r\nSELECT [time, vcenter, clustername, esxhostname, vm_cpu]\r\nEND\r\n"
+          "mql": " \r\n\r\nTIME-RANGE {recent: 180s, etime:$etime}\r\nCATEGORY telegraf_vsphere_host_cpu\r\nTAGLOAD {backward:true}\r\nSELECT [time, oid,cpu, vcenter, clustername, esxhostname, usage_average]\r\nFILTER {key:\"vcenter\", exist: true}\r\nFILTER {key:\"esxhostname\", exist: true}\r\nFILTER {expr: \" cpu != 'instance-total'\"}\r\nFIRST-ONLY {key:[vcenter, clustername, esxhostname, cpu]}\r\nGROUP { pk: [vcenter, clustername, esxhostname] }\r\nRENAME {src:_rows_, dst:host_cpu}\r\nJOIN { query: vm, pk: [vcenter,clustername, esxhostname], field: [\"vm_cpu\"] }\r\nGROUP { merge:[vm_cpu, host_cpu]}\r\nUPDATE { key:[vm_cpu, host_cpu], value:sum}\r\nCREATE {key:\"cpu_over_ratio\", expr:\"vm_cpu / host_cpu\"}\r\nselect [ time, vcenter, esxhostname,cpu_over_ratio, vm_cpu,host_cpu ]\r\n\r\nSUB vm\r\nTIME-RANGE {recent: 180s, etime:$etime}\r\nCATEGORY telegraf_vsphere_vm_cpu\r\nTAGLOAD {backward:true}\r\nSELECT [time, oid,cpu, moid,vcenter, clustername, esxhostname]\r\nFILTER {key:\"vcenter\", exist: true}\r\n\r\nFILTER {key:\"esxhostname\", exist: true}\r\nFILTER {expr: \" cpu != 'instance-total'\"}\r\nFIRST-ONLY {key:[vcenter, clustername, esxhostname,moid,cpu]}\r\nGROUP { pk: [vcenter, clustername, esxhostname]}\r\nRENAME {src:_rows_, dst:vm_cpu}\r\nSELECT [time, vcenter, clustername, esxhostname, vm_cpu]\r\nEND\r\n"
         }
       ],
       "title": "All Overprovisioned CPU",
@@ -1038,7 +1038,7 @@
       "metrics": [
         {
           "name": "status",
-          "mql": " \r\nTIME-RANGE {recent: 120s}\r\nCATEGORY telegraf_vsphere_host_sys\r\nTAGLOAD {backward:true}\r\nSELECT [time, oid,vcenter, clustername, uptime_latest]\r\nFILTER {key:\"vcenter\", exist: true}\r\n\r\nORDER {key:[\"uptime_latest\"], sort:desc}\r\nFIRST-ONLY {key:[vcenter, clustername]}\r\n\r\n\r\n"
+          "mql": " \r\nTIME-RANGE {recent: 180s}\r\nCATEGORY telegraf_vsphere_host_sys\r\nTAGLOAD {backward:true}\r\nSELECT [time, oid,vcenter, clustername, uptime_latest]\r\nFILTER {key:\"vcenter\", exist: true}\r\n\r\nORDER {key:[\"uptime_latest\"], sort:desc}\r\nFIRST-ONLY {key:[vcenter, clustername]}\r\n\r\n\r\n"
         }
       ],
       "title": "Uptime",
@@ -1333,7 +1333,11 @@
           "header": {
             "display": ""
           }
-        }
+        },
+        "globalTime": false,
+        "stime": 1741766845000,
+        "etime": 1741770445000,
+        "timeAction": "LIVE_1HOUR"
       },
       "metrics": [
         {
@@ -1458,23 +1462,10 @@
         },
         {
           "name": "Source",
-          "tags": [
-            {
-              "key": "source",
-              "title": "Source",
-              "unit": "#"
-            }
-          ],
-          "fields": [
-            {
-              "objectMerge": "avg",
-              "timeMerge": "avg",
-              "key": "capacity_latest",
-              "title": "Capacity_latest",
-              "unit": "#"
-            }
-          ],
-          "mqlType": "automated"
+          "mql": "TIME-RANGE {recent: 60m, etime:$etime}\nHEADER { \"capacity_latest_bytes$\":\"B\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY \"telegraf_vsphere_datastore_disk\"\nTAGLOAD {\"backward\": true}\nSELECT [ 'pcode', 'time', 'oid', 'capacity_latest', 'source' ]\nFILTER { key: \"capacity_latest\", exist: true }\nFILTER { key: \"source\", exist: true }\nFIRST-ONLY { key: [oid, source]}\nCREATE { key: \"capacity_latest_bytes\", expr:\"capacity_latest*1024\"}\nCREATE { key:_id_, expr: \"source\" }\nCREATE { key:_name_, expr: \"source\" }\n",
+          "inject": {
+            "default": "TIME-RANGE{recent:1h}"
+          }
         },
         {
           "name": "Vcenter",
@@ -1507,6 +1498,10 @@
         "y": 3
       }
     },
-    "option": {}
+    "option": {
+      "stime": 1741769978000,
+      "etime": 1741770278000,
+      "timeAction": "LIVE_5MIN"
+    }
   }
 }

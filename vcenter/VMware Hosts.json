@@ -115,7 +115,7 @@
         },
         {
           "name": "esxhostname,Clustername",
-          "mql": "INJECT timepast\nHEADER { \"usage_average$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_host_cpu\":6h, \"telegraf_vsphere_host_cpu{m5}\":3d, \"telegraf_vsphere_host_cpu{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['usage_average'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'usage_average', 'esxhostname', 'clustername' ]\nFILTER { key: \"usage_average\", exist: true }\nFILTER { key: \"esxhostname\", exist: true }\n\nCREATE { key:_id_, expr: \"pcode+'_'+esxhostname+'_'+clustername\" }\nCREATE { key:_name_, expr: \"esxhostname+' / '+clustername\" }\nGROUP { timeunit: 5s, merge: ['usage_average'], pk: _id_, last: _name_ }\nUPDATE { key: ['usage_average'], value: $OBJECT_MERGE_PLACE }"
+          "mql": "HEADER { \"usage_average$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_host_cpu\":6h, \"telegraf_vsphere_host_cpu{m5}\":3d, \"telegraf_vsphere_host_cpu{h1}\":unlimit } \nTAGLOAD\nSELECT [ 'pcode', 'time', 'oid', 'usage_average', 'esxhostname', 'clustername' ]\nFILTER { key: \"usage_average\", exist: true }\nFILTER { key: \"esxhostname\", exist: true }\n\nCREATE { key:_id_, expr: \"pcode+'_'+esxhostname+'_'+clustername\" }\nCREATE { key:_name_, expr: \"esxhostname+' / '+clustername\" }\n"
         },
         {
           "name": "moid",
@@ -282,7 +282,7 @@
         },
         {
           "name": "esxhostname,Clustername",
-          "mql": "INJECT timepast\nHEADER { \"usage_average$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_host_mem\":6h, \"telegraf_vsphere_host_mem{m5}\":3d, \"telegraf_vsphere_host_mem{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['usage_average'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'usage_average', 'esxhostname', 'clustername' ]\nFILTER { key: \"usage_average\", exist: true }\nFILTER { key: \"esxhostname\", exist: true }\n\nCREATE { key:_id_, expr: \"pcode+'_'+esxhostname+'_'+clustername\" }\nCREATE { key:_name_, expr: \"esxhostname+' / '+clustername\" }\nGROUP { timeunit: 5s, merge: ['usage_average'], pk: _id_, last: _name_ }\nUPDATE { key: ['usage_average'], value: $OBJECT_MERGE_PLACE }"
+          "mql": "HEADER { \"usage_average$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_host_mem\":6h, \"telegraf_vsphere_host_mem{m5}\":3d, \"telegraf_vsphere_host_mem{h1}\":unlimit } \nTAGLOAD\nSELECT [ 'pcode', 'time', 'oid', 'usage_average', 'esxhostname', 'clustername' ]\nFILTER { key: \"usage_average\", exist: true }\nFILTER { key: \"esxhostname\", exist: true }\n\nCREATE { key:_id_, expr: \"pcode+'_'+esxhostname+'_'+clustername\" }\nCREATE { key:_name_, expr: \"esxhostname+' / '+clustername\" }\n"
         },
         {
           "name": "moid",
@@ -470,7 +470,7 @@
         },
         {
           "name": "Esxhostname,Clustername",
-          "mql": "INJECT timepast\nHEADER { \"ready_summation$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_host_cpu\":6h, \"telegraf_vsphere_host_cpu{m5}\":3d, \"telegraf_vsphere_host_cpu{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['ready_summation'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'ready_summation', 'esxhostname', 'clustername' ]\nFILTER { key: \"ready_summation\", exist: true }\nFILTER { key: \"esxhostname\", exist: true }\n\nCREATE { key:_id_, expr: \"pcode+'_'+esxhostname+'_'+clustername\" }\nCREATE { key:_name_, expr: \"esxhostname+' / '+clustername\" }\nGROUP { timeunit: 5s, merge: ['ready_summation'], pk: _id_, last: _name_ }\nUPDATE { key: ['ready_summation'], value: $OBJECT_MERGE_PLACE }"
+          "mql": "HEADER { \"ready_summation$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_host_cpu\":6h, \"telegraf_vsphere_host_cpu{m5}\":3d, \"telegraf_vsphere_host_cpu{h1}\":unlimit } \nTAGLOAD\nSELECT [ 'pcode', 'time', 'oid', 'ready_summation', 'esxhostname', 'clustername' ]\nFILTER { key: \"ready_summation\", exist: true }\nFILTER { key: \"esxhostname\", exist: true }\n\nCREATE { key:_id_, expr: \"pcode+'_'+esxhostname+'_'+clustername\" }\nCREATE { key:_name_, expr: \"esxhostname+' / '+clustername\" }\n"
         },
         {
           "name": "Moid",
@@ -641,7 +641,7 @@
         },
         {
           "name": "esxhostname,Clustername",
-          "mql": "INJECT timepast\nHEADER { \"bytesRx_average$\":\"#\", \"bytesTx_average$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_host_net\":6h, \"telegraf_vsphere_host_net{m5}\":3d, \"telegraf_vsphere_host_net{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['bytesRx_average','bytesTx_average'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'bytesRx_average', 'bytesTx_average', 'esxhostname', 'clustername' ]\nFILTER { key: \"bytesRx_average\", exist: true }\nFILTER { key: \"bytesTx_average\", exist: true }\nFILTER { key: \"esxhostname\", exist: true }\n\nCREATE { key:_id_, expr: \"pcode+'_'+esxhostname+'_'+clustername\" }\nCREATE { key:_name_, expr: \"esxhostname+' / '+clustername\" }\nGROUP { timeunit: 5s, merge: ['bytesRx_average','bytesTx_average'], pk: _id_, last: _name_ }\nUPDATE { key: ['bytesRx_average','bytesTx_average'], value: $OBJECT_MERGE_PLACE }"
+          "mql": "HEADER { \"bytesRx_average$\":\"#\", \"bytesTx_average$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_host_net\":6h, \"telegraf_vsphere_host_net{m5}\":3d, \"telegraf_vsphere_host_net{h1}\":unlimit } \nTAGLOAD\nSELECT [ 'pcode', 'time', 'oid', 'bytesRx_average', 'bytesTx_average', 'esxhostname', 'clustername' ]\nFILTER { key: \"bytesRx_average\", exist: true }\nFILTER { key: \"bytesTx_average\", exist: true }\nFILTER { key: \"esxhostname\", exist: true }\n\nCREATE { key:_id_, expr: \"pcode+'_'+esxhostname+'_'+clustername\" }\nCREATE { key:_name_, expr: \"esxhostname+' / '+clustername\" }\n"
         },
         {
           "name": "interface",
@@ -844,7 +844,7 @@
         },
         {
           "name": "esxhostname,Clustername",
-          "mql": "INJECT timepast\nHEADER { \"read_average$\":\"#\", \"write_average$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_host_disk\":6h, \"telegraf_vsphere_host_disk{m5}\":3d, \"telegraf_vsphere_host_disk{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['read_average','write_average'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'read_average', 'write_average', 'esxhostname', 'clustername' ]\nFILTER { key: \"read_average\", exist: true }\nFILTER { key: \"write_average\", exist: true }\nFILTER { key: \"esxhostname\", exist: true }\n\nCREATE { key:_id_, expr: \"pcode+'_'+esxhostname+'_'+clustername\" }\nCREATE { key:_name_, expr: \"esxhostname+' / '+clustername\" }\nGROUP { timeunit: 5s, merge: ['read_average','write_average'], pk: _id_, last: _name_ }\nUPDATE { key: ['read_average','write_average'], value: $OBJECT_MERGE_PLACE }"
+          "mql": "HEADER { \"read_average$\":\"#\", \"write_average$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_host_disk\":6h, \"telegraf_vsphere_host_disk{m5}\":3d, \"telegraf_vsphere_host_disk{h1}\":unlimit } \nTAGLOAD\nSELECT [ 'pcode', 'time', 'oid', 'read_average', 'write_average', 'esxhostname', 'clustername' ]\nFILTER { key: \"read_average\", exist: true }\nFILTER { key: \"write_average\", exist: true }\nFILTER { key: \"esxhostname\", exist: true }\n\nCREATE { key:_id_, expr: \"pcode+'_'+esxhostname+'_'+clustername\" }\nCREATE { key:_name_, expr: \"esxhostname+' / '+clustername\" }\n"
         },
         {
           "name": "moid",
@@ -1029,21 +1029,7 @@
         },
         {
           "name": "esxhostname",
-          "tags": [
-            {
-              "key": "esxhostname",
-              "unit": "#"
-            }
-          ],
-          "fields": [
-            {
-              "objectMerge": "avg",
-              "timeMerge": "avg",
-              "key": "maxTotalLatency_latest",
-              "unit": "#"
-            }
-          ],
-          "mqlType": "automated"
+          "mql": "HEADER { \"maxTotalLatency_latest$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_host_storageAdapter\":6h, \"telegraf_vsphere_host_storageAdapter{m5}\":3d, \"telegraf_vsphere_host_storageAdapter{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['maxTotalLatency_latest'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'maxTotalLatency_latest', 'esxhostname' ]\nFILTER { key: \"maxTotalLatency_latest\", exist: true }\nFILTER { key: \"esxhostname\", exist: true }\n\nCREATE { key:_id_, expr: \"pcode+'_'+esxhostname\" }\nCREATE { key:_name_, expr: \"esxhostname\" }\n"
         },
         {
           "name": "moid",
@@ -1218,27 +1204,7 @@
         },
         {
           "name": "Esxhostname,vcenter",
-          "tags": [
-            {
-              "key": "esxhostname",
-              "title": "Esxhostname",
-              "unit": "#"
-            },
-            {
-              "key": "vcenter",
-              "unit": "#"
-            }
-          ],
-          "fields": [
-            {
-              "objectMerge": "avg",
-              "timeMerge": "avg",
-              "key": "uptime_latest",
-              "title": "Uptime_latest",
-              "unit": "#"
-            }
-          ],
-          "mqlType": "automated"
+          "mql": "HEADER { \"uptime_latest$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_host_sys\":6h, \"telegraf_vsphere_host_sys{m5}\":3d, \"telegraf_vsphere_host_sys{h1}\":unlimit } \nTAGLOAD\nSELECT [ 'pcode', 'time', 'oid', 'uptime_latest', 'esxhostname', 'vcenter' ]\nFILTER { key: \"uptime_latest\", exist: true }\nFILTER { key: \"esxhostname\", exist: true }\nFILTER { key: \"vcenter\", exist: true }\n\nCREATE { key:_id_, expr: \"pcode+'_'+esxhostname+'_'+vcenter\" }\nCREATE { key:_name_, expr: \"esxhostname+' / '+vcenter\" }\n"
         },
         {
           "name": "Moid",
@@ -1447,7 +1413,7 @@
         },
         {
           "name": "Esxhostname,Clustername",
-          "mql": "INJECT timepast\nHEADER { \"usagemhz_average$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_host_cpu\":6h, \"telegraf_vsphere_host_cpu{m5}\":3d, \"telegraf_vsphere_host_cpu{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['usagemhz_average'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'usagemhz_average', 'esxhostname', 'clustername' ]\nFILTER { key: \"usagemhz_average\", exist: true }\nFILTER { key: \"esxhostname\", exist: true }\n\nCREATE { key:_id_, expr: \"pcode+'_'+esxhostname+'_'+clustername\" }\nCREATE { key:_name_, expr: \"esxhostname+' / '+clustername\" }\nGROUP { timeunit: 5s, merge: ['usagemhz_average'], pk: _id_, last: _name_ }\nUPDATE { key: ['usagemhz_average'], value: $OBJECT_MERGE_PLACE }"
+          "mql": "HEADER { \"usagemhz_average$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_host_cpu\":6h, \"telegraf_vsphere_host_cpu{m5}\":3d, \"telegraf_vsphere_host_cpu{h1}\":unlimit } \nTAGLOAD\nSELECT [ 'pcode', 'time', 'oid', 'usagemhz_average', 'esxhostname', 'clustername' ]\nFILTER { key: \"usagemhz_average\", exist: true }\nFILTER { key: \"esxhostname\", exist: true }\n\nCREATE { key:_id_, expr: \"pcode+'_'+esxhostname+'_'+clustername\" }\nCREATE { key:_name_, expr: \"esxhostname+' / '+clustername\" }\n"
         },
         {
           "name": "Moid",
@@ -1631,7 +1597,7 @@
         },
         {
           "name": "Esxhostname",
-          "mql": "INJECT timepast\nHEADER { \"memoryUsed$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_host_mem\":6h, \"telegraf_vsphere_host_mem{m5}\":3d, \"telegraf_vsphere_host_mem{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['usage_average'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'totalCapacity_average','usage_average', 'esxhostname','clustername' ]\nFILTER { key: \"usage_average\", exist: true }\nFILTER { key: \"esxhostname\", exist: true }\nCREATE { key:_id_, expr: \"pcode+'_'+esxhostname+'_'+clustername\" }\nCREATE { key:_name_, expr: \"esxhostname+' / '+clustername\" }\nGROUP { timeunit: 5s, merge: ['usage_average','totalCapacity_average'], pk: _id_, last: _name_ }\nUPDATE { key: ['usage_average'], value: $OBJECT_MERGE_PLACE }\nCREATE { key: memoryUsed, expr: \"totalCapacity_average * usage_average / 100 *1024*1024\" }\nSELECT [_id_, _name_, time, memoryUsed]"
+          "mql": "HEADER { \"memoryUsed$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_host_mem\":6h, \"telegraf_vsphere_host_mem{m5}\":3d, \"telegraf_vsphere_host_mem{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['usage_average'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'totalCapacity_average','usage_average', 'esxhostname','clustername' ]\nFILTER { key: \"usage_average\", exist: true }\nFILTER { key: \"esxhostname\", exist: true }\nCREATE { key:_id_, expr: \"pcode+'_'+esxhostname+'_'+clustername\" }\nCREATE { key:_name_, expr: \"esxhostname+' / '+clustername\" }\nCREATE { key: memoryUsed, expr: \"totalCapacity_average * usage_average / 100 *1024*1024\" }\nSELECT [_id_, _name_, time, memoryUsed]"
         },
         {
           "name": "Moid",
@@ -1815,7 +1781,7 @@
         },
         {
           "name": "Esxhostname,Clustername",
-          "mql": "INJECT timepast\nHEADER { \"usage_average$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_host_mem\":6h, \"telegraf_vsphere_host_mem{m5}\":3d, \"telegraf_vsphere_host_mem{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['usage_average'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'usage_average', 'esxhostname', 'clustername' ]\nFILTER { key: \"usage_average\", exist: true }\nFILTER { key: \"esxhostname\", exist: true }\n\nCREATE { key:_id_, expr: \"pcode+'_'+esxhostname+'_'+clustername\" }\nCREATE { key:_name_, expr: \"esxhostname+' / '+clustername\" }\nGROUP { timeunit: 5s, merge: ['usage_average'], pk: _id_, last: _name_ }\nUPDATE { key: ['usage_average'], value: $OBJECT_MERGE_PLACE }"
+          "mql": "HEADER { \"usage_average$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_host_mem\":6h, \"telegraf_vsphere_host_mem{m5}\":3d, \"telegraf_vsphere_host_mem{h1}\":unlimit } \nTAGLOAD\nSELECT [ 'pcode', 'time', 'oid', 'usage_average', 'esxhostname', 'clustername' ]\nFILTER { key: \"usage_average\", exist: true }\nFILTER { key: \"esxhostname\", exist: true }\n\nCREATE { key:_id_, expr: \"pcode+'_'+esxhostname+'_'+clustername\" }\nCREATE { key:_name_, expr: \"esxhostname+' / '+clustername\" }\n"
         },
         {
           "name": "Moid",
@@ -1959,7 +1925,7 @@
       "metrics": [
         {
           "name": "Esxhostname,Clustername",
-          "mql": "INJECT timepast\nHEADER { \"usage_average$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_host_cpu\":6h, \"telegraf_vsphere_host_cpu{m5}\":3d, \"telegraf_vsphere_host_cpu{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['usage_average'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'usage_average', 'esxhostname', 'clustername','cpu' ]\nFILTER { key: \"usage_average\", exist: true }\nFILTER { key: \"esxhostname\", exist: true }\nFILTER { key: \"cpu\", value: \"instance-total\"}\nCREATE { key:_id_, expr: \"pcode+'_'+esxhostname+'_'+clustername\" }\nCREATE { key:_name_, expr: \"esxhostname+' / '+clustername\" }\nGROUP { timeunit: 5s, merge: ['usage_average'], pk: _id_, last: _name_ }\nUPDATE { key: ['usage_average'], value: $OBJECT_MERGE_PLACE }"
+          "mql": "HEADER { \"usage_average$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_host_cpu\":6h, \"telegraf_vsphere_host_cpu{m5}\":3d, \"telegraf_vsphere_host_cpu{h1}\":unlimit } \nTAGLOAD\nUPDATE { key: ['usage_average'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'usage_average', 'esxhostname', 'clustername','cpu' ]\nFILTER { key: \"usage_average\", exist: true }\nFILTER { key: \"esxhostname\", exist: true }\nFILTER { key: \"cpu\", value: \"instance-total\"}\nCREATE { key:_id_, expr: \"pcode+'_'+esxhostname+'_'+clustername\" }\nCREATE { key:_name_, expr: \"esxhostname+' / '+clustername\" }\n"
         },
         {
           "name": "Cpu",

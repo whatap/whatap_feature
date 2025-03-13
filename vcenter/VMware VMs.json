@@ -37,7 +37,7 @@
       "metrics": [
         {
           "name": "Clustername",
-          "mql": "INJECT timepast\nHEADER { \"usage_average$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_vm_cpu\":6h, \"telegraf_vsphere_vm_cpu{m5}\":3d, \"telegraf_vsphere_vm_cpu{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['usage_average'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'usage_average', 'clustername','vcenter' ]\nFILTER { key: \"usage_average\", exist: true }\n\nCREATE { key:_id_, expr: \"vcenter+'/'+clustername\" }\nCREATE { key:_name_, expr: \"vcenter+'/'+clustername\" }\nGROUP { timeunit: 5s, merge: ['usage_average'], pk: _id_, last: _name_ }\nUPDATE { key: ['usage_average'], value: $OBJECT_MERGE_PLACE }"
+          "mql": "HEADER { \"usage_average$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_vm_cpu\":6h, \"telegraf_vsphere_vm_cpu{m5}\":3d, \"telegraf_vsphere_vm_cpu{h1}\":unlimit } \nTAGLOAD\nSELECT [ 'pcode', 'time', 'oid', 'usage_average', 'clustername','vcenter' ]\nFILTER { key: \"usage_average\", exist: true }\n\nCREATE { key:_id_, expr: \"vcenter+'/'+clustername\" }\nCREATE { key:_name_, expr: \"vcenter+'/'+clustername\" }\n"
         },
         {
           "name": "Cpu",
@@ -317,7 +317,7 @@
       "metrics": [
         {
           "name": "Clustername",
-          "mql": "INJECT timepast\nHEADER { \"usage_average$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_vm_mem\":6h, \"telegraf_vsphere_vm_mem{m5}\":3d, \"telegraf_vsphere_vm_mem{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['usage_average'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'usage_average', 'clustername','vcenter' ]\nFILTER { key: \"usage_average\", exist: true }\n\nCREATE { key:_id_, expr: \"pcode+'_'+clustername\" }\nCREATE { key:_name_, expr: \"vcenter +'/'+clustername\" }\nGROUP { timeunit: 5s, merge: ['usage_average'], pk: _id_, last: _name_ }\nUPDATE { key: ['usage_average'], value: $OBJECT_MERGE_PLACE }"
+          "mql": "HEADER { \"usage_average$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_vm_mem\":6h, \"telegraf_vsphere_vm_mem{m5}\":3d, \"telegraf_vsphere_vm_mem{h1}\":unlimit } \nTAGLOAD\nSELECT [ 'pcode', 'time', 'oid', 'usage_average', 'clustername','vcenter' ]\nFILTER { key: \"usage_average\", exist: true }\n\nCREATE { key:_id_, expr: \"pcode+'_'+clustername\" }\nCREATE { key:_name_, expr: \"vcenter +'/'+clustername\" }\n"
         },
         {
           "name": "Dcname",
@@ -577,7 +577,7 @@
       "metrics": [
         {
           "name": "Clustername",
-          "mql": "INJECT timepast\nHEADER { \"readiness_average$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_vm_cpu\":6h, \"telegraf_vsphere_vm_cpu{m5}\":3d, \"telegraf_vsphere_vm_cpu{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['readiness_average'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'readiness_average', 'clustername' ,'vcenter']\nFILTER { key: \"readiness_average\", exist: true }\n\nCREATE { key:_id_, expr: \"vcenter+'/'+clustername\" }\nCREATE { key:_name_, expr: \"vcenter+'/'+clustername\" }\nGROUP { timeunit: 5s, merge: ['readiness_average'], pk: _id_, last: _name_ }\nUPDATE { key: ['readiness_average'], value: $OBJECT_MERGE_PLACE }"
+          "mql": "HEADER { \"readiness_average$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_vm_cpu\":6h, \"telegraf_vsphere_vm_cpu{m5}\":3d, \"telegraf_vsphere_vm_cpu{h1}\":unlimit } \nTAGLOAD\nSELECT [ 'pcode', 'time', 'oid', 'readiness_average', 'clustername' ,'vcenter']\nFILTER { key: \"readiness_average\", exist: true }\n\nCREATE { key:_id_, expr: \"vcenter+'/'+clustername\" }\nCREATE { key:_name_, expr: \"vcenter+'/'+clustername\" }\n"
         },
         {
           "name": "Cpu",
@@ -845,7 +845,7 @@
       "metrics": [
         {
           "name": "Clustername",
-          "mql": "INJECT timepast\nHEADER { \"usage_average$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_vm_net\":6h, \"telegraf_vsphere_vm_net{m5}\":3d, \"telegraf_vsphere_vm_net{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['usage_average'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'usage_average', 'clustername', 'vcenter' ]\nFILTER { key: \"usage_average\", exist: true }\n\nCREATE { key:_id_, expr: \"vcenter+'/'+clustername\" }\nCREATE { key:_name_, expr: \"vcenter+'/'+clustername\" }\nGROUP { timeunit: 5s, merge: ['usage_average'], pk: _id_, last: _name_ }\nUPDATE { key: ['usage_average'], value: $OBJECT_MERGE_PLACE }"
+          "mql": "HEADER { \"usage_average$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_vm_net\":6h, \"telegraf_vsphere_vm_net{m5}\":3d, \"telegraf_vsphere_vm_net{h1}\":unlimit } \nTAGLOAD\nSELECT [ 'pcode', 'time', 'oid', 'usage_average', 'clustername', 'vcenter' ]\nFILTER { key: \"usage_average\", exist: true }\n\nCREATE { key:_id_, expr: \"vcenter+'/'+clustername\" }\nCREATE { key:_name_, expr: \"vcenter+'/'+clustername\" }\n"
         },
         {
           "name": "Dcname",
@@ -1125,7 +1125,7 @@
       "metrics": [
         {
           "name": "Clustername",
-          "mql": "INJECT timepast\nHEADER { \"read_average$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_vm_virtualDisk\":6h, \"telegraf_vsphere_vm_virtualDisk{m5}\":3d, \"telegraf_vsphere_vm_virtualDisk{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['read_average'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'read_average', 'clustername', 'vcenter' ]\nFILTER { key: \"read_average\", exist: true }\n\nCREATE { key:_id_, expr: \"vcenter+'/'+clustername\" }\nCREATE { key:_name_, expr: \"vcenter+'/'+clustername\" }\nGROUP { timeunit: 5s, merge: ['read_average'], pk: _id_, last: _name_ }\nUPDATE { key: ['read_average'], value: $OBJECT_MERGE_PLACE }"
+          "mql": "HEADER { \"read_average$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_vm_virtualDisk\":6h, \"telegraf_vsphere_vm_virtualDisk{m5}\":3d, \"telegraf_vsphere_vm_virtualDisk{h1}\":unlimit } \nTAGLOAD\nSELECT [ 'pcode', 'time', 'oid', 'read_average', 'clustername', 'vcenter' ]\nFILTER { key: \"read_average\", exist: true }\n\nCREATE { key:_id_, expr: \"vcenter+'/'+clustername\" }\nCREATE { key:_name_, expr: \"vcenter+'/'+clustername\" }\n"
         },
         {
           "name": "Dcname",
@@ -1405,7 +1405,7 @@
       "metrics": [
         {
           "name": "Clustername",
-          "mql": "INJECT timepast\nHEADER { \"write_average$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_vm_virtualDisk\":6h, \"telegraf_vsphere_vm_virtualDisk{m5}\":3d, \"telegraf_vsphere_vm_virtualDisk{h1}\":unlimit } \nTAGLOAD\nINJECT default\nUPDATE { key: ['write_average'], value: $TIME_MERGE_PLACE }\nSELECT [ 'pcode', 'time', 'oid', 'write_average', 'clustername', 'vcenter' ]\nFILTER { key: \"write_average\", exist: true }\n\nCREATE { key:_id_, expr: \"vcenter+'/'+clustername\" }\nCREATE { key:_name_, expr: \"vcenter+'/'+clustername\" }\nGROUP { timeunit: 5s, merge: ['write_average'], pk: _id_, last: _name_ }\nUPDATE { key: ['write_average'], value: $OBJECT_MERGE_PLACE }"
+          "mql": "HEADER { \"write_average$\":\"#\" }\nOIDSET { oid:$oid, okind:$okind, onode:$onode }\nCATEGORY {\"telegraf_vsphere_vm_virtualDisk\":6h, \"telegraf_vsphere_vm_virtualDisk{m5}\":3d, \"telegraf_vsphere_vm_virtualDisk{h1}\":unlimit } \nTAGLOAD\nSELECT [ 'pcode', 'time', 'oid', 'write_average', 'clustername', 'vcenter' ]\nFILTER { key: \"write_average\", exist: true }\n\nCREATE { key:_id_, expr: \"vcenter+'/'+clustername\" }\nCREATE { key:_name_, expr: \"vcenter+'/'+clustername\" }\n"
         },
         {
           "name": "Dcname",
@@ -1909,7 +1909,7 @@
         },
         {
           "name": "Vmname,Clustername",
-          "mql": "INJECT timepast\nHEADER { \"uptime_latest$\":\"#\" }\nTIME-RANGE {recent:120s}\nCATEGORY \"telegraf_vsphere_vm_sys\"\nTAGLOAD {backward:true}\n\nSELECT [ 'pcode', 'time', 'oid', 'uptime_latest', 'vmname', 'clustername' ]\nFILTER { key: \"uptime_latest\", exist: true }\nFILTER { key: \"vmname\", exist: true }\nFIRST-ONLY {key:[vmname, clustername]}\nCREATE { key:_id_, expr: \"pcode+'_'+vmname+'_'+clustername\" }\nCREATE { key:_name_, expr: \"vmname+' / '+clustername\" }\nORDER {key:uptime_latest, sort: desc}"
+          "mql": "HEADER { \"uptime_latest$\":\"#\" }\nTIME-RANGE {recent: 2000s}\nCATEGORY \"telegraf_vsphere_vm_sys\"\nTAGLOAD {backward:true}\n\nSELECT [ 'pcode', 'time', 'oid', 'uptime_latest', 'vmname', 'clustername' ]\nFILTER { key: \"uptime_latest\", exist: true }\nFILTER { key: \"vmname\", exist: true }\nFIRST-ONLY {key:[vmname, clustername]}\nCREATE { key:_id_, expr: \"pcode+'_'+vmname+'_'+clustername\" }\nCREATE { key:_name_, expr: \"vmname+' / '+clustername\" }\nORDER {key:uptime_latest, sort: desc}"
         }
       ]
     },
@@ -2181,7 +2181,7 @@
         },
         {
           "name": "Vmname,Clustername",
-          "mql": "HEADER { \"usagemhz_average$\":\"#\" }\nTIME-RANGE {recent:120s}\nCATEGORY \"telegraf_vsphere_vm_cpu\" \nTAGLOAD {backward:true}\nSELECT [ 'pcode', 'time', 'oid', 'usagemhz_average', 'vmname', 'clustername' ]\nFILTER { key: \"usagemhz_average\", exist: true }\nFILTER { key: \"vmname\", exist: true }\nFIRST-ONLY {key:[vmname, clustername]}\nCREATE { key:_name_, expr: \"vmname+' / '+clustername\" }\nORDER {key:usagemhz_average, sort: desc}"
+          "mql": "HEADER { \"usagemhz_average$\":\"#\" }\nTIME-RANGE {recent:2000s}\nCATEGORY \"telegraf_vsphere_vm_cpu\" \nTAGLOAD {backward:true}\nSELECT [ 'pcode', 'time', 'oid', 'usagemhz_average', 'vmname', 'clustername' ]\nFILTER { key: \"usagemhz_average\", exist: true }\nFILTER { key: \"vmname\", exist: true }\nFIRST-ONLY {key:[vmname, clustername]}\nCREATE { key:_name_, expr: \"vmname+' / '+clustername\" }\nORDER {key:usagemhz_average, sort: desc}"
         }
       ]
     },
@@ -2434,7 +2434,7 @@
         },
         {
           "name": "Vmname,Clustername",
-          "mql": "HEADER { \"active_average_bytes$\":\"#\" }\nTIME-RANGE {recent:120s, etime:$etime}\nCATEGORY \"telegraf_vsphere_vm_mem\" \nTAGLOAD {backward:true}\nSELECT [ 'pcode', 'time', 'oid', 'active_average', 'vmname', 'clustername' ]\nFILTER { key: \"active_average\", exist: true }\nFILTER { key: \"vmname\", exist: true }\nFIRST-ONLY {key:[vmname, clustername]}\nCREATE { key:_name_, expr: \"vmname+' / '+clustername\" }\nCREATE { key: \"active_average_bytes\", expr: \"active_average * 1024\"}\nORDER {key:active_average_bytes, sort: desc}"
+          "mql": "HEADER { \"active_average_bytes$\":\"#\" }\nTIME-RANGE {recent:2000s, etime:$etime}\nCATEGORY \"telegraf_vsphere_vm_mem\" \nTAGLOAD {backward:true}\nSELECT [ 'pcode', 'time', 'oid', 'active_average', 'vmname', 'clustername' ]\nFILTER { key: \"active_average\", exist: true }\nFILTER { key: \"vmname\", exist: true }\nFIRST-ONLY {key:[vmname, clustername]}\nCREATE { key:_name_, expr: \"vmname+' / '+clustername\" }\nCREATE { key: \"active_average_bytes\", expr: \"active_average * 1024\"}\nORDER {key:active_average_bytes, sort: desc}"
         }
       ]
     },
@@ -2706,7 +2706,7 @@
         },
         {
           "name": "Vmname,Clustername",
-          "mql": "HEADER { \"usage_average$\":\"#\" }\nTIME-RANGE {recent:120s}\nCATEGORY \"telegraf_vsphere_vm_cpu\"\nTAGLOAD {backward:true}\n\nSELECT [ 'pcode', 'time', 'oid', 'usage_average', 'vmname', 'clustername' ]\nFILTER { key: \"usage_average\", exist: true }\nFILTER { key: \"vmname\", exist: true }\nFIRST-ONLY {key:[\"vmname\",\"clustername\"]}\nCREATE { key:_name_, expr: \"vmname+' / '+clustername\" }\nORDER {key:usage_average, sort: desc}"
+          "mql": "HEADER { \"usage_average$\":\"#\" }\nTIME-RANGE {recent:2000s}\nCATEGORY \"telegraf_vsphere_vm_cpu\"\nTAGLOAD {backward:true}\n\nSELECT [ 'pcode', 'time', 'oid', 'usage_average', 'vmname', 'clustername' ]\nFILTER { key: \"usage_average\", exist: true }\nFILTER { key: \"vmname\", exist: true }\nFIRST-ONLY {key:[\"vmname\",\"clustername\"]}\nCREATE { key:_name_, expr: \"vmname+' / '+clustername\" }\nORDER {key:usage_average, sort: desc}"
         }
       ]
     },
@@ -2970,7 +2970,7 @@
         },
         {
           "name": "Vmname,Clustername",
-          "mql": "HEADER { \"usage_average$\":\"#\" }\nTIME-RANGE {recent:120s}\nCATEGORY \"telegraf_vsphere_vm_mem\" \nTAGLOAD {backward:true}\nSELECT [ 'pcode', 'time', 'oid', 'usage_average', 'vmname', 'clustername' ]\nFILTER { key: \"usage_average\", exist: true }\nFILTER { key: \"vmname\", exist: true }\nFIRST-ONLY { key:[\"clustername\", \"vmname\"]}\nCREATE { key:_name_, expr: \"vmname+' / '+clustername\" }\nORDER {key:usage_average, sort: desc}"
+          "mql": "HEADER { \"usage_average$\":\"#\" }\nTIME-RANGE {recent:2000s}\nCATEGORY \"telegraf_vsphere_vm_mem\" \nTAGLOAD {backward:true}\nSELECT [ 'pcode', 'time', 'oid', 'usage_average', 'vmname', 'clustername' ]\nFILTER { key: \"usage_average\", exist: true }\nFILTER { key: \"vmname\", exist: true }\nFIRST-ONLY { key:[\"clustername\", \"vmname\"]}\nCREATE { key:_name_, expr: \"vmname+' / '+clustername\" }\nORDER {key:usage_average, sort: desc}"
         }
       ]
     }
