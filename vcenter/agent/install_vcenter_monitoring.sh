@@ -174,184 +174,58 @@ configure_telegraf() {
   password = "$password"
   insecure_skip_verify = true
 
-  discover_concurrency = 1
-  object_discovery_interval = "3600s"
+  ## VMs
+  vm_instances = true
 
-  host_metric_exclude = ["*"]
-  datastore_metric_exclude = ["*"]
-  vm_metric_exclude = ["*"]
+  ## Hosts
+  host_instances = true
 
   ## Clusters
-  ## Typical cluster instance metrics (if omitted or empty, all instance metrics are collected)
   cluster_instances = true
 
+  ## Datastores
+  datastore_instances = false
+
   ## Datacenters
-  ## Typical datacenter metrics (if omitted or empty, all metrics are collected)
-  ## Typical datacenter instance metrics (if omitted or empty, all instance metrics are collected)
   datacenter_instances = true
 
   ## Specify timeout to access vCenter.
   timeout = "60s"
 
-  ## When set to true, all collected metrics are sent as integers, defaults to false.
-  use_int_samples = false
+  ## The interval for collecting metrics. Defaults to 20s.
+  interval = "60s"
+
+  max_query_metrics = 8
+
+[[inputs.vsphere]]
+  vcenters = [ "$vcenter_url" ]
+  username = "$username"
+  password = "$password"
+  insecure_skip_verify = true
+
+  ## VMs
+  vm_instances = false
+
+  ## Hosts
+  host_instances = false
+
+  ## Clusters
+  cluster_instances = false
+
+  ## Datastores
+  datastore_instances = true
+
+  ## Datacenters
+  datacenter_instances = false
+
+  ## Specify timeout to access vCenter.
+  timeout = "60s"
 
   ## The interval for collecting metrics. Defaults to 20s.
   interval = "60s"
 
   max_query_metrics = 1
-
-[[inputs.vsphere]]
-  vcenters = [ "$vcenter_url" ]
-  username = "$username"
-  password = "$password"
-  insecure_skip_verify = true
-
-  discover_concurrency = 1
-  object_discovery_interval = "3600s"
-  host_instances = true
-
-  host_metric_include = []
-  resource_pool_exclude = ["*"]
-  resource_pool_metric_exclude = ["*"]
-  datastore_metric_exclude = ["*"]
-  vm_metric_exclude = ["*"]
-  cluster_metric_exclude = ["*"]
-  datacenter_metric_exclude = ["*"]
-  
-  ## Specify timeout to access vCenter.
-  timeout = "60s"
-
-  ## When set to true, all collected metrics are sent as integers, defaults to false.
-  use_int_samples = false
-
-  ## The interval for collecting metrics. Defaults to 20s.
-  interval = "20s"
-
-  max_query_metrics = 1
-
-[[inputs.vsphere]]
-  vcenters = [ "$vcenter_url" ]
-  username = "$username"
-  password = "$password"
-  insecure_skip_verify = true
-
-  discover_concurrency = 1
-  object_discovery_interval = "3600s"
-  vm_instances = true
-
-  vm_metric_include = []
-  resource_pool_exclude = ["*"]
-  resource_pool_metric_exclude = ["*"]
-  host_metric_exclude = ["*"]
-  datastore_metric_exclude = ["*"]
-  cluster_metric_exclude = ["*"]
-  datacenter_metric_exclude = ["*"]
-  
-  ## Specify timeout to access vCenter.
-  timeout = "60s"
-
-  ## When set to true, all collected metrics are sent as integers, defaults to false.
-  use_int_samples = false
-
-  ## The interval for collecting metrics. Defaults to 20s.
-  interval = "20s"
-
-  max_query_metrics = 1
-
-[[inputs.exec]]
-  commands = ["/usr/whatap/infra/conf/telegraf.d/ds.py"]
-  timeout = "120s"
-  data_format = "influx"
-  interval = "10m"
-  
-
-[[aggregators.merge]]
-  period = "30s"
-  drop_original = true
-  grace = "10s"
-
 EOF
-
-    cat <<EOF > $telegraf_config/ds.py
-#!/usr/bin/python3
-import urllib.request
-import urllib.error
-import json
-import ssl
-import base64
- 
-# vCenter 접속 정보
-VCENTER_URL="$vcenter_url".strip('/sdk')
-USERNAME="$username"
-PASSWORD="$password"
-
-# SSL 인증서 검증 비활성화 (테스트용)
-# 프로덕션 환경에서는 적절한 인증서 설정 필요
-context = ssl.create_default_context()
-context.check_hostname = False
-context.verify_mode = ssl.CERT_NONE
- 
-def get_session_token(url, username, password):
-    endpoint = f"{url}/rest/com/vmware/cis/session"
-    req = urllib.request.Request(endpoint, method="POST")
-    # Basic Auth 헤더 설정
-    credentials = f"{username}:{password}"
-    encoded_creds = base64.b64encode(credentials.encode("utf-8")).decode("utf-8")
-    req.add_header("Authorization", f"Basic {encoded_creds}")
- 
-    # 요청
-    try:
-        with urllib.request.urlopen(req, context=context) as resp:
-            data = resp.read()
-            result = json.loads(data)
-            return result.get("value")
-    except urllib.error.HTTPError as e:
-        print(f"세션 토큰 발급 실패: {e}")
-        return None
- 
-def get_datastores(url, session_token):
-    endpoint = f"{url}/rest/vcenter/datastore"
-    req = urllib.request.Request(endpoint, method="GET")
-    req.add_header("vmware-api-session-id", session_token)
- 
-    try:
-        with urllib.request.urlopen(req, context=context) as resp:
-            data = resp.read()
-            result = json.loads(data)
-            return result.get("value", [])
-    except urllib.error.HTTPError as e:
-        print(f"Datastore 조회 실패: {e}")
-        return []
- 
-def main():
-    session_token = get_session_token(VCENTER_URL, USERNAME, PASSWORD)
-    if not session_token:
-        return
-    #print('session token', session_token) 
-    datastores = get_datastores(VCENTER_URL, session_token)
-    if not datastores:
-        print("발견된 Datastore가 없습니다.")
-        return
- 
-    for ds in datastores:
-        name = ds.get("name").replace('"','\\"')
-        capacity = ds.get("capacity")
-        free_space = ds.get("free_space")
- 
-        if capacity and free_space is not None:
-            usage = capacity - free_space
-            usage_percent = (usage * 100.0) / capacity if capacity > 0 else 0
-            #print(f"Name: {name}")
-            #print(f"  Total Capacity: {capacity} byte ")
-            #print(f"  Usage: {usage} byte ({usage_percent:.2f}%)\n")
-            line = f"datastore_disk_simple,name=\"{name}\" capacity={capacity}i,usage={usage}i,freespace={free_space}i,usage_percent={usage_percent:.2f}" 
-            print(line)
-
-if __name__ == "__main__":
-    main()
-EOF
-    chmod +x $telegraf_config/ds.py
 }
 
 
