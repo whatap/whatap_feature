@@ -1,0 +1,6054 @@
+{
+  "name": "Milvus Query Coordinator & Query Node Metrics",
+  "widgets": [
+    {
+      "icon": "note",
+      "supports": [],
+      "title": "리치 텍스트",
+      "dirname": "v1/99.etc",
+      "widgetType": "RICH_TEXT",
+      "requestApi": "NONE",
+      "_key_": "v1/99.etc/rich_text",
+      "id": "gyrs_R4v5",
+      "layout": {
+        "x": 0,
+        "y": 0,
+        "w": 60,
+        "h": 1,
+        "minH": 1,
+        "minW": 4,
+        "i": "gyrs_R4v5",
+        "moved": false,
+        "static": false
+      },
+      "option": {
+        "markdown": "# Query Coordinator Columns"
+      }
+    },
+    {
+      "id": "NMI5Ma6RWK",
+      "title": "Number of collections",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "h": 5,
+        "w": 20,
+        "x": 0,
+        "y": 1,
+        "i": "NMI5Ma6RWK",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_milvus_standalone",
+      "option": {
+        "metrics": 13,
+        "chartAside": {},
+        "chart": "TON_LINE",
+        "showPlotMaxValue": true,
+        "showLegend": true,
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        }
+      },
+      "metrics": [
+        {
+          "name": "Built",
+          "tags": [
+            {
+              "key": "built",
+              "title": "Built",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_collection_num",
+              "title": "Milvus_querycoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Channel_name",
+          "tags": [
+            {
+              "key": "channel_name",
+              "title": "Channel_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_collection_num",
+              "title": "Milvus_querycoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Db_name",
+          "tags": [
+            {
+              "key": "db_name",
+              "title": "Db_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_collection_num",
+              "title": "Milvus_querycoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Function_name",
+          "tags": [
+            {
+              "key": "function_name",
+              "title": "Function_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_collection_num",
+              "title": "Milvus_querycoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Git_commit",
+          "tags": [
+            {
+              "key": "git_commit",
+              "title": "Git_commit",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_collection_num",
+              "title": "Milvus_querycoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Import_state",
+          "tags": [
+            {
+              "key": "import_state",
+              "title": "Import_state",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_collection_num",
+              "title": "Milvus_querycoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Le",
+          "tags": [
+            {
+              "key": "le",
+              "title": "Le",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_collection_num",
+              "title": "Milvus_querycoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Message_op_type",
+          "tags": [
+            {
+              "key": "message_op_type",
+              "title": "Message_op_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_collection_num",
+              "title": "Milvus_querycoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Meta",
+          "tags": [
+            {
+              "key": "meta",
+              "title": "Meta",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_collection_num",
+              "title": "Milvus_querycoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Meta_op_type",
+          "tags": [
+            {
+              "key": "meta_op_type",
+              "title": "Meta_op_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_collection_num",
+              "title": "Milvus_querycoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Module",
+          "tags": [
+            {
+              "key": "module",
+              "title": "Module",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_collection_num",
+              "title": "Milvus_querycoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Mq",
+          "tags": [
+            {
+              "key": "mq",
+              "title": "Mq",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_collection_num",
+              "title": "Milvus_querycoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Node_id",
+          "tags": [
+            {
+              "key": "node_id",
+              "title": "Node_id",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_collection_num",
+              "title": "Milvus_querycoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Oname",
+          "tags": [
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_collection_num",
+              "title": "Milvus_querycoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Persistent_data_op_type",
+          "tags": [
+            {
+              "key": "persistent_data_op_type",
+              "title": "Persistent_data_op_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_collection_num",
+              "title": "Milvus_querycoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_collection_num",
+              "title": "Milvus_querycoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Quantile",
+          "tags": [
+            {
+              "key": "quantile",
+              "title": "Quantile",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_collection_num",
+              "title": "Milvus_querycoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Rg",
+          "tags": [
+            {
+              "key": "rg",
+              "title": "Rg",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_collection_num",
+              "title": "Milvus_querycoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Role_name",
+          "tags": [
+            {
+              "key": "role_name",
+              "title": "Role_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_collection_num",
+              "title": "Milvus_querycoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Status",
+          "tags": [
+            {
+              "key": "status",
+              "title": "Status",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_collection_num",
+              "title": "Milvus_querycoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Task_type",
+          "tags": [
+            {
+              "key": "task_type",
+              "title": "Task_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_collection_num",
+              "title": "Milvus_querycoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Type",
+          "tags": [
+            {
+              "key": "type",
+              "title": "Type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_collection_num",
+              "title": "Milvus_querycoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Url",
+          "tags": [
+            {
+              "key": "url",
+              "title": "Url",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_collection_num",
+              "title": "Milvus_querycoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Version",
+          "tags": [
+            {
+              "key": "version",
+              "title": "Version",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_collection_num",
+              "title": "Milvus_querycoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        }
+      ]
+    },
+    {
+      "id": "DXU6Hez1v_",
+      "title": "Number of partitions",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "h": 5,
+        "w": 20,
+        "x": 20,
+        "y": 1,
+        "i": "DXU6Hez1v_",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_milvus_standalone",
+      "option": {
+        "metrics": 13,
+        "chartAside": {},
+        "chart": "TON_LINE",
+        "showPlotMaxValue": true,
+        "showLegend": true,
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        }
+      },
+      "metrics": [
+        {
+          "name": "Built",
+          "tags": [
+            {
+              "key": "built",
+              "title": "Built",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_partition_num",
+              "title": "Milvus_querycoord_partition_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Channel_name",
+          "tags": [
+            {
+              "key": "channel_name",
+              "title": "Channel_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_partition_num",
+              "title": "Milvus_querycoord_partition_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Db_name",
+          "tags": [
+            {
+              "key": "db_name",
+              "title": "Db_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_partition_num",
+              "title": "Milvus_querycoord_partition_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Function_name",
+          "tags": [
+            {
+              "key": "function_name",
+              "title": "Function_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_partition_num",
+              "title": "Milvus_querycoord_partition_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Git_commit",
+          "tags": [
+            {
+              "key": "git_commit",
+              "title": "Git_commit",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_partition_num",
+              "title": "Milvus_querycoord_partition_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Import_state",
+          "tags": [
+            {
+              "key": "import_state",
+              "title": "Import_state",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_partition_num",
+              "title": "Milvus_querycoord_partition_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Le",
+          "tags": [
+            {
+              "key": "le",
+              "title": "Le",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_partition_num",
+              "title": "Milvus_querycoord_partition_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Message_op_type",
+          "tags": [
+            {
+              "key": "message_op_type",
+              "title": "Message_op_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_partition_num",
+              "title": "Milvus_querycoord_partition_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Meta",
+          "tags": [
+            {
+              "key": "meta",
+              "title": "Meta",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_partition_num",
+              "title": "Milvus_querycoord_partition_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Meta_op_type",
+          "tags": [
+            {
+              "key": "meta_op_type",
+              "title": "Meta_op_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_partition_num",
+              "title": "Milvus_querycoord_partition_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Module",
+          "tags": [
+            {
+              "key": "module",
+              "title": "Module",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_partition_num",
+              "title": "Milvus_querycoord_partition_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Mq",
+          "tags": [
+            {
+              "key": "mq",
+              "title": "Mq",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_partition_num",
+              "title": "Milvus_querycoord_partition_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Node_id",
+          "tags": [
+            {
+              "key": "node_id",
+              "title": "Node_id",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_partition_num",
+              "title": "Milvus_querycoord_partition_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Oname",
+          "tags": [
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_partition_num",
+              "title": "Milvus_querycoord_partition_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Persistent_data_op_type",
+          "tags": [
+            {
+              "key": "persistent_data_op_type",
+              "title": "Persistent_data_op_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_partition_num",
+              "title": "Milvus_querycoord_partition_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_partition_num",
+              "title": "Milvus_querycoord_partition_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Quantile",
+          "tags": [
+            {
+              "key": "quantile",
+              "title": "Quantile",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_partition_num",
+              "title": "Milvus_querycoord_partition_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Rg",
+          "tags": [
+            {
+              "key": "rg",
+              "title": "Rg",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_partition_num",
+              "title": "Milvus_querycoord_partition_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Role_name",
+          "tags": [
+            {
+              "key": "role_name",
+              "title": "Role_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_partition_num",
+              "title": "Milvus_querycoord_partition_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Status",
+          "tags": [
+            {
+              "key": "status",
+              "title": "Status",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_partition_num",
+              "title": "Milvus_querycoord_partition_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Task_type",
+          "tags": [
+            {
+              "key": "task_type",
+              "title": "Task_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_partition_num",
+              "title": "Milvus_querycoord_partition_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Type",
+          "tags": [
+            {
+              "key": "type",
+              "title": "Type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_partition_num",
+              "title": "Milvus_querycoord_partition_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Url",
+          "tags": [
+            {
+              "key": "url",
+              "title": "Url",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_partition_num",
+              "title": "Milvus_querycoord_partition_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Version",
+          "tags": [
+            {
+              "key": "version",
+              "title": "Version",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_partition_num",
+              "title": "Milvus_querycoord_partition_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        }
+      ]
+    },
+    {
+      "id": "VsrOqAyVZh",
+      "title": "Number of QueryNodes managered by QueryCoord",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "h": 5,
+        "w": 20,
+        "x": 40,
+        "y": 1,
+        "i": "VsrOqAyVZh",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_milvus_standalone",
+      "option": {
+        "metrics": 13,
+        "chartAside": {},
+        "chart": "TON_LINE",
+        "showPlotMaxValue": true,
+        "showLegend": true,
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        }
+      },
+      "metrics": [
+        {
+          "name": "Built",
+          "tags": [
+            {
+              "key": "built",
+              "title": "Built",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Channel_name",
+          "tags": [
+            {
+              "key": "channel_name",
+              "title": "Channel_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Db_name",
+          "tags": [
+            {
+              "key": "db_name",
+              "title": "Db_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Function_name",
+          "tags": [
+            {
+              "key": "function_name",
+              "title": "Function_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Git_commit",
+          "tags": [
+            {
+              "key": "git_commit",
+              "title": "Git_commit",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Import_state",
+          "tags": [
+            {
+              "key": "import_state",
+              "title": "Import_state",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Le",
+          "tags": [
+            {
+              "key": "le",
+              "title": "Le",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Message_op_type",
+          "tags": [
+            {
+              "key": "message_op_type",
+              "title": "Message_op_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Meta",
+          "tags": [
+            {
+              "key": "meta",
+              "title": "Meta",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Meta_op_type",
+          "tags": [
+            {
+              "key": "meta_op_type",
+              "title": "Meta_op_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Module",
+          "tags": [
+            {
+              "key": "module",
+              "title": "Module",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Mq",
+          "tags": [
+            {
+              "key": "mq",
+              "title": "Mq",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Node_id",
+          "tags": [
+            {
+              "key": "node_id",
+              "title": "Node_id",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Oname",
+          "tags": [
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Persistent_data_op_type",
+          "tags": [
+            {
+              "key": "persistent_data_op_type",
+              "title": "Persistent_data_op_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Quantile",
+          "tags": [
+            {
+              "key": "quantile",
+              "title": "Quantile",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Rg",
+          "tags": [
+            {
+              "key": "rg",
+              "title": "Rg",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Role_name",
+          "tags": [
+            {
+              "key": "role_name",
+              "title": "Role_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Status",
+          "tags": [
+            {
+              "key": "status",
+              "title": "Status",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Task_type",
+          "tags": [
+            {
+              "key": "task_type",
+              "title": "Task_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Type",
+          "tags": [
+            {
+              "key": "type",
+              "title": "Type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Url",
+          "tags": [
+            {
+              "key": "url",
+              "title": "Url",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Version",
+          "tags": [
+            {
+              "key": "version",
+              "title": "Version",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        }
+      ]
+    },
+    {
+      "id": "qM4qF4y1hT",
+      "title": "Number of QueryNodes managered by QueryCoord",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "h": 5,
+        "w": 20,
+        "x": 0,
+        "y": 6,
+        "i": "qM4qF4y1hT",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_milvus_standalone",
+      "option": {
+        "metrics": 13,
+        "chart": "TON_LINE",
+        "showPlotMaxValue": true,
+        "showLegend": true,
+        "chartAside": {},
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        }
+      },
+      "metrics": [
+        {
+          "name": "Built",
+          "tags": [
+            {
+              "key": "built",
+              "title": "Built",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Channel_name",
+          "tags": [
+            {
+              "key": "channel_name",
+              "title": "Channel_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Db_name",
+          "tags": [
+            {
+              "key": "db_name",
+              "title": "Db_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Function_name",
+          "tags": [
+            {
+              "key": "function_name",
+              "title": "Function_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Git_commit",
+          "tags": [
+            {
+              "key": "git_commit",
+              "title": "Git_commit",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Import_state",
+          "tags": [
+            {
+              "key": "import_state",
+              "title": "Import_state",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Le",
+          "tags": [
+            {
+              "key": "le",
+              "title": "Le",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Message_op_type",
+          "tags": [
+            {
+              "key": "message_op_type",
+              "title": "Message_op_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Meta",
+          "tags": [
+            {
+              "key": "meta",
+              "title": "Meta",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Meta_op_type",
+          "tags": [
+            {
+              "key": "meta_op_type",
+              "title": "Meta_op_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Module",
+          "tags": [
+            {
+              "key": "module",
+              "title": "Module",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Mq",
+          "tags": [
+            {
+              "key": "mq",
+              "title": "Mq",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Node_id",
+          "tags": [
+            {
+              "key": "node_id",
+              "title": "Node_id",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Oname",
+          "tags": [
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Persistent_data_op_type",
+          "tags": [
+            {
+              "key": "persistent_data_op_type",
+              "title": "Persistent_data_op_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Quantile",
+          "tags": [
+            {
+              "key": "quantile",
+              "title": "Quantile",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Rg",
+          "tags": [
+            {
+              "key": "rg",
+              "title": "Rg",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Role_name",
+          "tags": [
+            {
+              "key": "role_name",
+              "title": "Role_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Status",
+          "tags": [
+            {
+              "key": "status",
+              "title": "Status",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Task_type",
+          "tags": [
+            {
+              "key": "task_type",
+              "title": "Task_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Type",
+          "tags": [
+            {
+              "key": "type",
+              "title": "Type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Url",
+          "tags": [
+            {
+              "key": "url",
+              "title": "Url",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Version",
+          "tags": [
+            {
+              "key": "version",
+              "title": "Version",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_querynode_num",
+              "title": "Milvus_querycoord_querynode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        }
+      ]
+    },
+    {
+      "id": "gRSUE0ipyM",
+      "title": "Resource Group Info by QueryCoord",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "h": 5,
+        "w": 20,
+        "x": 20,
+        "y": 6,
+        "i": "gRSUE0ipyM",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_milvus_standalone",
+      "option": {
+        "metrics": 13,
+        "chartAside": {},
+        "chart": "TON_LINE",
+        "showPlotMaxValue": true,
+        "showLegend": true,
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        }
+      },
+      "metrics": [
+        {
+          "name": "Built",
+          "tags": [
+            {
+              "key": "built",
+              "title": "Built",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_resource_group_info",
+              "title": "Milvus_querycoord_resource_group_info",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Channel_name",
+          "tags": [
+            {
+              "key": "channel_name",
+              "title": "Channel_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_resource_group_info",
+              "title": "Milvus_querycoord_resource_group_info",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Db_name",
+          "tags": [
+            {
+              "key": "db_name",
+              "title": "Db_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_resource_group_info",
+              "title": "Milvus_querycoord_resource_group_info",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Function_name",
+          "tags": [
+            {
+              "key": "function_name",
+              "title": "Function_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_resource_group_info",
+              "title": "Milvus_querycoord_resource_group_info",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Git_commit",
+          "tags": [
+            {
+              "key": "git_commit",
+              "title": "Git_commit",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_resource_group_info",
+              "title": "Milvus_querycoord_resource_group_info",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Import_state",
+          "tags": [
+            {
+              "key": "import_state",
+              "title": "Import_state",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_resource_group_info",
+              "title": "Milvus_querycoord_resource_group_info",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Le",
+          "tags": [
+            {
+              "key": "le",
+              "title": "Le",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_resource_group_info",
+              "title": "Milvus_querycoord_resource_group_info",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Message_op_type",
+          "tags": [
+            {
+              "key": "message_op_type",
+              "title": "Message_op_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_resource_group_info",
+              "title": "Milvus_querycoord_resource_group_info",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Meta",
+          "tags": [
+            {
+              "key": "meta",
+              "title": "Meta",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_resource_group_info",
+              "title": "Milvus_querycoord_resource_group_info",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Meta_op_type",
+          "tags": [
+            {
+              "key": "meta_op_type",
+              "title": "Meta_op_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_resource_group_info",
+              "title": "Milvus_querycoord_resource_group_info",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Module",
+          "tags": [
+            {
+              "key": "module",
+              "title": "Module",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_resource_group_info",
+              "title": "Milvus_querycoord_resource_group_info",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Mq",
+          "tags": [
+            {
+              "key": "mq",
+              "title": "Mq",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_resource_group_info",
+              "title": "Milvus_querycoord_resource_group_info",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Node_id",
+          "tags": [
+            {
+              "key": "node_id",
+              "title": "Node_id",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_resource_group_info",
+              "title": "Milvus_querycoord_resource_group_info",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Node_id,Rg,에이전트 명",
+          "tags": [
+            {
+              "key": "node_id",
+              "title": "Node_id",
+              "unit": "#"
+            },
+            {
+              "key": "rg",
+              "title": "Rg",
+              "unit": "#"
+            },
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_resource_group_info",
+              "title": "Milvus_querycoord_resource_group_info",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Persistent_data_op_type",
+          "tags": [
+            {
+              "key": "persistent_data_op_type",
+              "title": "Persistent_data_op_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_resource_group_info",
+              "title": "Milvus_querycoord_resource_group_info",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_resource_group_info",
+              "title": "Milvus_querycoord_resource_group_info",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Quantile",
+          "tags": [
+            {
+              "key": "quantile",
+              "title": "Quantile",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_resource_group_info",
+              "title": "Milvus_querycoord_resource_group_info",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Rg",
+          "tags": [
+            {
+              "key": "rg",
+              "title": "Rg",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_resource_group_info",
+              "title": "Milvus_querycoord_resource_group_info",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Role_name",
+          "tags": [
+            {
+              "key": "role_name",
+              "title": "Role_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_resource_group_info",
+              "title": "Milvus_querycoord_resource_group_info",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Status",
+          "tags": [
+            {
+              "key": "status",
+              "title": "Status",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_resource_group_info",
+              "title": "Milvus_querycoord_resource_group_info",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Task_type",
+          "tags": [
+            {
+              "key": "task_type",
+              "title": "Task_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_resource_group_info",
+              "title": "Milvus_querycoord_resource_group_info",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Type",
+          "tags": [
+            {
+              "key": "type",
+              "title": "Type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_resource_group_info",
+              "title": "Milvus_querycoord_resource_group_info",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Url",
+          "tags": [
+            {
+              "key": "url",
+              "title": "Url",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_resource_group_info",
+              "title": "Milvus_querycoord_resource_group_info",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Version",
+          "tags": [
+            {
+              "key": "version",
+              "title": "Version",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querycoord_resource_group_info",
+              "title": "Milvus_querycoord_resource_group_info",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        }
+      ]
+    },
+    {
+      "icon": "note",
+      "supports": [],
+      "title": "리치 텍스트",
+      "dirname": "v1/99.etc",
+      "widgetType": "RICH_TEXT",
+      "requestApi": "NONE",
+      "_key_": "v1/99.etc/rich_text",
+      "id": "SdGWoMYnw",
+      "layout": {
+        "h": 1,
+        "w": 60,
+        "x": 0,
+        "y": 11,
+        "i": "SdGWoMYnw",
+        "moved": false,
+        "static": false
+      },
+      "option": {
+        "markdown": "# Query Node Columns"
+      }
+    },
+    {
+      "id": "R9KmywxsiC",
+      "title": "Number of ready read tasks in readyQueue",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "h": 4,
+        "w": 20,
+        "x": 20,
+        "y": 12,
+        "i": "R9KmywxsiC",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_milvus_standalone",
+      "option": {
+        "metrics": 12,
+        "chartAside": {},
+        "chart": "TON_LINE",
+        "showPlotMaxValue": true,
+        "showLegend": true,
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        }
+      },
+      "metrics": [
+        {
+          "name": "Built",
+          "tags": [
+            {
+              "key": "built",
+              "title": "Built",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_read_task_ready_len",
+              "title": "Milvus_querynode_read_task_ready_len",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Channel_name",
+          "tags": [
+            {
+              "key": "channel_name",
+              "title": "Channel_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_read_task_ready_len",
+              "title": "Milvus_querynode_read_task_ready_len",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Db_name",
+          "tags": [
+            {
+              "key": "db_name",
+              "title": "Db_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_read_task_ready_len",
+              "title": "Milvus_querynode_read_task_ready_len",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Function_name",
+          "tags": [
+            {
+              "key": "function_name",
+              "title": "Function_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_read_task_ready_len",
+              "title": "Milvus_querynode_read_task_ready_len",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Git_commit",
+          "tags": [
+            {
+              "key": "git_commit",
+              "title": "Git_commit",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_read_task_ready_len",
+              "title": "Milvus_querynode_read_task_ready_len",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Import_state",
+          "tags": [
+            {
+              "key": "import_state",
+              "title": "Import_state",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_read_task_ready_len",
+              "title": "Milvus_querynode_read_task_ready_len",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Le",
+          "tags": [
+            {
+              "key": "le",
+              "title": "Le",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_read_task_ready_len",
+              "title": "Milvus_querynode_read_task_ready_len",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Message_op_type",
+          "tags": [
+            {
+              "key": "message_op_type",
+              "title": "Message_op_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_read_task_ready_len",
+              "title": "Milvus_querynode_read_task_ready_len",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Meta",
+          "tags": [
+            {
+              "key": "meta",
+              "title": "Meta",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_read_task_ready_len",
+              "title": "Milvus_querynode_read_task_ready_len",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Meta_op_type",
+          "tags": [
+            {
+              "key": "meta_op_type",
+              "title": "Meta_op_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_read_task_ready_len",
+              "title": "Milvus_querynode_read_task_ready_len",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Module",
+          "tags": [
+            {
+              "key": "module",
+              "title": "Module",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_read_task_ready_len",
+              "title": "Milvus_querynode_read_task_ready_len",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Mq",
+          "tags": [
+            {
+              "key": "mq",
+              "title": "Mq",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_read_task_ready_len",
+              "title": "Milvus_querynode_read_task_ready_len",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Node_id,에이전트 명",
+          "tags": [
+            {
+              "key": "node_id",
+              "title": "Node_id",
+              "unit": "#"
+            },
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_read_task_ready_len",
+              "title": "Milvus_querynode_read_task_ready_len",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Oname",
+          "tags": [
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_read_task_ready_len",
+              "title": "Milvus_querynode_read_task_ready_len",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Persistent_data_op_type",
+          "tags": [
+            {
+              "key": "persistent_data_op_type",
+              "title": "Persistent_data_op_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_read_task_ready_len",
+              "title": "Milvus_querynode_read_task_ready_len",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_read_task_ready_len",
+              "title": "Milvus_querynode_read_task_ready_len",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Quantile",
+          "tags": [
+            {
+              "key": "quantile",
+              "title": "Quantile",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_read_task_ready_len",
+              "title": "Milvus_querynode_read_task_ready_len",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Rg",
+          "tags": [
+            {
+              "key": "rg",
+              "title": "Rg",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_read_task_ready_len",
+              "title": "Milvus_querynode_read_task_ready_len",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Role_name",
+          "tags": [
+            {
+              "key": "role_name",
+              "title": "Role_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_read_task_ready_len",
+              "title": "Milvus_querynode_read_task_ready_len",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Status",
+          "tags": [
+            {
+              "key": "status",
+              "title": "Status",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_read_task_ready_len",
+              "title": "Milvus_querynode_read_task_ready_len",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Task_type",
+          "tags": [
+            {
+              "key": "task_type",
+              "title": "Task_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_read_task_ready_len",
+              "title": "Milvus_querynode_read_task_ready_len",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Type",
+          "tags": [
+            {
+              "key": "type",
+              "title": "Type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_read_task_ready_len",
+              "title": "Milvus_querynode_read_task_ready_len",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Url",
+          "tags": [
+            {
+              "key": "url",
+              "title": "Url",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_read_task_ready_len",
+              "title": "Milvus_querynode_read_task_ready_len",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Version",
+          "tags": [
+            {
+              "key": "version",
+              "title": "Version",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_read_task_ready_len",
+              "title": "Milvus_querynode_read_task_ready_len",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        }
+      ]
+    },
+    {
+      "id": "Sq9Qp4Dzfo",
+      "title": "Disk used size(MB)",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "h": 4,
+        "w": 20,
+        "x": 0,
+        "y": 12,
+        "i": "Sq9Qp4Dzfo",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_milvus_standalone",
+      "option": {
+        "metrics": 12,
+        "chartAside": {},
+        "chart": "TON_LINE",
+        "showPlotMaxValue": true,
+        "showLegend": true,
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        }
+      },
+      "metrics": [
+        {
+          "name": "Built",
+          "tags": [
+            {
+              "key": "built",
+              "title": "Built",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_disk_used_size",
+              "title": "Milvus_querynode_disk_used_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Channel_name",
+          "tags": [
+            {
+              "key": "channel_name",
+              "title": "Channel_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_disk_used_size",
+              "title": "Milvus_querynode_disk_used_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Db_name",
+          "tags": [
+            {
+              "key": "db_name",
+              "title": "Db_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_disk_used_size",
+              "title": "Milvus_querynode_disk_used_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Function_name",
+          "tags": [
+            {
+              "key": "function_name",
+              "title": "Function_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_disk_used_size",
+              "title": "Milvus_querynode_disk_used_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Git_commit",
+          "tags": [
+            {
+              "key": "git_commit",
+              "title": "Git_commit",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_disk_used_size",
+              "title": "Milvus_querynode_disk_used_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Import_state",
+          "tags": [
+            {
+              "key": "import_state",
+              "title": "Import_state",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_disk_used_size",
+              "title": "Milvus_querynode_disk_used_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Le",
+          "tags": [
+            {
+              "key": "le",
+              "title": "Le",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_disk_used_size",
+              "title": "Milvus_querynode_disk_used_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Message_op_type",
+          "tags": [
+            {
+              "key": "message_op_type",
+              "title": "Message_op_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_disk_used_size",
+              "title": "Milvus_querynode_disk_used_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Meta",
+          "tags": [
+            {
+              "key": "meta",
+              "title": "Meta",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_disk_used_size",
+              "title": "Milvus_querynode_disk_used_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Meta_op_type",
+          "tags": [
+            {
+              "key": "meta_op_type",
+              "title": "Meta_op_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_disk_used_size",
+              "title": "Milvus_querynode_disk_used_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Module",
+          "tags": [
+            {
+              "key": "module",
+              "title": "Module",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_disk_used_size",
+              "title": "Milvus_querynode_disk_used_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Mq",
+          "tags": [
+            {
+              "key": "mq",
+              "title": "Mq",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_disk_used_size",
+              "title": "Milvus_querynode_disk_used_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Node_id,에이전트 명",
+          "tags": [
+            {
+              "key": "node_id",
+              "title": "Node_id",
+              "unit": "#"
+            },
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_disk_used_size",
+              "title": "Milvus_querynode_disk_used_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Oname",
+          "tags": [
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_disk_used_size",
+              "title": "Milvus_querynode_disk_used_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Persistent_data_op_type",
+          "tags": [
+            {
+              "key": "persistent_data_op_type",
+              "title": "Persistent_data_op_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_disk_used_size",
+              "title": "Milvus_querynode_disk_used_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_disk_used_size",
+              "title": "Milvus_querynode_disk_used_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Quantile",
+          "tags": [
+            {
+              "key": "quantile",
+              "title": "Quantile",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_disk_used_size",
+              "title": "Milvus_querynode_disk_used_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Rg",
+          "tags": [
+            {
+              "key": "rg",
+              "title": "Rg",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_disk_used_size",
+              "title": "Milvus_querynode_disk_used_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Role_name",
+          "tags": [
+            {
+              "key": "role_name",
+              "title": "Role_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_disk_used_size",
+              "title": "Milvus_querynode_disk_used_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Status",
+          "tags": [
+            {
+              "key": "status",
+              "title": "Status",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_disk_used_size",
+              "title": "Milvus_querynode_disk_used_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Task_type",
+          "tags": [
+            {
+              "key": "task_type",
+              "title": "Task_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_disk_used_size",
+              "title": "Milvus_querynode_disk_used_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Type",
+          "tags": [
+            {
+              "key": "type",
+              "title": "Type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_disk_used_size",
+              "title": "Milvus_querynode_disk_used_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Url",
+          "tags": [
+            {
+              "key": "url",
+              "title": "Url",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_disk_used_size",
+              "title": "Milvus_querynode_disk_used_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Version",
+          "tags": [
+            {
+              "key": "version",
+              "title": "Version",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_querynode_disk_used_size",
+              "title": "Milvus_querynode_disk_used_size",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        }
+      ]
+    },
+    {
+      "icon": "note",
+      "supports": [],
+      "title": "리치 텍스트",
+      "dirname": "v1/99.etc",
+      "widgetType": "RICH_TEXT",
+      "requestApi": "NONE",
+      "_key_": "v1/99.etc/rich_text",
+      "id": "0jVXrrtNn",
+      "layout": {
+        "h": 1,
+        "w": 60,
+        "x": 0,
+        "y": 16,
+        "i": "0jVXrrtNn",
+        "moved": false,
+        "static": false
+      },
+      "option": {
+        "markdown": "# Data Coordinator & Data Node Metrics"
+      }
+    },
+    {
+      "id": "mMbosfU4AR",
+      "title": "Number of collections",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "h": 5,
+        "w": 20,
+        "x": 0,
+        "y": 17,
+        "i": "mMbosfU4AR",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_milvus_standalone",
+      "option": {
+        "metrics": 13,
+        "chartAside": {},
+        "chart": "TON_LINE",
+        "showPlotMaxValue": true,
+        "showLegend": true,
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        }
+      },
+      "metrics": [
+        {
+          "name": "Built",
+          "tags": [
+            {
+              "key": "built",
+              "title": "Built",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_collection_num",
+              "title": "Milvus_datacoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Channel_name",
+          "tags": [
+            {
+              "key": "channel_name",
+              "title": "Channel_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_collection_num",
+              "title": "Milvus_datacoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Db_name",
+          "tags": [
+            {
+              "key": "db_name",
+              "title": "Db_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_collection_num",
+              "title": "Milvus_datacoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Function_name",
+          "tags": [
+            {
+              "key": "function_name",
+              "title": "Function_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_collection_num",
+              "title": "Milvus_datacoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Git_commit",
+          "tags": [
+            {
+              "key": "git_commit",
+              "title": "Git_commit",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_collection_num",
+              "title": "Milvus_datacoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Import_state",
+          "tags": [
+            {
+              "key": "import_state",
+              "title": "Import_state",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_collection_num",
+              "title": "Milvus_datacoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Le",
+          "tags": [
+            {
+              "key": "le",
+              "title": "Le",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_collection_num",
+              "title": "Milvus_datacoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Message_op_type",
+          "tags": [
+            {
+              "key": "message_op_type",
+              "title": "Message_op_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_collection_num",
+              "title": "Milvus_datacoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Meta",
+          "tags": [
+            {
+              "key": "meta",
+              "title": "Meta",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_collection_num",
+              "title": "Milvus_datacoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Meta_op_type",
+          "tags": [
+            {
+              "key": "meta_op_type",
+              "title": "Meta_op_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_collection_num",
+              "title": "Milvus_datacoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Module",
+          "tags": [
+            {
+              "key": "module",
+              "title": "Module",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_collection_num",
+              "title": "Milvus_datacoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Mq",
+          "tags": [
+            {
+              "key": "mq",
+              "title": "Mq",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_collection_num",
+              "title": "Milvus_datacoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Node_id",
+          "tags": [
+            {
+              "key": "node_id",
+              "title": "Node_id",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_collection_num",
+              "title": "Milvus_datacoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Oname",
+          "tags": [
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_collection_num",
+              "title": "Milvus_datacoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Persistent_data_op_type",
+          "tags": [
+            {
+              "key": "persistent_data_op_type",
+              "title": "Persistent_data_op_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_collection_num",
+              "title": "Milvus_datacoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_collection_num",
+              "title": "Milvus_datacoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Quantile",
+          "tags": [
+            {
+              "key": "quantile",
+              "title": "Quantile",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_collection_num",
+              "title": "Milvus_datacoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Rg",
+          "tags": [
+            {
+              "key": "rg",
+              "title": "Rg",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_collection_num",
+              "title": "Milvus_datacoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Role_name",
+          "tags": [
+            {
+              "key": "role_name",
+              "title": "Role_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_collection_num",
+              "title": "Milvus_datacoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Status",
+          "tags": [
+            {
+              "key": "status",
+              "title": "Status",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_collection_num",
+              "title": "Milvus_datacoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Task_type",
+          "tags": [
+            {
+              "key": "task_type",
+              "title": "Task_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_collection_num",
+              "title": "Milvus_datacoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Type",
+          "tags": [
+            {
+              "key": "type",
+              "title": "Type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_collection_num",
+              "title": "Milvus_datacoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Url",
+          "tags": [
+            {
+              "key": "url",
+              "title": "Url",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_collection_num",
+              "title": "Milvus_datacoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Version",
+          "tags": [
+            {
+              "key": "version",
+              "title": "Version",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_collection_num",
+              "title": "Milvus_datacoord_collection_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        }
+      ]
+    },
+    {
+      "id": "jOhpoxU1_Z",
+      "title": "Number of data nodes",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "h": 5,
+        "w": 20,
+        "x": 20,
+        "y": 17,
+        "i": "jOhpoxU1_Z",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_milvus_standalone",
+      "option": {
+        "metrics": 13,
+        "chartAside": {},
+        "chart": "TON_LINE",
+        "showPlotMaxValue": true,
+        "showLegend": true,
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        }
+      },
+      "metrics": [
+        {
+          "name": "Built",
+          "tags": [
+            {
+              "key": "built",
+              "title": "Built",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_datanode_num",
+              "title": "Milvus_datacoord_datanode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Channel_name",
+          "tags": [
+            {
+              "key": "channel_name",
+              "title": "Channel_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_datanode_num",
+              "title": "Milvus_datacoord_datanode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Db_name",
+          "tags": [
+            {
+              "key": "db_name",
+              "title": "Db_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_datanode_num",
+              "title": "Milvus_datacoord_datanode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Function_name",
+          "tags": [
+            {
+              "key": "function_name",
+              "title": "Function_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_datanode_num",
+              "title": "Milvus_datacoord_datanode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Git_commit",
+          "tags": [
+            {
+              "key": "git_commit",
+              "title": "Git_commit",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_datanode_num",
+              "title": "Milvus_datacoord_datanode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Import_state",
+          "tags": [
+            {
+              "key": "import_state",
+              "title": "Import_state",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_datanode_num",
+              "title": "Milvus_datacoord_datanode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Le",
+          "tags": [
+            {
+              "key": "le",
+              "title": "Le",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_datanode_num",
+              "title": "Milvus_datacoord_datanode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Message_op_type",
+          "tags": [
+            {
+              "key": "message_op_type",
+              "title": "Message_op_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_datanode_num",
+              "title": "Milvus_datacoord_datanode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Meta",
+          "tags": [
+            {
+              "key": "meta",
+              "title": "Meta",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_datanode_num",
+              "title": "Milvus_datacoord_datanode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Meta_op_type",
+          "tags": [
+            {
+              "key": "meta_op_type",
+              "title": "Meta_op_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_datanode_num",
+              "title": "Milvus_datacoord_datanode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Module",
+          "tags": [
+            {
+              "key": "module",
+              "title": "Module",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_datanode_num",
+              "title": "Milvus_datacoord_datanode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Mq",
+          "tags": [
+            {
+              "key": "mq",
+              "title": "Mq",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_datanode_num",
+              "title": "Milvus_datacoord_datanode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Node_id",
+          "tags": [
+            {
+              "key": "node_id",
+              "title": "Node_id",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_datanode_num",
+              "title": "Milvus_datacoord_datanode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Oname",
+          "tags": [
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_datanode_num",
+              "title": "Milvus_datacoord_datanode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Persistent_data_op_type",
+          "tags": [
+            {
+              "key": "persistent_data_op_type",
+              "title": "Persistent_data_op_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_datanode_num",
+              "title": "Milvus_datacoord_datanode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_datanode_num",
+              "title": "Milvus_datacoord_datanode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Quantile",
+          "tags": [
+            {
+              "key": "quantile",
+              "title": "Quantile",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_datanode_num",
+              "title": "Milvus_datacoord_datanode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Rg",
+          "tags": [
+            {
+              "key": "rg",
+              "title": "Rg",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_datanode_num",
+              "title": "Milvus_datacoord_datanode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Role_name",
+          "tags": [
+            {
+              "key": "role_name",
+              "title": "Role_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_datanode_num",
+              "title": "Milvus_datacoord_datanode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Status",
+          "tags": [
+            {
+              "key": "status",
+              "title": "Status",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_datanode_num",
+              "title": "Milvus_datacoord_datanode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Task_type",
+          "tags": [
+            {
+              "key": "task_type",
+              "title": "Task_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_datanode_num",
+              "title": "Milvus_datacoord_datanode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Type",
+          "tags": [
+            {
+              "key": "type",
+              "title": "Type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_datanode_num",
+              "title": "Milvus_datacoord_datanode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Url",
+          "tags": [
+            {
+              "key": "url",
+              "title": "Url",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_datanode_num",
+              "title": "Milvus_datacoord_datanode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Version",
+          "tags": [
+            {
+              "key": "version",
+              "title": "Version",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_datanode_num",
+              "title": "Milvus_datacoord_datanode_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        }
+      ]
+    },
+    {
+      "id": "kWgSb-NqIi",
+      "title": "The import tasks grouping by type and state",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "h": 5,
+        "w": 20,
+        "x": 40,
+        "y": 17,
+        "i": "kWgSb-NqIi",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_milvus_standalone",
+      "option": {
+        "metrics": 13,
+        "chartAside": {},
+        "chart": "TON_LINE",
+        "showPlotMaxValue": true,
+        "showLegend": true,
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        }
+      },
+      "metrics": [
+        {
+          "name": "Built",
+          "tags": [
+            {
+              "key": "built",
+              "title": "Built",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_import_tasks",
+              "title": "Milvus_datacoord_import_tasks",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Channel_name",
+          "tags": [
+            {
+              "key": "channel_name",
+              "title": "Channel_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_import_tasks",
+              "title": "Milvus_datacoord_import_tasks",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Db_name",
+          "tags": [
+            {
+              "key": "db_name",
+              "title": "Db_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_import_tasks",
+              "title": "Milvus_datacoord_import_tasks",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Function_name",
+          "tags": [
+            {
+              "key": "function_name",
+              "title": "Function_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_import_tasks",
+              "title": "Milvus_datacoord_import_tasks",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Git_commit",
+          "tags": [
+            {
+              "key": "git_commit",
+              "title": "Git_commit",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_import_tasks",
+              "title": "Milvus_datacoord_import_tasks",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Import_state",
+          "tags": [
+            {
+              "key": "import_state",
+              "title": "Import_state",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_import_tasks",
+              "title": "Milvus_datacoord_import_tasks",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Le",
+          "tags": [
+            {
+              "key": "le",
+              "title": "Le",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_import_tasks",
+              "title": "Milvus_datacoord_import_tasks",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Message_op_type",
+          "tags": [
+            {
+              "key": "message_op_type",
+              "title": "Message_op_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_import_tasks",
+              "title": "Milvus_datacoord_import_tasks",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Meta",
+          "tags": [
+            {
+              "key": "meta",
+              "title": "Meta",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_import_tasks",
+              "title": "Milvus_datacoord_import_tasks",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Meta_op_type",
+          "tags": [
+            {
+              "key": "meta_op_type",
+              "title": "Meta_op_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_import_tasks",
+              "title": "Milvus_datacoord_import_tasks",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Module",
+          "tags": [
+            {
+              "key": "module",
+              "title": "Module",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_import_tasks",
+              "title": "Milvus_datacoord_import_tasks",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Mq",
+          "tags": [
+            {
+              "key": "mq",
+              "title": "Mq",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_import_tasks",
+              "title": "Milvus_datacoord_import_tasks",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Node_id",
+          "tags": [
+            {
+              "key": "node_id",
+              "title": "Node_id",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_import_tasks",
+              "title": "Milvus_datacoord_import_tasks",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Oname",
+          "tags": [
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_import_tasks",
+              "title": "Milvus_datacoord_import_tasks",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Persistent_data_op_type",
+          "tags": [
+            {
+              "key": "persistent_data_op_type",
+              "title": "Persistent_data_op_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_import_tasks",
+              "title": "Milvus_datacoord_import_tasks",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_import_tasks",
+              "title": "Milvus_datacoord_import_tasks",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Quantile",
+          "tags": [
+            {
+              "key": "quantile",
+              "title": "Quantile",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_import_tasks",
+              "title": "Milvus_datacoord_import_tasks",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Rg",
+          "tags": [
+            {
+              "key": "rg",
+              "title": "Rg",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_import_tasks",
+              "title": "Milvus_datacoord_import_tasks",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Role_name",
+          "tags": [
+            {
+              "key": "role_name",
+              "title": "Role_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_import_tasks",
+              "title": "Milvus_datacoord_import_tasks",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Status",
+          "tags": [
+            {
+              "key": "status",
+              "title": "Status",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_import_tasks",
+              "title": "Milvus_datacoord_import_tasks",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Task_type",
+          "tags": [
+            {
+              "key": "task_type",
+              "title": "Task_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_import_tasks",
+              "title": "Milvus_datacoord_import_tasks",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Type",
+          "tags": [
+            {
+              "key": "type",
+              "title": "Type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_import_tasks",
+              "title": "Milvus_datacoord_import_tasks",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Url",
+          "tags": [
+            {
+              "key": "url",
+              "title": "Url",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_import_tasks",
+              "title": "Milvus_datacoord_import_tasks",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Version",
+          "tags": [
+            {
+              "key": "version",
+              "title": "Version",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_import_tasks",
+              "title": "Milvus_datacoord_import_tasks",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        }
+      ]
+    },
+    {
+      "id": "mAPBF9dd4v",
+      "title": "Number of IndexNodes managed by IndexCoord",
+      "isMultiProject": true,
+      "supports": [
+        {
+          "platform": "INFRA"
+        }
+      ],
+      "layout": {
+        "h": 5,
+        "w": 20,
+        "x": 0,
+        "y": 22,
+        "i": "mAPBF9dd4v",
+        "moved": false,
+        "static": false
+      },
+      "requestApi": "SERIES",
+      "widgetType": "SERIES",
+      "icon": "line-chart",
+      "category": "telegraf_milvus_standalone",
+      "option": {
+        "metrics": 13,
+        "chartAside": {},
+        "chart": "TON_LINE",
+        "showPlotMaxValue": true,
+        "showLegend": true,
+        "panel": {
+          "header": {
+            "display": ""
+          }
+        }
+      },
+      "metrics": [
+        {
+          "name": "Built",
+          "tags": [
+            {
+              "key": "built",
+              "title": "Built",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_index_node_num",
+              "title": "Milvus_datacoord_index_node_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Channel_name",
+          "tags": [
+            {
+              "key": "channel_name",
+              "title": "Channel_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_index_node_num",
+              "title": "Milvus_datacoord_index_node_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Db_name",
+          "tags": [
+            {
+              "key": "db_name",
+              "title": "Db_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_index_node_num",
+              "title": "Milvus_datacoord_index_node_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Function_name",
+          "tags": [
+            {
+              "key": "function_name",
+              "title": "Function_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_index_node_num",
+              "title": "Milvus_datacoord_index_node_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Git_commit",
+          "tags": [
+            {
+              "key": "git_commit",
+              "title": "Git_commit",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_index_node_num",
+              "title": "Milvus_datacoord_index_node_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Import_state",
+          "tags": [
+            {
+              "key": "import_state",
+              "title": "Import_state",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_index_node_num",
+              "title": "Milvus_datacoord_index_node_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Le",
+          "tags": [
+            {
+              "key": "le",
+              "title": "Le",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_index_node_num",
+              "title": "Milvus_datacoord_index_node_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Message_op_type",
+          "tags": [
+            {
+              "key": "message_op_type",
+              "title": "Message_op_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_index_node_num",
+              "title": "Milvus_datacoord_index_node_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Meta",
+          "tags": [
+            {
+              "key": "meta",
+              "title": "Meta",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_index_node_num",
+              "title": "Milvus_datacoord_index_node_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Meta_op_type",
+          "tags": [
+            {
+              "key": "meta_op_type",
+              "title": "Meta_op_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_index_node_num",
+              "title": "Milvus_datacoord_index_node_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Module",
+          "tags": [
+            {
+              "key": "module",
+              "title": "Module",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_index_node_num",
+              "title": "Milvus_datacoord_index_node_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Mq",
+          "tags": [
+            {
+              "key": "mq",
+              "title": "Mq",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_index_node_num",
+              "title": "Milvus_datacoord_index_node_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Node_id",
+          "tags": [
+            {
+              "key": "node_id",
+              "title": "Node_id",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_index_node_num",
+              "title": "Milvus_datacoord_index_node_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Oname",
+          "tags": [
+            {
+              "key": "oname",
+              "title": "Oname",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_index_node_num",
+              "title": "Milvus_datacoord_index_node_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Persistent_data_op_type",
+          "tags": [
+            {
+              "key": "persistent_data_op_type",
+              "title": "Persistent_data_op_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_index_node_num",
+              "title": "Milvus_datacoord_index_node_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Project",
+          "tags": [
+            {
+              "key": "pname",
+              "title": "Project",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_index_node_num",
+              "title": "Milvus_datacoord_index_node_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Quantile",
+          "tags": [
+            {
+              "key": "quantile",
+              "title": "Quantile",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_index_node_num",
+              "title": "Milvus_datacoord_index_node_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Rg",
+          "tags": [
+            {
+              "key": "rg",
+              "title": "Rg",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_index_node_num",
+              "title": "Milvus_datacoord_index_node_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Role_name",
+          "tags": [
+            {
+              "key": "role_name",
+              "title": "Role_name",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_index_node_num",
+              "title": "Milvus_datacoord_index_node_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Status",
+          "tags": [
+            {
+              "key": "status",
+              "title": "Status",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_index_node_num",
+              "title": "Milvus_datacoord_index_node_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Task_type",
+          "tags": [
+            {
+              "key": "task_type",
+              "title": "Task_type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_index_node_num",
+              "title": "Milvus_datacoord_index_node_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Type",
+          "tags": [
+            {
+              "key": "type",
+              "title": "Type",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_index_node_num",
+              "title": "Milvus_datacoord_index_node_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Url",
+          "tags": [
+            {
+              "key": "url",
+              "title": "Url",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_index_node_num",
+              "title": "Milvus_datacoord_index_node_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        },
+        {
+          "name": "Version",
+          "tags": [
+            {
+              "key": "version",
+              "title": "Version",
+              "unit": "#"
+            }
+          ],
+          "fields": [
+            {
+              "objectMerge": "avg",
+              "timeMerge": "avg",
+              "key": "milvus_datacoord_index_node_num",
+              "title": "Milvus_datacoord_index_node_num",
+              "unit": "#"
+            }
+          ],
+          "mqlType": "automated",
+          "isSeriesMergable": true
+        }
+      ]
+    }
+  ],
+  "extra": {
+    "layout": {
+      "type": "FIXED",
+      "monitor": {
+        "x": 3,
+        "y": 3
+      }
+    },
+    "option": {}
+  }
+}

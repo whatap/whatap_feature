@@ -177,10 +177,24 @@ def apache():
     write_module(source_files, target_file)
 
 
+def milvus():
+    source_files = [
+        ("main","milvus/main.json"),
+        ("meta","milvus/meta.json"),
+        ("installation","milvus/installation.json"),
+        ("dashboards",("milvus/milvus_proxy_and_root_coordinator.json",
+                       "milvus/milvus_query_coordinator_query_node_metrics.json",
+                       "milvus/milvus_search_and_compute_performance.json",)),
+        ("events",[])
+        ]
+    target_file = "whfeature/features/milvus.py"
+    write_module(source_files, target_file)
+
 if __name__ == '__main__':
     #kafka()
-    #vcenter()
+    vcenter()
     #aerospike()
     #apachepulsar()
-    nginx()
-    apache()
+    #nginx()
+    #apache()
+    # milvus()
