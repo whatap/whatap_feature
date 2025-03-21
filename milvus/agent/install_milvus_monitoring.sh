@@ -144,7 +144,6 @@ configure_telegraf() {
   urls = ["$milvus_url/metrics"]
   metric_version = 2
   name_override = "milvus_standalone"
-'''
 EOF
 }
 
@@ -154,11 +153,11 @@ configure_agent() {
     echo "license=$LICENSE" | tee /usr/whatap/infra/conf/whatap.conf
     echo "whatap.server.host=$WHATAP_SERVER_HOST" | tee -a /usr/whatap/infra/conf/whatap.conf
     echo "createdtime=`date +%s%N`" |  tee -a /usr/whatap/infra/conf/whatap.conf
-
     echo "internal.forwarder.enabled=true" |  tee -a /usr/whatap/infra/conf/whatap.conf
     echo "telegraf.sidecar.enabled=true" |  tee -a /usr/whatap/infra/conf/whatap.conf
     echo "telegraf.sidecar.executable=$feature_prefix/telegraf" |  tee -a /usr/whatap/infra/conf/whatap.conf
-
+    echo "telegraf.delta.fields=milvus_standalone.milvus_proxy_apply_timestamp_latency_bucket,milvus_standalone.milvus_proxy_apply_timestamp_latency_count,milvus_standalone.milvus_proxy_apply_timestamp_latency_sum,milvus_standalone.milvus_rootcoord_ddl_req_count,milvus_standalone.milvus_rootcoord_ddl_req_latency_bucket,milvus_standalone.milvus_rootcoord_ddl_req_latency_count,milvus_standalone.milvus_rootcoord_ddl_req_latency_in_queue_bucket,milvus_standalone.milvus_rootcoord_ddl_req_latency_in_queue_count,milvus_standalone.milvus_rootcoord_ddl_req_latency_in_queue_sum,milvus_standalone.milvus_rootcoord_ddl_req_latency_sum,milvus_standalone.milvus_rootcoord_force_deny_writing_counter,milvus_standalone.milvus_rootcoord_id_alloc_count,milvus_standalone.ann_iterator_init_latency_bucket,milvus_standalone.ann_iterator_init_latency_count,milvus_standalone.ann_iterator_init_latency_sum,milvus_standalone.bf_search_cnt_bucket,milvus_standalone.bf_search_cnt_count,milvus_standalone.bf_search_cnt_sum,milvus_standalone.bitset_ratio_bucket,milvus_standalone.bitset_ratio_count,milvus_standalone.bitset_ratio_sum,milvus_standalone.bitset_ratio_bucket,milvus_standalone.bitset_ratio_count,milvus_standalone.bitset_ratio_sum,milvus_standalone.hnsw_bitset_ratio_bucket,milvus_standalone.hnsw_bitset_ratio_count,milvus_standalone.hnsw_bitset_ratio_sum,milvus_standalone.diskann_bitset_ratio_bucket,milvus_standalone.diskann_bitset_ratio_count,milvus_standalone.diskann_bitset_ratio_sum,milvus_standalone.diskann_search_hops_bucket,milvus_standalone.diskann_search_hops_count,milvus_standalone.diskann_search_hops_sum,milvus_standalone.diskann_range_search_iters_bucket,milvus_standalone.diskann_range_search_iters_count,milvus_standalone.diskann_range_search_iters_sum" |  tee -a /usr/whatap/infra/conf/whatap.conf
+    
     service whatap-infra restart
 }
 
